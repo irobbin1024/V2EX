@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		78CD67BE694B2DF09E88818E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4394C6E375D63529F591FDDD /* libPods.a */; };
+		B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADB81B6262200062A097 /* VEAPIClient.m */; };
+		B60EADC01B626D280062A097 /* VENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADBF1B626D280062A097 /* VENavigationController.m */; };
+		B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADC21B626DCF0062A097 /* VETabBarController.m */; };
+		B60EADC71B626E410062A097 /* VEHotController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADC61B626E410062A097 /* VEHotController.m */; };
 		B64574E01B6248AB00886225 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B64574DF1B6248AB00886225 /* main.m */; };
 		B64574E31B6248AB00886225 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B64574E21B6248AB00886225 /* AppDelegate.m */; };
 		B64574EC1B6248AB00886225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64574EA1B6248AB00886225 /* Main.storyboard */; };
@@ -29,6 +33,16 @@
 /* Begin PBXFileReference section */
 		39B7B0D23C0D99D7D7258303 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4394C6E375D63529F591FDDD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60EADB71B6262200062A097 /* VEAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAPIClient.h; sourceTree = "<group>"; };
+		B60EADB81B6262200062A097 /* VEAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAPIClient.m; sourceTree = "<group>"; };
+		B60EADBB1B626C390062A097 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B60EADBC1B626C390062A097 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B60EADBE1B626D280062A097 /* VENavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENavigationController.h; sourceTree = "<group>"; };
+		B60EADBF1B626D280062A097 /* VENavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENavigationController.m; sourceTree = "<group>"; };
+		B60EADC11B626DCA0062A097 /* VETabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VETabBarController.h; sourceTree = "<group>"; };
+		B60EADC21B626DCF0062A097 /* VETabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETabBarController.m; sourceTree = "<group>"; };
+		B60EADC51B626E410062A097 /* VEHotController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHotController.h; sourceTree = "<group>"; };
+		B60EADC61B626E410062A097 /* VEHotController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHotController.m; sourceTree = "<group>"; };
 		B64574DA1B6248AB00886225 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64574DE1B6248AB00886225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64574DF1B6248AB00886225 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -79,6 +93,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B60EADBA1B6264740062A097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B60EADBD1B626CF60062A097 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B60EADC11B626DCA0062A097 /* VETabBarController.h */,
+				B60EADC21B626DCF0062A097 /* VETabBarController.m */,
+				B60EADBE1B626D280062A097 /* VENavigationController.h */,
+				B60EADBF1B626D280062A097 /* VENavigationController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		B60EADC41B626E150062A097 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B60EADC51B626E410062A097 /* VEHotController.h */,
+				B60EADC61B626E410062A097 /* VEHotController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		B64574D11B6248AB00886225 = {
 			isa = PBXGroup;
 			children = (
@@ -102,11 +143,9 @@
 		B64574DC1B6248AB00886225 /* V2EX */ = {
 			isa = PBXGroup;
 			children = (
-				B64574E11B6248AB00886225 /* AppDelegate.h */,
-				B64574E21B6248AB00886225 /* AppDelegate.m */,
-				B64574EA1B6248AB00886225 /* Main.storyboard */,
-				B64574ED1B6248AB00886225 /* Images.xcassets */,
-				B64574EF1B6248AB00886225 /* LaunchScreen.xib */,
+				B60EADBD1B626CF60062A097 /* Base */,
+				B64575071B625E9300886225 /* Util */,
+				B64575061B625D2400886225 /* Hot */,
 				B64574DD1B6248AB00886225 /* Supporting Files */,
 			);
 			path = V2EX;
@@ -115,6 +154,11 @@
 		B64574DD1B6248AB00886225 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B64574E11B6248AB00886225 /* AppDelegate.h */,
+				B64574E21B6248AB00886225 /* AppDelegate.m */,
+				B64574EA1B6248AB00886225 /* Main.storyboard */,
+				B64574ED1B6248AB00886225 /* Images.xcassets */,
+				B64574EF1B6248AB00886225 /* LaunchScreen.xib */,
 				B64574DE1B6248AB00886225 /* Info.plist */,
 				B64574DF1B6248AB00886225 /* main.m */,
 			);
@@ -136,6 +180,24 @@
 				B64574FB1B6248AB00886225 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B64575061B625D2400886225 /* Hot */ = {
+			isa = PBXGroup;
+			children = (
+				B60EADC41B626E150062A097 /* Controller */,
+				B60EADBA1B6264740062A097 /* Model */,
+			);
+			name = Hot;
+			sourceTree = "<group>";
+		};
+		B64575071B625E9300886225 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B60EADB71B6262200062A097 /* VEAPIClient.h */,
+				B60EADB81B6262200062A097 /* VEAPIClient.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +335,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60EADC71B626E410062A097 /* VEHotController.m in Sources */,
 				B64574E31B6248AB00886225 /* AppDelegate.m in Sources */,
 				B64574E01B6248AB00886225 /* main.m in Sources */,
+				B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */,
+				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,
+				B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +367,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B64574EB1B6248AB00886225 /* Base */,
+				B60EADBB1B626C390062A097 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -309,6 +376,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B64574F01B6248AB00886225 /* Base */,
+				B60EADBC1B626C390062A097 /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
