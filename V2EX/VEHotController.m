@@ -12,6 +12,7 @@
 #import "UIAlertView+AFNetworking.h"
 #import "VEHotCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "VEWebViewController.h"
 
 @interface VEHotController ()
 
@@ -34,8 +35,7 @@
     
     [self reload:nil];
     
-//    self.tableView.tableFooterView = [UIView new];
-    self.tableView.fd_debugLogEnabled = YES;
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,7 +87,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return [VEHotCell heightWithStatusModel:self.hots[indexPath.row]];
     CGFloat height = [tableView fd_heightForCellWithIdentifier:VEHotCellIdentifier cacheByIndexPath:indexPath configuration:^(VEHotCell * cell) {
         
         [cell setupWithStatusModel:self.hots[indexPath.row]];
@@ -96,14 +95,16 @@
     return height;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"pushVEWebViewController"]) {
+        VEWebViewController * webView = segue.destinationViewController;
+        VEStatusModel * selectedStatusModel = self.hots[[self.tableView indexPathForSelectedRow].row];
+        webView.url = selectedStatusModel.url;
+        webView.controllerTitle = selectedStatusModel.title;
+    }
 }
-*/
 
 @end
