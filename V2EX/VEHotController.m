@@ -7,8 +7,15 @@
 //
 
 #import "VEHotController.h"
+#import "VEStatusModel.h"
+#import "UIRefreshControl+AFNetworking.h"
+#import "UIAlertView+AFNetworking.h"
+#import "VEHotCell.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface VEHotController ()
+
+@property (nonatomic, strong) NSArray * hots;
 
 @end
 
@@ -17,6 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"最热";
+    
+    self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
+    [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView.tableHeaderView addSubview:self.refreshControl];
+    
+    self.tableView.rowHeight = 95.0f;
+    
+    [self reload:nil];
+    
+//    self.tableView.tableFooterView = [UIView new];
+    self.tableView.fd_debugLogEnabled = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,63 +52,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Data
+
+- (void)reload:(__unused id)sender {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    NSURLSessionTask *task = [VEStatusModel hotsWithBlock:^(NSArray *hots, NSError *error) {
+        if (!error) {
+            self.hots = hots;
+            [self.tableView reloadData];
+        }
+    }];
+    
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    [self.refreshControl setRefreshingWithStateOfTask:task];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.hots.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    VEHotCell *cell = [tableView dequeueReusableCellWithIdentifier:VEHotCellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    [cell setupWithStatusModel:self.hots[indexPath.row]];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [VEHotCell heightWithStatusModel:self.hots[indexPath.row]];
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:VEHotCellIdentifier cacheByIndexPath:indexPath configuration:^(VEHotCell * cell) {
+        
+        [cell setupWithStatusModel:self.hots[indexPath.row]];
+    }];
+    
+    return height;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
@@ -100,11 +105,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"title"]) {
-        NSLog(@"");
-    }
-}
 
 @end

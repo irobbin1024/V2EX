@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A226f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -30,39 +31,60 @@
         <scene sceneID="SUG-lT-Bl0">
             <objects>
                 <tableViewController id="gFE-pv-jQz" customClass="VEHotController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="3Bv-eo-94I">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="22" sectionFooterHeight="22" id="3Bv-eo-94I">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="fL9-37-dke">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VEHotCellIdentifier" rowHeight="103" id="fL9-37-dke" customClass="VEHotCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fL9-37-dke" id="1KT-Ns-hUp">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHP-UL-3TQ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XHP-UL-3TQ">
                                             <rect key="frame" x="8" y="13" width="70" height="70"/>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="FkY-Qo-Gpx"/>
+                                                <constraint firstAttribute="height" constant="70" id="aqw-2e-TIK"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQx-Bz-fGA">
-                                            <rect key="frame" x="86" y="13" width="475" height="41"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pq8-To-ejp">
-                                            <rect key="frame" x="86" y="62" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pq8-To-ejp">
+                                            <rect key="frame" x="86" y="78" width="496" height="13"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQx-Bz-fGA">
+                                            <rect key="frame" x="86" y="13" width="496" height="61"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MQx-Bz-fGA" secondAttribute="trailing" constant="10" id="1fp-90-NCN"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Pq8-To-ejp" secondAttribute="trailing" constant="10" id="8dZ-Z0-PIf"/>
+                                        <constraint firstItem="MQx-Bz-fGA" firstAttribute="top" secondItem="1KT-Ns-hUp" secondAttribute="topMargin" constant="5" id="Gwf-hY-EA2"/>
+                                        <constraint firstItem="Pq8-To-ejp" firstAttribute="leading" secondItem="XHP-UL-3TQ" secondAttribute="trailing" constant="8" id="PWF-bh-bXR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Pq8-To-ejp" secondAttribute="bottom" constant="4" id="R4Z-5v-qE9"/>
+                                        <constraint firstItem="Pq8-To-ejp" firstAttribute="top" secondItem="MQx-Bz-fGA" secondAttribute="bottom" constant="4" id="WKG-eN-WFs"/>
+                                        <constraint firstItem="MQx-Bz-fGA" firstAttribute="leading" secondItem="XHP-UL-3TQ" secondAttribute="trailing" constant="8" id="XRK-Cs-6D5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Pq8-To-ejp" secondAttribute="bottom" constant="4" id="cMY-KG-Muj"/>
+                                        <constraint firstItem="XHP-UL-3TQ" firstAttribute="leading" secondItem="1KT-Ns-hUp" secondAttribute="leadingMargin" id="nrF-0y-y5f"/>
+                                        <constraint firstItem="XHP-UL-3TQ" firstAttribute="top" secondItem="1KT-Ns-hUp" secondAttribute="topMargin" constant="5" id="yde-Gx-5zw"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="XHP-UL-3TQ" id="ZtQ-SE-nGw"/>
+                                    <outlet property="contentLabel" destination="MQx-Bz-fGA" id="aPp-ts-5NB"/>
+                                    <outlet property="timeLabel" destination="Pq8-To-ejp" id="O4T-P2-i2K"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
