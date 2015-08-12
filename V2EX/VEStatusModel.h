@@ -49,5 +49,6 @@
 
 + (NSURLSessionDataTask *)hotsWithBlock:(void (^)(NSArray *hots, NSError *error))block;
 + (NSDateFormatter *)dateFormatter;
++ (NSURLSessionDataTask *)latestWithBlock:(void (^)(NSArray *lastests, NSError *error))block;
 
 @end
