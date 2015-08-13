@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210FA3B61B7A152A0037BA3B /* VELatestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210FA3B51B7A152A0037BA3B /* VELatestController.m */; };
+		210FA3B91B7A1E4F0037BA3B /* VELatestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 210FA3B81B7A1E4F0037BA3B /* VELatestCell.m */; };
 		78CD67BE694B2DF09E88818E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4394C6E375D63529F591FDDD /* libPods.a */; };
 		B6078FF31B664F63003EBBCD /* VEStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6078FF21B664F63003EBBCD /* VEStatusModel.m */; };
 		B6078FF71B6656D0003EBBCD /* VEHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6078FF61B6656D0003EBBCD /* VEHotCell.m */; };
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210FA3B41B7A152A0037BA3B /* VELatestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELatestController.h; sourceTree = "<group>"; };
+		210FA3B51B7A152A0037BA3B /* VELatestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELatestController.m; sourceTree = "<group>"; };
+		210FA3B71B7A1E4F0037BA3B /* VELatestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELatestCell.h; sourceTree = "<group>"; };
+		210FA3B81B7A1E4F0037BA3B /* VELatestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELatestCell.m; sourceTree = "<group>"; };
 		39B7B0D23C0D99D7D7258303 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4394C6E375D63529F591FDDD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6078FF11B664F63003EBBCD /* VEStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEStatusModel.h; sourceTree = "<group>"; };
@@ -91,6 +97,33 @@
 				4394C6E375D63529F591FDDD /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		210FA3AE1B7A11020037BA3B /* Lastest */ = {
+			isa = PBXGroup;
+			children = (
+				210FA3AF1B7A11180037BA3B /* View */,
+				210FA3B01B7A11230037BA3B /* Controller */,
+			);
+			name = Lastest;
+			sourceTree = "<group>";
+		};
+		210FA3AF1B7A11180037BA3B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				210FA3B71B7A1E4F0037BA3B /* VELatestCell.h */,
+				210FA3B81B7A1E4F0037BA3B /* VELatestCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		210FA3B01B7A11230037BA3B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				210FA3B41B7A152A0037BA3B /* VELatestController.h */,
+				210FA3B51B7A152A0037BA3B /* VELatestController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		502709F19067C4D9DE9D450A /* Pods */ = {
@@ -175,7 +208,9 @@
 				B6078FF81B66679D003EBBCD /* CommonController */,
 				B60EADBD1B626CF60062A097 /* Base */,
 				B64575071B625E9300886225 /* Util */,
+				B60EADBA1B6264740062A097 /* Model */,
 				B64575061B625D2400886225 /* Hot */,
+				210FA3AE1B7A11020037BA3B /* Lastest */,
 				B64574DD1B6248AB00886225 /* Supporting Files */,
 			);
 			path = V2EX;
@@ -217,7 +252,6 @@
 			children = (
 				B6078FF41B6656B5003EBBCD /* View */,
 				B60EADC41B626E150062A097 /* Controller */,
-				B60EADBA1B6264740062A097 /* Model */,
 			);
 			name = Hot;
 			sourceTree = "<group>";
@@ -367,8 +401,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B60EADC71B626E410062A097 /* VEHotController.m in Sources */,
+				210FA3B61B7A152A0037BA3B /* VELatestController.m in Sources */,
 				B64574E31B6248AB00886225 /* AppDelegate.m in Sources */,
 				B64574E01B6248AB00886225 /* main.m in Sources */,
+				210FA3B91B7A1E4F0037BA3B /* VELatestCell.m in Sources */,
 				B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */,
 				B6078FF71B6656D0003EBBCD /* VEHotCell.m in Sources */,
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
@@ -504,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = V2EX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -515,6 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = V2EX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
