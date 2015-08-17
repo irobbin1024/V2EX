@@ -1,37 +1,32 @@
 //
-//  VELatestController.m
+//  VENodesController.m
 //  V2EX
 //
-//  Created by wengjia on 15/8/11.
+//  Created by 翁佳 on 15-8-13.
 //  Copyright (c) 2015年 owl. All rights reserved.
 //
 
-#import "VELatestController.h"
-#import "VEStatusModel.h"
-#import "VELatestCell.h"
+#import "VENodesController.h"
+#import "VENodeModel.h"
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
-#import "UITableView+FDTemplateLayoutCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "VEWebViewController.h"
 
-@interface VELatestController ()
+@interface VENodesController ()
 
-@property(nonatomic, strong) NSArray * latests;
-
+@property (nonatomic, strong) NSArray *nodes;
 @end
 
-@implementation VELatestController
+@implementation VENodesController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"最新";
+    self.title = @"节点";
     
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
-    
-    self.tableView.rowHeight = 95.0f;
     
     [self reload:nil];
     
@@ -59,30 +54,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.latests count];
+    return self.nodes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    VELatestCell *cell = [tableView dequeueReusableCellWithIdentifier:VELatestIdentifier forIndexPath:indexPath];
     
-    [cell setupWithStatusModel:self.latests[indexPath.row]];
+    static NSString *nodeIdentifier = @"VENodeIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nodeIdentifier forIndexPath:indexPath];
+    VENodeModel *node = self.nodes[indexPath.row];
+    cell.textLabel.text = node.title;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:VELatestIdentifier cacheByIndexPath:indexPath configuration:^(VELatestCell * cell) {
-        
-        [cell setupWithStatusModel:self.latests[indexPath.row]];
-    }];
-    
-    return height;
-}
-
-#pragma mark - Data
-
 - (void)reload:(__unused id)sender {
-    NSURLSessionTask *task = [VEStatusModel latestWithBlock:^(NSArray *lastests, NSError *error) {
-        self.latests = lastests;
+    NSURLSessionDataTask * task = [VENodeModel nodeWithBlock:^(NSArray *nodes, NSError *error) {
+        self.nodes = nodes;
         [self.tableView reloadData];
     }];
     
@@ -92,12 +79,13 @@
 
 #pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"pushLatestVEWebViewController"]) {
+    if ([segue.identifier isEqualToString:@"pushNodeVEWebViewController"]) {
         VEWebViewController * webView = segue.destinationViewController;
-        VEStatusModel * selectedStatusModel = self.latests[[self.tableView indexPathForSelectedRow].row];
-        webView.url = selectedStatusModel.url;
-        webView.controllerTitle = selectedStatusModel.title;
+        VENodeModel * selectedNodeModel = self.nodes[[self.tableView indexPathForSelectedRow].row];
+        webView.url = selectedNodeModel.url;
+        webView.controllerTitle = selectedNodeModel.title;
     }
 }
 @end
