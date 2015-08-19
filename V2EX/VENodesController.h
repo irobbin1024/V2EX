@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VENodesController : UITableViewController
-
+@interface VENodesController : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating>
+@property (nonatomic, strong) NSMutableArray *sortedArrForArrays;
+@property (nonatomic, strong) NSMutableArray *sectionHeadsKeys;
 @end
