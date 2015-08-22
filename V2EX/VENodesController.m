@@ -39,7 +39,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -53,10 +52,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.searchController.active) {
-        self.searchController.active = NO;
-        [self.searchController.searchBar removeFromSuperview];
-    }
 }
 
 #pragma mark - Table view data source
@@ -122,15 +117,16 @@
         self.sectionHeadsKeys = [dict objectForKey:LEOPinyinGroupCharKey];
         
         //search bar
-        filteredNodes = [NSMutableArray array];
-        self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-        self.searchController.searchResultsUpdater = self;
-        self.searchController.dimsBackgroundDuringPresentation = NO;
-        self.searchController.hidesNavigationBarDuringPresentation = NO;
-        self.searchController.searchBar.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 44.0);
-        self.searchController.searchBar.delegate = self;
-        self.tableView.tableHeaderView = self.searchController.searchBar;
-        
+        if (self.nodes.count > 0) {
+            filteredNodes = [NSMutableArray array];
+            self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+            self.searchController.searchResultsUpdater = self;
+            self.searchController.dimsBackgroundDuringPresentation = NO;
+            self.searchController.hidesNavigationBarDuringPresentation = NO;
+            self.searchController.searchBar.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 44.0);
+            self.searchController.searchBar.delegate = self;
+            self.tableView.tableHeaderView = self.searchController.searchBar;
+        }
         [self.tableView reloadData];
     }];
     
@@ -147,7 +143,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         VEWebViewController * webView = segue.destinationViewController;
         
-        if (self.searchController.active) {
+        if (self.searchController.active && filteredNodes.count != 0) {
             VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
             webView.url = selectedNodeModel.url;
             webView.controllerTitle = selectedNodeModel.title;
@@ -161,6 +157,11 @@
                     webView.controllerTitle = selectedNodeModel.title;
                 }
             }
+
+        }
+        if (self.searchController.active) {
+            [self searchBarCancelButtonClicked:nil];
+            [self.searchController.searchBar removeFromSuperview];
         }
     }
 }
@@ -181,8 +182,8 @@
             NSArray *matches = [[self.sortedArrForArrays objectAtIndex:keyIndex] filteredArrayUsingPredicate: predicate];
             [filteredNodes addObjectsFromArray:matches];
         }
-        [self.tableView reloadData];
     }
+    [self.tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
