@@ -7,8 +7,15 @@
 //
 
 #import "VEAboutController.h"
+#import "VESiteModel.h"
+#import "UIAlertView+AFNetworking.h"
 
 @interface VEAboutController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *decriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *domainLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topicmaxLabel;
+@property (weak, nonatomic) IBOutlet UILabel *memberLabel;
 
 @end
 
@@ -17,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
+    [self reload:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +32,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)reload:(__unused id)sender {
+    NSURLSessionDataTask *task;
+    task = [VESiteInfoModel siteInfoWithBlock:^(id siteInfo, NSError *error) {
+    VESiteInfoModel *siteInfoMdoel = siteInfo;
+    self.titleLabel.text = siteInfoMdoel.title == nil ? self.titleLabel.text : siteInfoMdoel.title;
+    self.decriptionLabel.text = siteInfoMdoel.describe == nil ? self.decriptionLabel.text : siteInfoMdoel.describe;
+    self.domainLabel.text = siteInfoMdoel.domain == nil ? self.domainLabel.text : siteInfoMdoel.domain;
+    }];
+    
+    task = [VESiteStatsModel siteStatsWithBlock:^(id siteStats, NSError *error) {
+    VESiteStatsModel *siteStatsModel = siteStats;
+        self.topicmaxLabel.text = siteStatsModel.topic_max == nil ? @"未知" : siteStatsModel.topic_max;
+        self.memberLabel.text = siteStatsModel.member_max == nil ? @"未知" : siteStatsModel.member_max;
+    }];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 }
-*/
 
 @end
