@@ -10,9 +10,9 @@
 #import "VEStatusModel.h"
 #import "UIRefreshControl+AFNetworking.h"
 #import "UIAlertView+AFNetworking.h"
-#import "VEHotCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "VEWebViewController.h"
+#import "VEStatusTableViewCell.h"
 
 @interface VEHotController ()
 
@@ -26,6 +26,8 @@
     [super viewDidLoad];
     
     self.title = @"最热";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"VEStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VEStatusTableViewCellIdentifier];
     
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
@@ -79,7 +81,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    VEHotCell *cell = [tableView dequeueReusableCellWithIdentifier:VEHotCellIdentifier forIndexPath:indexPath];
+    VEStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VEStatusTableViewCellIdentifier forIndexPath:indexPath];
     
     [cell setupWithStatusModel:self.hots[indexPath.row]];
     
@@ -87,7 +89,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:VEHotCellIdentifier cacheByIndexPath:indexPath configuration:^(VEHotCell * cell) {
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:VEStatusTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VEStatusTableViewCell * cell) {
         
         [cell setupWithStatusModel:self.hots[indexPath.row]];
     }];
@@ -95,16 +97,12 @@
     return height;
 }
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"pushVEWebViewController"]) {
-        VEWebViewController * webView = segue.destinationViewController;
-        VEStatusModel * selectedStatusModel = self.hots[[self.tableView indexPathForSelectedRow].row];
-        webView.url = selectedStatusModel.url;
-        webView.controllerTitle = selectedStatusModel.title;
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+    VEStatusModel * selectedStatusModel = self.hots[[self.tableView indexPathForSelectedRow].row];
+    webView.url = selectedStatusModel.url;
+    webView.controllerTitle = selectedStatusModel.title;
+    
+    [self.navigationController pushViewController:webView animated:YES];
 }
-
 @end

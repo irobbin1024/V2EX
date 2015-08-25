@@ -11,7 +11,7 @@
 
 @interface VEStatusMemberModel : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString * userID;
+@property (nonatomic, assign) NSInteger userID;
 @property (nonatomic, copy) NSString * userName;
 @property (nonatomic, copy) NSString * tagLine;
 @property (nonatomic, copy) NSURL * avatarMini;
@@ -22,7 +22,7 @@
 
 @interface VEStatusNodeModel : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString * nodeID;
+@property (nonatomic, assign) NSInteger nodeID;
 @property (nonatomic, copy) NSString * name;
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * titleAlternative;
@@ -35,7 +35,7 @@
 
 @interface VEStatusModel : MTLModel<MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString * stautsID;
+@property (nonatomic, assign) NSInteger stautsID;
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSURL * url;
 @property (nonatomic, copy) NSString * content;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -37,69 +37,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VEHotCellIdentifier" rowHeight="103" id="fL9-37-dke" customClass="VEHotCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fL9-37-dke" id="1KT-Ns-hUp">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pq8-To-ejp">
-                                            <rect key="frame" x="66" y="84" width="516" height="6"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQx-Bz-fGA">
-                                            <rect key="frame" x="66" y="13" width="516" height="61"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XHP-UL-3TQ">
-                                            <rect key="frame" x="8" y="13" width="50" height="50"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="FkY-Qo-Gpx"/>
-                                                <constraint firstAttribute="height" constant="50" id="aqw-2e-TIK"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="4"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="MQx-Bz-fGA" secondAttribute="trailing" constant="10" id="1fp-90-NCN"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Pq8-To-ejp" secondAttribute="trailing" constant="10" id="8dZ-Z0-PIf"/>
-                                        <constraint firstItem="MQx-Bz-fGA" firstAttribute="top" secondItem="1KT-Ns-hUp" secondAttribute="topMargin" constant="5" id="Gwf-hY-EA2"/>
-                                        <constraint firstItem="Pq8-To-ejp" firstAttribute="leading" secondItem="XHP-UL-3TQ" secondAttribute="trailing" constant="8" id="PWF-bh-bXR"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Pq8-To-ejp" secondAttribute="bottom" constant="5" id="R4Z-5v-qE9"/>
-                                        <constraint firstItem="Pq8-To-ejp" firstAttribute="top" secondItem="MQx-Bz-fGA" secondAttribute="bottom" constant="10" id="WKG-eN-WFs"/>
-                                        <constraint firstItem="MQx-Bz-fGA" firstAttribute="leading" secondItem="XHP-UL-3TQ" secondAttribute="trailing" constant="8" id="XRK-Cs-6D5"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Pq8-To-ejp" secondAttribute="bottom" constant="4" id="cMY-KG-Muj"/>
-                                        <constraint firstItem="XHP-UL-3TQ" firstAttribute="leading" secondItem="1KT-Ns-hUp" secondAttribute="leadingMargin" id="nrF-0y-y5f"/>
-                                        <constraint firstItem="XHP-UL-3TQ" firstAttribute="top" secondItem="1KT-Ns-hUp" secondAttribute="topMargin" constant="5" id="yde-Gx-5zw"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="cMY-KG-Muj"/>
-                                        </mask>
-                                    </variation>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <outlet property="avatarImageView" destination="XHP-UL-3TQ" id="ZtQ-SE-nGw"/>
-                                    <outlet property="contentLabel" destination="MQx-Bz-fGA" id="aPp-ts-5NB"/>
-                                    <outlet property="timeLabel" destination="Pq8-To-ejp" id="O4T-P2-i2K"/>
-                                    <segue destination="txJ-Et-3c7" kind="show" identifier="pushVEWebViewController" id="0hK-MJ-F3b"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="gFE-pv-jQz" id="2It-QP-E0w"/>
                             <outlet property="delegate" destination="gFE-pv-jQz" id="LLH-27-O6Z"/>
@@ -114,7 +51,7 @@
         <!--Title-->
         <scene sceneID="f3y-cq-aMu">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="txJ-Et-3c7" customClass="VEWebViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VEWebViewController" hidesBottomBarWhenPushed="YES" id="txJ-Et-3c7" customClass="VEWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QvH-kr-zu9"/>
                         <viewControllerLayoutGuide type="bottom" id="nzo-eR-zdJ"/>
@@ -320,25 +257,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V2EX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2v-QT-dWx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="V2EX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2v-QT-dWx">
                                 <rect key="frame" x="245" y="144" width="111" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创意工作者们的社区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usW-fJ-daU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="创意工作者们的社区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usW-fJ-daU">
                                 <rect key="frame" x="224" y="221" width="153" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.55624605429292928" green="0.55624605429292928" blue="0.55624605429292928" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网址：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLw-sc-J1d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="网址：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLw-sc-J1d">
                                 <rect key="frame" x="106" y="301" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.v2ex.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xze-b6-Bey">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="www.v2ex.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xze-b6-Bey">
                                 <rect key="frame" x="157" y="301" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -396,15 +333,15 @@
                                 <exclude reference="bl5-kd-FCy"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="51r-yW-p9o"/>
-                                <exclude reference="PDg-eG-iTC"/>
                                 <exclude reference="Scv-lB-S3e"/>
-                                <exclude reference="4G8-M9-pcS"/>
-                                <exclude reference="Yoj-b5-hpa"/>
                                 <exclude reference="fXr-cL-anR"/>
                                 <exclude reference="wDa-qX-EgE"/>
+                                <exclude reference="4G8-M9-pcS"/>
+                                <exclude reference="Yoj-b5-hpa"/>
                                 <exclude reference="7uE-bm-Nyg"/>
                                 <exclude reference="zpB-jr-qZx"/>
+                                <exclude reference="51r-yW-p9o"/>
+                                <exclude reference="PDg-eG-iTC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -415,15 +352,15 @@
                                 <include reference="bl5-kd-FCy"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="51r-yW-p9o"/>
-                                <include reference="PDg-eG-iTC"/>
                                 <include reference="Scv-lB-S3e"/>
-                                <include reference="4G8-M9-pcS"/>
-                                <include reference="Yoj-b5-hpa"/>
                                 <include reference="fXr-cL-anR"/>
                                 <include reference="wDa-qX-EgE"/>
+                                <include reference="4G8-M9-pcS"/>
+                                <include reference="Yoj-b5-hpa"/>
                                 <include reference="7uE-bm-Nyg"/>
                                 <include reference="zpB-jr-qZx"/>
+                                <include reference="51r-yW-p9o"/>
+                                <include reference="PDg-eG-iTC"/>
                             </mask>
                         </variation>
                     </view>

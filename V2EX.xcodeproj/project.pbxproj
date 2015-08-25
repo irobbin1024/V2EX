@@ -16,7 +16,6 @@
 		21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9800F1B8A07C8009E03AB /* VESiteModel.m */; };
 		78CD67BE694B2DF09E88818E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4394C6E375D63529F591FDDD /* libPods.a */; };
 		B6078FF31B664F63003EBBCD /* VEStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6078FF21B664F63003EBBCD /* VEStatusModel.m */; };
-		B6078FF71B6656D0003EBBCD /* VEHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6078FF61B6656D0003EBBCD /* VEHotCell.m */; };
 		B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6078FFA1B6667C0003EBBCD /* VEWebViewController.m */; };
 		B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADB81B6262200062A097 /* VEAPIClient.m */; };
 		B60EADC01B626D280062A097 /* VENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADBF1B626D280062A097 /* VENavigationController.m */; };
@@ -28,6 +27,9 @@
 		B64574EE1B6248AB00886225 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64574ED1B6248AB00886225 /* Images.xcassets */; };
 		B64574F11B6248AB00886225 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64574EF1B6248AB00886225 /* LaunchScreen.xib */; };
 		B64574FD1B6248AB00886225 /* V2EXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B64574FC1B6248AB00886225 /* V2EXTests.m */; };
+		B6EEDC671B8C3CF2003A5F39 /* VEStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EEDC651B8C3CF2003A5F39 /* VEStatusTableViewCell.m */; };
+		B6EEDC681B8C3CF2003A5F39 /* VEStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EEDC661B8C3CF2003A5F39 /* VEStatusTableViewCell.xib */; };
+		B6EEDC6B1B8C465F003A5F39 /* VEGesturePop.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EEDC6A1B8C465F003A5F39 /* VEGesturePop.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +61,6 @@
 		4394C6E375D63529F591FDDD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6078FF11B664F63003EBBCD /* VEStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEStatusModel.h; sourceTree = "<group>"; };
 		B6078FF21B664F63003EBBCD /* VEStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEStatusModel.m; sourceTree = "<group>"; };
-		B6078FF51B6656D0003EBBCD /* VEHotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHotCell.h; sourceTree = "<group>"; };
-		B6078FF61B6656D0003EBBCD /* VEHotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHotCell.m; sourceTree = "<group>"; };
 		B6078FF91B6667C0003EBBCD /* VEWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEWebViewController.h; sourceTree = "<group>"; };
 		B6078FFA1B6667C0003EBBCD /* VEWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEWebViewController.m; sourceTree = "<group>"; };
 		B60EADB71B6262200062A097 /* VEAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAPIClient.h; sourceTree = "<group>"; };
@@ -84,6 +84,11 @@
 		B64574F61B6248AB00886225 /* V2EXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = V2EXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64574FB1B6248AB00886225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64574FC1B6248AB00886225 /* V2EXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V2EXTests.m; sourceTree = "<group>"; };
+		B6EEDC641B8C3CF2003A5F39 /* VEStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEStatusTableViewCell.h; sourceTree = "<group>"; };
+		B6EEDC651B8C3CF2003A5F39 /* VEStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEStatusTableViewCell.m; sourceTree = "<group>"; };
+		B6EEDC661B8C3CF2003A5F39 /* VEStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEStatusTableViewCell.xib; sourceTree = "<group>"; };
+		B6EEDC691B8C465F003A5F39 /* VEGesturePop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEGesturePop.h; sourceTree = "<group>"; };
+		B6EEDC6A1B8C465F003A5F39 /* VEGesturePop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEGesturePop.m; sourceTree = "<group>"; };
 		E3C29D8310270B75DA2F7CA9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,15 +189,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B6078FF41B6656B5003EBBCD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B6078FF51B6656D0003EBBCD /* VEHotCell.h */,
-				B6078FF61B6656D0003EBBCD /* VEHotCell.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		B6078FF81B66679D003EBBCD /* CommonController */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +218,8 @@
 				B60EADC21B626DCF0062A097 /* VETabBarController.m */,
 				B60EADBE1B626D280062A097 /* VENavigationController.h */,
 				B60EADBF1B626D280062A097 /* VENavigationController.m */,
+				B6EEDC691B8C465F003A5F39 /* VEGesturePop.h */,
+				B6EEDC6A1B8C465F003A5F39 /* VEGesturePop.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -258,6 +256,7 @@
 		B64574DC1B6248AB00886225 /* V2EX */ = {
 			isa = PBXGroup;
 			children = (
+				B6EEDC5E1B8C3C6A003A5F39 /* PublicView */,
 				B6078FF81B66679D003EBBCD /* CommonController */,
 				B60EADBD1B626CF60062A097 /* Base */,
 				B64575071B625E9300886225 /* Util */,
@@ -305,7 +304,6 @@
 		B64575061B625D2400886225 /* Hot */ = {
 			isa = PBXGroup;
 			children = (
-				B6078FF41B6656B5003EBBCD /* View */,
 				B60EADC41B626E150062A097 /* Controller */,
 			);
 			name = Hot;
@@ -320,6 +318,16 @@
 				B60EADB81B6262200062A097 /* VEAPIClient.m */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		B6EEDC5E1B8C3C6A003A5F39 /* PublicView */ = {
+			isa = PBXGroup;
+			children = (
+				B6EEDC641B8C3CF2003A5F39 /* VEStatusTableViewCell.h */,
+				B6EEDC651B8C3CF2003A5F39 /* VEStatusTableViewCell.m */,
+				B6EEDC661B8C3CF2003A5F39 /* VEStatusTableViewCell.xib */,
+			);
+			name = PublicView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EEDC681B8C3CF2003A5F39 /* VEStatusTableViewCell.xib in Resources */,
 				B64574EC1B6248AB00886225 /* Main.storyboard in Resources */,
 				B64574F11B6248AB00886225 /* LaunchScreen.xib in Resources */,
 				B64574EE1B6248AB00886225 /* Images.xcassets in Resources */,
@@ -459,6 +468,7 @@
 			files = (
 				B60EADC71B626E410062A097 /* VEHotController.m in Sources */,
 				210FA3B61B7A152A0037BA3B /* VELatestController.m in Sources */,
+				B6EEDC671B8C3CF2003A5F39 /* VEStatusTableViewCell.m in Sources */,
 				21BB44471B81FBAE0032DCA8 /* VEAboutController.m in Sources */,
 				21BB44351B7DB7960032DCA8 /* VENodesController.m in Sources */,
 				217FC2BE1B834C8500238388 /* ICPinyinGroup.m in Sources */,
@@ -468,11 +478,11 @@
 				B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */,
 				21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */,
 				21BB44381B7DB9E20032DCA8 /* VENodeModel.m in Sources */,
-				B6078FF71B6656D0003EBBCD /* VEHotCell.m in Sources */,
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
 				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,
 				B6078FF31B664F63003EBBCD /* VEStatusModel.m in Sources */,
 				B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */,
+				B6EEDC6B1B8C465F003A5F39 /* VEGesturePop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

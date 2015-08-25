@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VEStatusTableViewCellIdentifier" rowHeight="103" id="TDB-D9-Qw0" customClass="VEStatusTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="103"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TDB-D9-Qw0" id="MuY-x9-dPv">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCa-dk-3C0">
+                        <rect key="frame" x="66" y="84" width="516" height="6"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了用了 Windows10 后，我觉得除了 iOS 开发 我基本上可以告别 OSX 了" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjG-Zc-dJm">
+                        <rect key="frame" x="66" y="13" width="516" height="61"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n2a-uK-cHs">
+                        <rect key="frame" x="8" y="13" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="TVc-j6-8d6"/>
+                            <constraint firstAttribute="height" constant="50" id="hhj-nX-6px"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="fCa-dk-3C0" secondAttribute="bottom" constant="5" id="1Dh-pg-tc6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fCa-dk-3C0" secondAttribute="trailing" constant="10" id="23d-F4-wNd"/>
+                    <constraint firstItem="GjG-Zc-dJm" firstAttribute="top" secondItem="MuY-x9-dPv" secondAttribute="topMargin" constant="5" id="IAb-c2-Lqh"/>
+                    <constraint firstItem="fCa-dk-3C0" firstAttribute="leading" secondItem="n2a-uK-cHs" secondAttribute="trailing" constant="8" id="IDW-Lq-xCE"/>
+                    <constraint firstItem="GjG-Zc-dJm" firstAttribute="leading" secondItem="n2a-uK-cHs" secondAttribute="trailing" constant="8" id="Jfd-bJ-ezh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GjG-Zc-dJm" secondAttribute="trailing" constant="10" id="XFH-zE-zY1"/>
+                    <constraint firstItem="fCa-dk-3C0" firstAttribute="top" secondItem="GjG-Zc-dJm" secondAttribute="bottom" constant="10" id="ZFU-Il-dbh"/>
+                    <constraint firstItem="n2a-uK-cHs" firstAttribute="top" secondItem="MuY-x9-dPv" secondAttribute="topMargin" constant="5" id="faV-nm-vC3"/>
+                    <constraint firstItem="n2a-uK-cHs" firstAttribute="leading" secondItem="MuY-x9-dPv" secondAttribute="leadingMargin" id="qQ6-5v-fPg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="fCa-dk-3C0" secondAttribute="bottom" constant="4" id="vln-3y-LbP"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="vln-3y-LbP"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="n2a-uK-cHs" id="kld-vk-5v6"/>
+                <outlet property="contentLabel" destination="GjG-Zc-dJm" id="DPR-pP-a6p"/>
+                <outlet property="timeLabel" destination="fCa-dk-3C0" id="5Mb-AI-55H"/>
+            </connections>
+            <point key="canvasLocation" x="451" y="511.5"/>
+        </tableViewCell>
+    </objects>
+</document>
