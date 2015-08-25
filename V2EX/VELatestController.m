@@ -8,11 +8,11 @@
 
 #import "VELatestController.h"
 #import "VEStatusModel.h"
-#import "VELatestCell.h"
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "VEWebViewController.h"
+#import "VEStatusTableViewCell.h"
 
 @interface VELatestController ()
 
@@ -26,6 +26,8 @@
     [super viewDidLoad];
     
     self.title = @"最新";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"VEStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VEStatusTableViewCellIdentifier];
     
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
@@ -63,14 +65,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    VELatestCell *cell = [tableView dequeueReusableCellWithIdentifier:VELatestIdentifier forIndexPath:indexPath];
+    VEStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VEStatusTableViewCellIdentifier forIndexPath:indexPath];
     
     [cell setupWithStatusModel:self.latests[indexPath.row]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:VELatestIdentifier cacheByIndexPath:indexPath configuration:^(VELatestCell * cell) {
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:VEStatusTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VEStatusTableViewCell * cell) {
         
         [cell setupWithStatusModel:self.latests[indexPath.row]];
     }];

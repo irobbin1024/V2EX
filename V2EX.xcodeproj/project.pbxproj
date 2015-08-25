@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		210FA3B61B7A152A0037BA3B /* VELatestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210FA3B51B7A152A0037BA3B /* VELatestController.m */; };
-		210FA3B91B7A1E4F0037BA3B /* VELatestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 210FA3B81B7A1E4F0037BA3B /* VELatestCell.m */; };
 		217FC2BE1B834C8500238388 /* ICPinyinGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FC2BD1B834C8500238388 /* ICPinyinGroup.m */; };
 		21BB44351B7DB7960032DCA8 /* VENodesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB44341B7DB7960032DCA8 /* VENodesController.m */; };
 		21BB44381B7DB9E20032DCA8 /* VENodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB44371B7DB9E20032DCA8 /* VENodeModel.m */; };
@@ -45,8 +44,6 @@
 /* Begin PBXFileReference section */
 		210FA3B41B7A152A0037BA3B /* VELatestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELatestController.h; sourceTree = "<group>"; };
 		210FA3B51B7A152A0037BA3B /* VELatestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELatestController.m; sourceTree = "<group>"; };
-		210FA3B71B7A1E4F0037BA3B /* VELatestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELatestCell.h; sourceTree = "<group>"; };
-		210FA3B81B7A1E4F0037BA3B /* VELatestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELatestCell.m; sourceTree = "<group>"; };
 		217FC2BC1B834C8500238388 /* ICPinyinGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICPinyinGroup.h; sourceTree = "<group>"; };
 		217FC2BD1B834C8500238388 /* ICPinyinGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICPinyinGroup.m; sourceTree = "<group>"; };
 		21BB44331B7DB7960032DCA8 /* VENodesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENodesController.h; sourceTree = "<group>"; };
@@ -122,19 +119,9 @@
 		210FA3AE1B7A11020037BA3B /* Lastest */ = {
 			isa = PBXGroup;
 			children = (
-				210FA3AF1B7A11180037BA3B /* View */,
 				210FA3B01B7A11230037BA3B /* Controller */,
 			);
 			name = Lastest;
-			sourceTree = "<group>";
-		};
-		210FA3AF1B7A11180037BA3B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				210FA3B71B7A1E4F0037BA3B /* VELatestCell.h */,
-				210FA3B81B7A1E4F0037BA3B /* VELatestCell.m */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		210FA3B01B7A11230037BA3B /* Controller */ = {
@@ -474,7 +461,6 @@
 				217FC2BE1B834C8500238388 /* ICPinyinGroup.m in Sources */,
 				B64574E31B6248AB00886225 /* AppDelegate.m in Sources */,
 				B64574E01B6248AB00886225 /* main.m in Sources */,
-				210FA3B91B7A1E4F0037BA3B /* VELatestCell.m in Sources */,
 				B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */,
 				21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */,
 				21BB44381B7DB9E20032DCA8 /* VENodeModel.m in Sources */,
