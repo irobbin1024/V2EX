@@ -134,36 +134,31 @@
     [self.refreshControl setRefreshingWithStateOfTask:task];
 }
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"pushNodeVEWebViewController"]) {
-
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        VEWebViewController * webView = segue.destinationViewController;
-        
-        if (self.searchController.active && filteredNodes.count != 0) {
-            VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
-            webView.url = selectedNodeModel.url;
-            webView.controllerTitle = selectedNodeModel.title;
-        }else {
-            if ([self.sortedArrForArrays count] > indexPath.section) {
-                NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
-                
-                if ([arr count] > indexPath.row) {
-                    VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
-                    webView.url = selectedNodeModel.url;
-                    webView.controllerTitle = selectedNodeModel.title;
-                }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+    
+    if (self.searchController.active && filteredNodes.count != 0) {
+        VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
+        webView.url = selectedNodeModel.url;
+        webView.controllerTitle = selectedNodeModel.title;
+    }else {
+        if ([self.sortedArrForArrays count] > indexPath.section) {
+            NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
+            
+            if ([arr count] > indexPath.row) {
+                VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+                webView.url = selectedNodeModel.url;
+                webView.controllerTitle = selectedNodeModel.title;
             }
-
         }
-        if (self.searchController.active) {
-            [self searchBarCancelButtonClicked:nil];
-            [self.searchController.searchBar removeFromSuperview];
-        }
+        
     }
+    if (self.searchController.active) {
+        [self searchBarCancelButtonClicked:nil];
+        [self.searchController.searchBar removeFromSuperview];
+    }
+    
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 #pragma mark - SearchBar Search Results

@@ -101,14 +101,4 @@
     [self.refreshControl setRefreshingWithStateOfTask:task];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"pushLatestVEWebViewController"]) {
-        VEWebViewController * webView = segue.destinationViewController;
-        VEStatusModel * selectedStatusModel = self.latests[[self.tableView indexPathForSelectedRow].row];
-        webView.url = selectedStatusModel.url;
-        webView.controllerTitle = selectedStatusModel.title;
-    }
-}
 @end
