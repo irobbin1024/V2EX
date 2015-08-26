@@ -24,12 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
-    [self reload:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self reload:nil];
 }
 
 - (void)reload:(__unused id)sender {
