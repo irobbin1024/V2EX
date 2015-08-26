@@ -52,15 +52,8 @@
     
     return YES;
 }
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"出现错误了";
