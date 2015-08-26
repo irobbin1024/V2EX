@@ -80,6 +80,15 @@
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+    VEStatusModel * selectedStatusModel = self.latests[[self.tableView indexPathForSelectedRow].row];
+    webView.url = selectedStatusModel.url;
+    webView.controllerTitle = selectedStatusModel.title;
+    
+    [self.navigationController pushViewController:webView animated:YES];
+}
+
 #pragma mark - Data
 
 - (void)reload:(__unused id)sender {
