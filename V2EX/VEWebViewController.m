@@ -9,8 +9,10 @@
 #import "VEWebViewController.h"
 #import "MBProgressHUD.h"
 
-@interface VEWebViewController ()<UIWebViewDelegate>
-
+@interface VEWebViewController ()<UIWebViewDelegate> {
+    UIActivityIndicatorView *activityView;
+    UIBarButtonItem *shareButtonItem;
+}
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -25,6 +27,18 @@
     
     NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];
+    
+    NSMutableArray* btns = [[NSMutableArray alloc] init];
+    
+    shareButtonItem = self.navigationItem.rightBarButtonItem;
+    activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20,20)];
+    [activityView sizeToFit];
+    [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    UIBarButtonItem *activityButtonItem = [[UIBarButtonItem alloc]initWithCustomView:activityView];
+    [btns addObject:activityButtonItem];
+    
+    [self.navigationItem setRightBarButtonItems:btns];
+    [activityView startAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,28 +46,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)shareAction:(id)sender {
     UIActivityViewController * shareController = [[UIActivityViewController alloc]initWithActivityItems:@[self.controllerTitle, self.url] applicationActivities:nil];
     [self.navigationController presentViewController:shareController animated:YES completion:nil];
 }
+
 #pragma mark - WebView Delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
     return YES;
 }
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [activityView stopAnimating];
+    self.navigationItem.rightBarButtonItem = shareButtonItem;
+}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+    [activityView stopAnimating];
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"出现错误了";
@@ -61,5 +72,4 @@
     
     [hud hide:YES afterDelay:3];
 }
-
 @end
