@@ -84,7 +84,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VETopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VETopicTableViewCellIdentifier forIndexPath:indexPath];
     
-    [cell setupWithTopicModel:self.hots[indexPath.row]];
+    [cell setupWithTopicModel:self.hots[indexPath.row] isSimple:YES];
     
     return cell;
 }
@@ -92,7 +92,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = [tableView fd_heightForCellWithIdentifier:VETopicTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VETopicTableViewCell * cell) {
         
-        [cell setupWithTopicModel:self.hots[indexPath.row]];
+        [cell setupWithTopicModel:self.hots[indexPath.row] isSimple:YES];
     }];
     
     return height;

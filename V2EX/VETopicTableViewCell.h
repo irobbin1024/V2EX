@@ -14,9 +14,8 @@ static NSString * VETopicTableViewCellIdentifier = @"VETopicTableViewCellIdentif
 @interface VETopicTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) VETopicModel * topicModel;
+@property (nonatomic, assign) BOOL isSimple;
 
-- (void)setupWithTopicModel:(VETopicModel *)topicModel;
-
-+ (CGFloat)heightWithTopicModel:(VETopicModel *)topicModel;
+- (void)setupWithTopicModel:(VETopicModel *)topicModel isSimple:(BOOL)isSimple;
 
 @end

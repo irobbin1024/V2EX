@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *replieLabel;
+@property (weak, nonatomic) IBOutlet UIButton *nodeButton;
 
 @end
 
@@ -30,8 +32,17 @@
     // Configure the view for the selected state
 }
 
-- (void)setupWithTopicModel:(VETopicModel *)topicModel {
+- (void)setupWithTopicModel:(VETopicModel *)topicModel isSimple:(BOOL)isSimple{
     self.topicModel = topicModel;
+    self.isSimple = isSimple;
+    
+    if (isSimple) {
+        self.replieLabel.hidden = YES;
+        self.nodeButton.hidden = YES;
+    } else {
+        self.replieLabel.hidden = NO;
+        self.nodeButton.hidden = NO;
+    }
     
     [self.avatarImageView sd_setImageWithURL:[[NSURL alloc]initWithScheme:@"http" host:topicModel.member.avatarLarge.host path:topicModel.member.avatarLarge.path]];
     self.contentLabel.text = topicModel.title;
@@ -41,8 +52,7 @@
     [self.contentLabel sizeToFit];
 }
 
-+ (CGFloat)heightWithTopicModel:(VETopicModel *)topicModel {
-    return 95;
+- (IBAction)nodeAction:(id)sender {
 }
 
 @end
