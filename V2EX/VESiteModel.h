@@ -16,7 +16,6 @@
 @property (nonatomic, copy) NSString * describe;
 @property (nonatomic, copy) NSString * domain;
 
-+ (NSURLSessionDataTask *)siteInfoWithBlock:(void (^)(id siteInfo, NSError *error))block;
 @end
 
 @interface VESiteStatsModel : MTLModel<MTLJSONSerializing>
@@ -24,6 +23,5 @@
 @property (nonatomic, copy) NSString * topic_max;
 @property (nonatomic, copy) NSString * member_max;
 
-+ (NSURLSessionDataTask *)siteStatsWithBlock:(void (^)(id siteStats, NSError *error))block;
 @end
 

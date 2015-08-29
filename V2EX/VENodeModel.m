@@ -21,6 +21,9 @@
              @"header" : @"header",
              @"footer" : @"footer",
              @"created" : @"created",
+             @"avatarMini" : @"avatar_mini",
+             @"avatarNormal" : @"avatar_normal",
+             @"avatarLarge" : @"avatar_large"
              };
 }
 
@@ -37,23 +40,18 @@
     }];
 }
 
-
-#pragma mark Data
-
-+ (NSURLSessionDataTask *)nodeWithBlock:(void (^)(NSArray * nodes, NSError *error))block {
-    return [[VEAPIClient sharedClient] GET:@"api/nodes/all.json" parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
-        NSError *error;
-        NSArray *nodes = [MTLJSONAdapter modelsOfClass:[VENodeModel class] fromJSONArray:JSON error:&error];
-        
-        if(block) {
-            block([NSArray arrayWithArray:nodes], error);
-        }
-    } failure:^(NSURLSessionDataTask * __unused task, NSError *error) {
-        if(block) {
-            block([NSArray array], error);
-        }
-    }];
++ (NSValueTransformer *)avatarMiniJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
+
++ (NSValueTransformer *)avatarNormalJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)avatarLargeJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 @end
 
 

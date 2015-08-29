@@ -1,15 +1,16 @@
 //
-//  VEStatusTableViewCell.m
+//  VETopicTableViewCell.m
 //  V2EX
 //
 //  Created by baiyang on 8/25/15.
 //  Copyright (c) 2015 owl. All rights reserved.
 //
 
-#import "VEStatusTableViewCell.h"
+#import "VETopicTableViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "NSDate+Formatter.h"
 
-@interface VEStatusTableViewCell ()
+@interface VETopicTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
@@ -17,7 +18,7 @@
 
 @end
 
-@implementation VEStatusTableViewCell
+@implementation VETopicTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -29,18 +30,18 @@
     // Configure the view for the selected state
 }
 
-- (void)setupWithStatusModel:(VEStatusModel *)statusModel {
-    self.statusModel = statusModel;
+- (void)setupWithTopicModel:(VETopicModel *)topicModel {
+    self.topicModel = topicModel;
     
-    [self.avatarImageView sd_setImageWithURL:[[NSURL alloc]initWithScheme:@"http" host:statusModel.member.avatarLarge.host path:statusModel.member.avatarLarge.path]];
-    self.contentLabel.text = statusModel.title;
-    self.timeLabel.text = [[VEStatusModel dateFormatter]stringFromDate:statusModel.created];
+    [self.avatarImageView sd_setImageWithURL:[[NSURL alloc]initWithScheme:@"http" host:topicModel.member.avatarLarge.host path:topicModel.member.avatarLarge.path]];
+    self.contentLabel.text = topicModel.title;
+    self.timeLabel.text = [[NSDate dateFormatter] stringFromDate:topicModel.created];
     
     [self.timeLabel sizeToFit];
     [self.contentLabel sizeToFit];
 }
 
-+ (CGFloat)heightWithStatusModel:(VEStatusModel *)statusModel {
++ (CGFloat)heightWithTopicModel:(VETopicModel *)topicModel {
     return 95;
 }
 
