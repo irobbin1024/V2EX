@@ -35,6 +35,9 @@
     [self.avatarImageView sd_setImageWithURL:[[NSURL alloc]initWithScheme:@"http" host:statusModel.member.avatarLarge.host path:statusModel.member.avatarLarge.path]];
     self.contentLabel.text = statusModel.title;
     self.timeLabel.text = [[VEStatusModel dateFormatter]stringFromDate:statusModel.created];
+    
+    [self.timeLabel sizeToFit];
+    [self.contentLabel sizeToFit];
 }
 
 + (CGFloat)heightWithStatusModel:(VEStatusModel *)statusModel {
