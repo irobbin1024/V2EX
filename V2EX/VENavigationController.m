@@ -8,7 +8,7 @@
 
 #import "VENavigationController.h"
 
-@interface VENavigationController ()
+@interface VENavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -16,16 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    id target = self.interactivePopGestureRecognizer.delegate;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    pan.delegate = self;
+    [self.view addGestureRecognizer:pan];
+    self.interactivePopGestureRecognizer.enabled = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (self.childViewControllers.count == 1) {
+        return NO;
+    }
+    return YES;
 }
 
 @end
