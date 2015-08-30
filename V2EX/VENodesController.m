@@ -13,6 +13,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "VEWebViewController.h"
 #import "ICPinyinGroup.h"
+#import "VENodesOperator.h"
 
 @interface VENodesController () {
     NSMutableArray *filteredNodes;
@@ -110,7 +111,7 @@
 }
 
 - (void)reload:(__unused id)sender {
-    NSURLSessionDataTask * task = [VENodeModel nodeWithBlock:^(NSArray *nodes, NSError *error) {
+    NSURLSessionDataTask * task = [VENodesOperator nodeWithBlock:^(NSArray *nodes, NSError *error) {
         self.nodes = nodes;
         NSDictionary *dict = [ICPinyinGroup group:self.nodes key:@"title"];
         self.sortedArrForArrays = [dict objectForKey:LEOPinyinGroupResultKey];

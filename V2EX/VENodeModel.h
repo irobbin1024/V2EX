@@ -11,16 +11,18 @@
 
 @interface VENodeModel : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString * nodeID;
+@property (nonatomic, assign) NSInteger nodeID;
 @property (nonatomic, copy) NSString * name;
 @property (nonatomic, copy) NSURL * url;
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * titleAlternative;
-@property (nonatomic, copy) NSString * topics;
+@property (nonatomic, assign) NSInteger topics;
 @property (nonatomic, copy) NSString * header;
 @property (nonatomic, copy) NSString * footer;
 @property (nonatomic, copy) NSDate * created;
+@property (nonatomic, copy) NSURL * avatarMini;
+@property (nonatomic, copy) NSURL * avatarNormal;
+@property (nonatomic, copy) NSURL * avatarLarge;
 
-+ (NSURLSessionDataTask *)nodeWithBlock:(void (^)(NSArray * nodes, NSError *error))block;
 
 @end

@@ -9,6 +9,7 @@
 #import "VEAboutController.h"
 #import "VESiteModel.h"
 #import "UIAlertView+AFNetworking.h"
+#import "VESiteOperator.h"
 
 @interface VEAboutController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -38,14 +39,14 @@
 
 - (void)reload:(__unused id)sender {
     NSURLSessionDataTask *task;
-    task = [VESiteInfoModel siteInfoWithBlock:^(id siteInfo, NSError *error) {
+    task = [VESiteOperator siteInfoWithBlock:^(id siteInfo, NSError *error) {
     VESiteInfoModel *siteInfoMdoel = siteInfo;
-    self.titleLabel.text = siteInfoMdoel.title == nil ? self.titleLabel.text : siteInfoMdoel.title;
-    self.decriptionLabel.text = siteInfoMdoel.describe == nil ? self.decriptionLabel.text : siteInfoMdoel.describe;
-    self.domainLabel.text = siteInfoMdoel.domain == nil ? self.domainLabel.text : siteInfoMdoel.domain;
+        self.titleLabel.text = siteInfoMdoel.title == nil ? self.titleLabel.text : siteInfoMdoel.title;
+        self.decriptionLabel.text = siteInfoMdoel.describe == nil ? self.decriptionLabel.text : siteInfoMdoel.describe;
+        self.domainLabel.text = siteInfoMdoel.domain == nil ? self.domainLabel.text : siteInfoMdoel.domain;
     }];
     
-    task = [VESiteStatsModel siteStatsWithBlock:^(id siteStats, NSError *error) {
+    task = [VESiteOperator siteStatsWithBlock:^(id siteStats, NSError *error) {
     VESiteStatsModel *siteStatsModel = siteStats;
         self.topicmaxLabel.text = siteStatsModel.topic_max == nil ? @"未知" : siteStatsModel.topic_max;
         self.memberLabel.text = siteStatsModel.member_max == nil ? @"未知" : siteStatsModel.member_max;

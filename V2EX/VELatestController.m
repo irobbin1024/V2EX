@@ -7,12 +7,13 @@
 //
 
 #import "VELatestController.h"
-#import "VEStatusModel.h"
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "VEWebViewController.h"
-#import "VEStatusTableViewCell.h"
+#import "VETopicModel.h"
+#import "VELatestOperator.h"
+#import "VETopicTableViewCell.h"
 
 @interface VELatestController ()
 
@@ -27,7 +28,7 @@
     
     self.title = @"最新";
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"VEStatusTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VEStatusTableViewCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"VETopicTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VETopicTableViewCellIdentifier];
     
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
@@ -65,16 +66,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    VEStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VEStatusTableViewCellIdentifier forIndexPath:indexPath];
+    VETopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VETopicTableViewCellIdentifier forIndexPath:indexPath];
     
-    [cell setupWithStatusModel:self.latests[indexPath.row]];
+    [cell setupWithTopicModel:self.latests[indexPath.row] isSimple:YES];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = [tableView fd_heightForCellWithIdentifier:VEStatusTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VEStatusTableViewCell * cell) {
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:VETopicTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VETopicTableViewCell * cell) {
         
-        [cell setupWithStatusModel:self.latests[indexPath.row]];
+        [cell setupWithTopicModel:self.latests[indexPath.row] isSimple:YES];
     }];
     
     return height;
@@ -82,7 +83,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
-    VEStatusModel * selectedStatusModel = self.latests[[self.tableView indexPathForSelectedRow].row];
+    VETopicModel * selectedStatusModel = self.latests[[self.tableView indexPathForSelectedRow].row];
     webView.url = selectedStatusModel.url;
     webView.controllerTitle = selectedStatusModel.title;
     
@@ -92,7 +93,7 @@
 #pragma mark - Data
 
 - (void)reload:(__unused id)sender {
-    NSURLSessionTask *task = [VEStatusModel latestWithBlock:^(NSArray *lastests, NSError *error) {
+    NSURLSessionTask *task = [VELatestOperator latestWithBlock:^(NSArray *lastests, NSError *error) {
         self.latests = lastests;
         [self.tableView reloadData];
     }];
@@ -100,5 +101,7 @@
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
     [self.refreshControl setRefreshingWithStateOfTask:task];
 }
+
+#pragma mark - Navigation
 
 @end

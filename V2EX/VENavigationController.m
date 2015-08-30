@@ -8,7 +8,7 @@
 
 #import "VENavigationController.h"
 
-@interface VENavigationController ()
+@interface VENavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -23,20 +23,12 @@
     self.interactivePopGestureRecognizer.enabled = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - GestureRecognizer Delegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
     if (self.childViewControllers.count == 1) {
         return NO;
     }
     return YES;
 }
+
 @end
