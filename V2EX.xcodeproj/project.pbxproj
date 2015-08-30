@@ -12,6 +12,9 @@
 		21BB44351B7DB7960032DCA8 /* VENodesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB44341B7DB7960032DCA8 /* VENodesController.m */; };
 		21BB44471B81FBAE0032DCA8 /* VEAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB44461B81FBAE0032DCA8 /* VEAboutController.m */; };
 		21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9800F1B8A07C8009E03AB /* VESiteModel.m */; };
+		21E980171B938968009E03AB /* VEOpenComponentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E980161B938968009E03AB /* VEOpenComponentsController.m */; };
+		21E980191B938EFB009E03AB /* OpenComponentsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21E980181B938EFB009E03AB /* OpenComponentsInfo.plist */; };
+		21E9801C1B939D8A009E03AB /* VEOpenComponentLicenseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E9801B1B939D8A009E03AB /* VEOpenComponentLicenseController.m */; };
 		78CD67BE694B2DF09E88818E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4394C6E375D63529F591FDDD /* libPods.a */; };
 		B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6078FFA1B6667C0003EBBCD /* VEWebViewController.m */; };
 		B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADB81B6262200062A097 /* VEAPIClient.m */; };
@@ -65,6 +68,11 @@
 		21BB44461B81FBAE0032DCA8 /* VEAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAboutController.m; sourceTree = "<group>"; };
 		21E9800E1B8A07C8009E03AB /* VESiteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VESiteModel.h; sourceTree = "<group>"; };
 		21E9800F1B8A07C8009E03AB /* VESiteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VESiteModel.m; sourceTree = "<group>"; };
+		21E980151B938968009E03AB /* VEOpenComponentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEOpenComponentsController.h; sourceTree = "<group>"; };
+		21E980161B938968009E03AB /* VEOpenComponentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEOpenComponentsController.m; sourceTree = "<group>"; };
+		21E980181B938EFB009E03AB /* OpenComponentsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OpenComponentsInfo.plist; sourceTree = "<group>"; };
+		21E9801A1B939D8A009E03AB /* VEOpenComponentLicenseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEOpenComponentLicenseController.h; sourceTree = "<group>"; };
+		21E9801B1B939D8A009E03AB /* VEOpenComponentLicenseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEOpenComponentLicenseController.m; sourceTree = "<group>"; };
 		39B7B0D23C0D99D7D7258303 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4394C6E375D63529F591FDDD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6078FF91B6667C0003EBBCD /* VEWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEWebViewController.h; sourceTree = "<group>"; };
@@ -183,6 +191,17 @@
 			name = About;
 			sourceTree = "<group>";
 		};
+		21E980111B9387A8009E03AB /* Thanks */ = {
+			isa = PBXGroup;
+			children = (
+				21E980151B938968009E03AB /* VEOpenComponentsController.h */,
+				21E980161B938968009E03AB /* VEOpenComponentsController.m */,
+				21E9801A1B939D8A009E03AB /* VEOpenComponentLicenseController.h */,
+				21E9801B1B939D8A009E03AB /* VEOpenComponentLicenseController.m */,
+			);
+			name = Thanks;
+			sourceTree = "<group>";
+		};
 		502709F19067C4D9DE9D450A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +217,7 @@
 				B65032CA1B91D61800B077B3 /* Model */,
 				B65032C21B91D50C00B077B3 /* Topic */,
 				B65032C01B91D4F700B077B3 /* Web */,
+				21E980111B9387A8009E03AB /* Thanks */,
 			);
 			name = CommonModule;
 			sourceTree = "<group>";
@@ -259,6 +279,7 @@
 				B64574EF1B6248AB00886225 /* LaunchScreen.xib */,
 				B64574DE1B6248AB00886225 /* Info.plist */,
 				B64574DF1B6248AB00886225 /* main.m */,
+				21E980181B938EFB009E03AB /* OpenComponentsInfo.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -517,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65032F31B91F2CF00B077B3 /* VETopicContentTableViewCell.xib in Resources */,
+				21E980191B938EFB009E03AB /* OpenComponentsInfo.plist in Resources */,
 				B6EEDC681B8C3CF2003A5F39 /* VETopicTableViewCell.xib in Resources */,
 				B64574EC1B6248AB00886225 /* Main.storyboard in Resources */,
 				B64574F11B6248AB00886225 /* LaunchScreen.xib in Resources */,
@@ -589,7 +611,9 @@
 				B65032BF1B91D3EE00B077B3 /* VETopicTableViewController.m in Sources */,
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
 				B65032F21B91F2CF00B077B3 /* VETopicContentTableViewCell.m in Sources */,
+				21E9801C1B939D8A009E03AB /* VEOpenComponentLicenseController.m in Sources */,
 				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,
+				21E980171B938968009E03AB /* VEOpenComponentsController.m in Sources */,
 				B65032DD1B91DE2C00B077B3 /* NSDate+Formatter.m in Sources */,
 				B65032D71B91DD6C00B077B3 /* VEHotOperator.m in Sources */,
 				B65032F61B91F40200B077B3 /* UIWebView+Single.m in Sources */,
