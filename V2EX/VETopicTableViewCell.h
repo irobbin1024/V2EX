@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VETopicModel.h"
 
-static NSString * VETopicTableViewCellIdentifier = @"VETopicTableViewCellIdentifier";
+static NSString * const VETopicTableViewCellIdentifier = @"VETopicTableViewCellIdentifier";
 
 @interface VETopicTableViewCell : UITableViewCell
 

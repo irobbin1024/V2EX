@@ -9,6 +9,7 @@
 #import "VETopicTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "NSDate+Formatter.h"
+#import "Masonry.h"
 
 @interface VETopicTableViewCell ()
 
@@ -24,6 +25,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.nodeButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -42,14 +44,38 @@
     } else {
         self.replieLabel.hidden = NO;
         self.nodeButton.hidden = NO;
+        
+        self.replieLabel.text = [NSString stringWithFormat:@"回复:%@", topicModel.formatterReplies];
+        [self.nodeButton setTitle:[NSString stringWithFormat:@"%@>", topicModel.node.name] forState:UIControlStateNormal];
     }
     
     [self.avatarImageView sd_setImageWithURL:[[NSURL alloc]initWithScheme:@"http" host:topicModel.member.avatarLarge.host path:topicModel.member.avatarLarge.path]];
     self.contentLabel.text = topicModel.title;
     self.timeLabel.text = [[NSDate dateFormatter] stringFromDate:topicModel.created];
     
-    [self.timeLabel sizeToFit];
-    [self.contentLabel sizeToFit];
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
+    
+    
+    [self updateNodeButtonConstraints];
+}
+
+- (void)updateNodeButtonConstraints {
+    
+    CGFloat nodeMaxWidth = (82 / 375.) * [UIScreen mainScreen].bounds.size.width;
+    
+    if (self.nodeButton.frame.size.width > nodeMaxWidth) {
+        [self.nodeButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(nodeMaxWidth);
+            make.centerY.equalTo(self.timeLabel);
+            make.right.equalTo(self.contentView).offset(-18);
+        }];
+    } else {
+        [self.nodeButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.timeLabel);
+            make.right.equalTo(self.contentView).offset(-18);
+        }];
+    }
 }
 
 - (IBAction)nodeAction:(id)sender {

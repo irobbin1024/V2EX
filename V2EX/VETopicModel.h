@@ -25,5 +25,7 @@
 @property (nonatomic, strong) NSDate * lastModified;
 @property (nonatomic, strong) NSDate * lastTouched;
 
+@property (nonatomic, strong, readonly) NSString * formatterReplies;
+
 
 @end

@@ -61,4 +61,14 @@
     }];
 }
 
+- (NSString *)formatterReplies {
+    if (self.replies > 10000) {
+        return [NSString stringWithFormat:@"%ldw", self.replies / 10000];
+    } else if (self.replies > 1000) {
+        return [NSString stringWithFormat:@"%ldk", self.replies / 1000];
+    } else {
+        return [NSString stringWithFormat:@"%ld", self.replies];
+    }
+}
+
 @end

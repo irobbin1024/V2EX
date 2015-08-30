@@ -14,6 +14,7 @@
 #import "VETopicModel.h"
 #import "VEHotOperator.h"
 #import "VETopicTableViewCell.h"
+#import "VEStatusTableTableViewController.h"
 
 @interface VEHotController ()
 
@@ -99,12 +100,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
-    VETopicModel * selectedStatusModel = self.hots[[self.tableView indexPathForSelectedRow].row];
-    webView.url = selectedStatusModel.url;
-    webView.controllerTitle = selectedStatusModel.title;
     
-    [self.navigationController pushViewController:webView animated:YES];
+    VEStatusTableTableViewController * topicController = [[VEStatusTableTableViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    topicController.topic = self.hots[[self.tableView indexPathForSelectedRow].row];
+    
+    [self.navigationController pushViewController:topicController animated:YES];
+    
+//    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+//    VETopicModel * selectedStatusModel = self.hots[[self.tableView indexPathForSelectedRow].row];
+//    webView.url = selectedStatusModel.url;
+//    webView.controllerTitle = selectedStatusModel.title;
+//    
+//    [self.navigationController pushViewController:webView animated:YES];
 }
 
 @end
