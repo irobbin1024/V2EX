@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 owl. All rights reserved.
 //
 
-#import "VEStatusTableTableViewController.h"
+#import "VETopicTableViewController.h"
 #import "UIWebView+Single.h"
 #import "VEReplieTableViewCell.h"
 #import "VETopicContentTableViewCell.h"
@@ -18,7 +18,7 @@
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
 
-@interface VEStatusTableTableViewController ()
+@interface VETopicTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray * repliesList;
 @property (nonatomic, assign) NSInteger page;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation VEStatusTableTableViewController
+@implementation VETopicTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +45,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"VETopicTableViewCell" bundle:[NSBundle mainBundle]]
          forCellReuseIdentifier:VETopicTableViewCellIdentifier];
     
-    __weak VEStatusTableTableViewController * weakSelf = self;
+    __weak VETopicTableViewController * weakSelf = self;
     
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf loadRepliesWithPage:weakSelf.page];
@@ -55,7 +55,7 @@
     self.tableView.fd_debugLogEnabled = YES;
     
     
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 #pragma mark - Data
@@ -65,6 +65,9 @@
     NSURLSessionTask *task = [VEReplieOperator repliesWithPage:page pageSize:self.pageSize topicID:self.topic.topicID block:^(NSArray *replies, NSError *error) {
         [self.tableView.infiniteScrollingView stopAnimating];
         if (!error) {
+            if ([UIWebView heightFromCacheWithTopicID:self.topic.topicID width:[UIScreen mainScreen].bounds.size.width] > 0) {
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            }
             self.tableView.infiniteScrollingView.enabled = NO;
             if (replies.count > 0) {
                 [self.repliesList addObjectsFromArray:replies];
@@ -73,6 +76,8 @@
             } else {
                 self.tableView.infiniteScrollingView.enabled = NO;
             }
+        } else {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         }
     }];
     
@@ -161,6 +166,9 @@
 #pragma mark - Notification
 
 - (void)getWebViewContentSizeSuccessNitification:(NSNotification *)notification {
+    if (self.repliesList.count > 0) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }
     [self.tableView reloadData];
 }
 

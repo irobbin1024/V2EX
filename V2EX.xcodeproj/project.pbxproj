@@ -24,7 +24,7 @@
 		B64574EE1B6248AB00886225 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64574ED1B6248AB00886225 /* Images.xcassets */; };
 		B64574F11B6248AB00886225 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B64574EF1B6248AB00886225 /* LaunchScreen.xib */; };
 		B64574FD1B6248AB00886225 /* V2EXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B64574FC1B6248AB00886225 /* V2EXTests.m */; };
-		B65032BF1B91D3EE00B077B3 /* VEStatusTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032BE1B91D3EE00B077B3 /* VEStatusTableTableViewController.m */; };
+		B65032BF1B91D3EE00B077B3 /* VETopicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032BE1B91D3EE00B077B3 /* VETopicTableViewController.m */; };
 		B65032C91B91D55F00B077B3 /* VETopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032C81B91D55F00B077B3 /* VETopicModel.m */; };
 		B65032CD1B91D62800B077B3 /* VEMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032CC1B91D62800B077B3 /* VEMemberModel.m */; };
 		B65032D01B91D77F00B077B3 /* VENodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032CF1B91D77F00B077B3 /* VENodeModel.m */; };
@@ -90,8 +90,8 @@
 		B64574F61B6248AB00886225 /* V2EXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = V2EXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64574FB1B6248AB00886225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64574FC1B6248AB00886225 /* V2EXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V2EXTests.m; sourceTree = "<group>"; };
-		B65032BD1B91D3EE00B077B3 /* VEStatusTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEStatusTableTableViewController.h; sourceTree = "<group>"; };
-		B65032BE1B91D3EE00B077B3 /* VEStatusTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEStatusTableTableViewController.m; sourceTree = "<group>"; };
+		B65032BD1B91D3EE00B077B3 /* VETopicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicTableViewController.h; sourceTree = "<group>"; };
+		B65032BE1B91D3EE00B077B3 /* VETopicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicTableViewController.m; sourceTree = "<group>"; };
 		B65032C71B91D55F00B077B3 /* VETopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicModel.h; sourceTree = "<group>"; };
 		B65032C81B91D55F00B077B3 /* VETopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicModel.m; sourceTree = "<group>"; };
 		B65032CB1B91D62800B077B3 /* VEMemberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEMemberModel.h; sourceTree = "<group>"; };
@@ -336,8 +336,8 @@
 		B65032C31B91D51E00B077B3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B65032BD1B91D3EE00B077B3 /* VEStatusTableTableViewController.h */,
-				B65032BE1B91D3EE00B077B3 /* VEStatusTableTableViewController.m */,
+				B65032BD1B91D3EE00B077B3 /* VETopicTableViewController.h */,
+				B65032BE1B91D3EE00B077B3 /* VETopicTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -586,7 +586,7 @@
 				B65032CD1B91D62800B077B3 /* VEMemberModel.m in Sources */,
 				21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */,
 				B69FE84F1B9344FA00F527CD /* VEReplieOperator.m in Sources */,
-				B65032BF1B91D3EE00B077B3 /* VEStatusTableTableViewController.m in Sources */,
+				B65032BF1B91D3EE00B077B3 /* VETopicTableViewController.m in Sources */,
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
 				B65032F21B91F2CF00B077B3 /* VETopicContentTableViewCell.m in Sources */,
 				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,

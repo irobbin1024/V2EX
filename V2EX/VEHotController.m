@@ -14,7 +14,7 @@
 #import "VETopicModel.h"
 #import "VEHotOperator.h"
 #import "VETopicTableViewCell.h"
-#import "VEStatusTableTableViewController.h"
+#import "VETopicTableViewController.h"
 
 @interface VEHotController ()
 
@@ -101,7 +101,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    VEStatusTableTableViewController * topicController = [[VEStatusTableTableViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    VETopicTableViewController * topicController = [[VETopicTableViewController alloc]initWithStyle:UITableViewStyleGrouped];
     topicController.topic = self.hots[[self.tableView indexPathForSelectedRow].row];
     
     [self.navigationController pushViewController:topicController animated:YES];

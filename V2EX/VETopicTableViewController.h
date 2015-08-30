@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VETopicModel.h"
 
-@interface VEStatusTableTableViewController : UITableViewController
+@interface VETopicTableViewController : UITableViewController
 
 @property (nonatomic, strong) VETopicModel * topic;
 
