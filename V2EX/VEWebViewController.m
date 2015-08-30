@@ -1,6 +1,6 @@
 //
 //  VEWebViewController.m
-//  
+//
 //
 //  Created by baiyang on 15/7/27.
 //
@@ -11,10 +11,11 @@
 
 @interface VEWebViewController ()<UIWebViewDelegate> {
     UIActivityIndicatorView *activityView;
-    UIBarButtonItem *shareButtonItem;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+@property (nonatomic, strong) UIBarButtonItem *shareButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *activityButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *refreshButtonItem;
 @end
 
 @implementation VEWebViewController
@@ -28,27 +29,32 @@
     NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];
     
-    NSMutableArray* btns = [[NSMutableArray alloc] init];
+    [self configBarButtons];
+}
+
+- (void)configBarButtons {
+    self.shareButtonItem = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                            target:self
+                            action:@selector(shareAction:)];
     
-    shareButtonItem = self.navigationItem.rightBarButtonItem;
     activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20,20)];
     [activityView sizeToFit];
     [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
-    UIBarButtonItem *activityButtonItem = [[UIBarButtonItem alloc]initWithCustomView:activityView];
-    [btns addObject:activityButtonItem];
+    self.activityButtonItem = [[UIBarButtonItem alloc]initWithCustomView:activityView];
     
-    [self.navigationItem setRightBarButtonItems:btns];
+    self.refreshButtonItem = [[UIBarButtonItem alloc]
+                              initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                              target:self
+                              action:@selector(refreshAction:)];
+    
+    [self.navigationItem setRightBarButtonItem:self.activityButtonItem];
     [activityView startAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)shareAction:(id)sender {
-    UIActivityViewController * shareController = [[UIActivityViewController alloc]initWithActivityItems:@[self.controllerTitle, self.url] applicationActivities:nil];
-    [self.navigationController presentViewController:shareController animated:YES completion:nil];
 }
 
 #pragma mark - WebView Delegate
@@ -59,17 +65,30 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [activityView stopAnimating];
-    self.navigationItem.rightBarButtonItem = shareButtonItem;
+    self.navigationItem.rightBarButtonItem = self.shareButtonItem;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
     [activityView stopAnimating];
+    self.navigationItem.rightBarButtonItem = self.refreshButtonItem;
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"出现错误了";
     hud.detailsLabelText = error.localizedDescription;
     
     [hud hide:YES afterDelay:3];
+}
+
+#pragma mark - BarItemButton Action
+
+- (IBAction)shareAction:(id)sender {
+    UIActivityViewController * shareController = [[UIActivityViewController alloc]
+                                                  initWithActivityItems:@[self.controllerTitle, self.url]applicationActivities:nil];
+    [self.navigationController presentViewController:shareController animated:YES completion:nil];
+}
+
+- (IBAction)refreshAction:(id)sender {
+    NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
+    [self.webView loadRequest:request];
 }
 @end
