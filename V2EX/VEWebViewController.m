@@ -1,6 +1,6 @@
 //
 //  VEWebViewController.m
-//  
+//
 //
 //  Created by baiyang on 15/7/27.
 //
@@ -9,10 +9,13 @@
 #import "VEWebViewController.h"
 #import "MBProgressHUD.h"
 
-@interface VEWebViewController ()<UIWebViewDelegate>
-
+@interface VEWebViewController ()<UIWebViewDelegate> {
+    UIActivityIndicatorView *activityView;
+}
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+@property (nonatomic, strong) UIBarButtonItem *shareButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *activityButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *refreshButtonItem;
 @end
 
 @implementation VEWebViewController
@@ -25,6 +28,28 @@
     
     NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];
+    
+    [self configBarButtons];
+}
+
+- (void)configBarButtons {
+    self.shareButtonItem = [[UIBarButtonItem alloc]
+                            initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                            target:self
+                            action:@selector(shareAction:)];
+    
+    activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20,20)];
+    [activityView sizeToFit];
+    [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    self.activityButtonItem = [[UIBarButtonItem alloc]initWithCustomView:activityView];
+    
+    self.refreshButtonItem = [[UIBarButtonItem alloc]
+                              initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                              target:self
+                              action:@selector(refreshAction:)];
+    
+    [self.navigationItem setRightBarButtonItem:self.activityButtonItem];
+    [activityView startAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,35 +57,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)shareAction:(id)sender {
-    UIActivityViewController * shareController = [[UIActivityViewController alloc]initWithActivityItems:@[self.controllerTitle, self.url] applicationActivities:nil];
-    [self.navigationController presentViewController:shareController animated:YES completion:nil];
-}
 #pragma mark - WebView Delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
     return YES;
 }
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [activityView stopAnimating];
+    self.navigationItem.rightBarButtonItem = self.shareButtonItem;
 }
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [activityView stopAnimating];
+    self.navigationItem.rightBarButtonItem = self.refreshButtonItem;
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"出现错误了";
@@ -69,4 +79,16 @@
     [hud hide:YES afterDelay:3];
 }
 
+#pragma mark - BarItemButton Action
+
+- (IBAction)shareAction:(id)sender {
+    UIActivityViewController * shareController = [[UIActivityViewController alloc]
+                                                  initWithActivityItems:@[self.controllerTitle, self.url]applicationActivities:nil];
+    [self.navigationController presentViewController:shareController animated:YES completion:nil];
+}
+
+- (IBAction)refreshAction:(id)sender {
+    NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
+    [self.webView loadRequest:request];
+}
 @end

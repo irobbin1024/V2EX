@@ -10,6 +10,7 @@
 #import "VESiteModel.h"
 #import "UIAlertView+AFNetworking.h"
 #import "VESiteOperator.h"
+#import "VEOpenComponentsController.h"
 
 @interface VEAboutController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -25,12 +26,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
-    [self reload:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self reload:nil];
 }
 
 - (void)reload:(__unused id)sender {
@@ -50,4 +55,10 @@
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 }
 
+- (IBAction)thanksAction:(id)sender {
+    VEOpenComponentsController *components = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEOpenComponentsController"];
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"OpenComponentsInfo" ofType:@"plist"];
+    components.openComponentsInfo = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    [self.navigationController pushViewController:components animated:YES];
+}
 @end
