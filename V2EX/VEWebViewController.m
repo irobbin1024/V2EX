@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIBarButtonItem *shareButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *activityButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *refreshButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *closeButtonItem;
 @end
 
 @implementation VEWebViewController
@@ -24,7 +25,7 @@
     [super viewDidLoad];
     
     self.webView.delegate = self;
-    self.title = self.controllerTitle;
+    self.title = @"论坛";
     
     NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];
@@ -50,6 +51,14 @@
     
     [self.navigationItem setRightBarButtonItem:self.activityButtonItem];
     [activityView startAnimating];
+    
+    self.closeButtonItem = [[UIBarButtonItem alloc]
+                            initWithTitle:@"关闭"  style:UIBarButtonItemStylePlain
+                            target:self
+                            action:@selector(closeAction:)];
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    [self.navigationItem setLeftBarButtonItem:self.closeButtonItem];
+//    self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,5 +99,26 @@
 - (IBAction)refreshAction:(id)sender {
     NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];
+}
+
+- (IBAction)backButtonAction:(id)sender {
+    if (![self.webView canGoBack]) {
+        self.navigationItem.leftBarButtonItem = nil;
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    }else {
+        [self.webView goBack];
+    }
+}
+- (void)backToRootView {
+    if (![self.webView canGoBack]) {
+        self.navigationItem.leftBarButtonItem = nil;
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    }else {
+        [self.webView goBack];
+    }
+}
+
+- (IBAction)closeAction:(id)sender {
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 @end

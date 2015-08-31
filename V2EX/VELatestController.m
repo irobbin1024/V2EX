@@ -82,12 +82,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+    VEWebViewController * webViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
     VETopicModel * selectedStatusModel = self.latests[[self.tableView indexPathForSelectedRow].row];
-    webView.url = selectedStatusModel.url;
-    webView.controllerTitle = selectedStatusModel.title;
+    webViewController.url = selectedStatusModel.url;
+    webViewController.controllerTitle = selectedStatusModel.title;
     
-    [self.navigationController pushViewController:webView animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一页" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 #pragma mark - Data
@@ -101,7 +102,5 @@
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
     [self.refreshControl setRefreshingWithStateOfTask:task];
 }
-
-#pragma mark - Navigation
 
 @end
