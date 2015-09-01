@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210FA3B61B7A152A0037BA3B /* VELatestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210FA3B51B7A152A0037BA3B /* VELatestController.m */; };
 		212FCDC81B9568BB00DDF36D /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 212FCDC71B9568BB00DDF36D /* UIViewController+BackButtonHandler.m */; };
+		212FCDCB1B95933D00DDF36D /* VETopicListControllerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 212FCDCA1B95933D00DDF36D /* VETopicListControllerUtil.m */; };
+		212FCDCF1B95942A00DDF36D /* VETopicListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212FCDCE1B95942A00DDF36D /* VETopicListController.m */; };
+		212FCDD31B95977C00DDF36D /* VETopicListOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 212FCDD21B95977C00DDF36D /* VETopicListOperator.m */; };
 		217FC2BE1B834C8500238388 /* ICPinyinGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 217FC2BD1B834C8500238388 /* ICPinyinGroup.m */; };
 		21BB44351B7DB7960032DCA8 /* VENodesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB44341B7DB7960032DCA8 /* VENodesController.m */; };
 		21BB44471B81FBAE0032DCA8 /* VEAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BB44461B81FBAE0032DCA8 /* VEAboutController.m */; };
@@ -21,7 +23,6 @@
 		B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADB81B6262200062A097 /* VEAPIClient.m */; };
 		B60EADC01B626D280062A097 /* VENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADBF1B626D280062A097 /* VENavigationController.m */; };
 		B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADC21B626DCF0062A097 /* VETabBarController.m */; };
-		B60EADC71B626E410062A097 /* VEHotController.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EADC61B626E410062A097 /* VEHotController.m */; };
 		B64574E01B6248AB00886225 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B64574DF1B6248AB00886225 /* main.m */; };
 		B64574E31B6248AB00886225 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B64574E21B6248AB00886225 /* AppDelegate.m */; };
 		B64574EC1B6248AB00886225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64574EA1B6248AB00886225 /* Main.storyboard */; };
@@ -33,9 +34,7 @@
 		B65032CD1B91D62800B077B3 /* VEMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032CC1B91D62800B077B3 /* VEMemberModel.m */; };
 		B65032D01B91D77F00B077B3 /* VENodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032CF1B91D77F00B077B3 /* VENodeModel.m */; };
 		B65032D31B91DA3700B077B3 /* VEReplieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032D21B91DA3700B077B3 /* VEReplieModel.m */; };
-		B65032D71B91DD6C00B077B3 /* VEHotOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032D61B91DD6C00B077B3 /* VEHotOperator.m */; };
 		B65032DD1B91DE2C00B077B3 /* NSDate+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032DC1B91DE2C00B077B3 /* NSDate+Formatter.m */; };
-		B65032E11B91DF1A00B077B3 /* VELatestOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032E01B91DF1A00B077B3 /* VELatestOperator.m */; };
 		B65032E51B91DF9200B077B3 /* VENodesOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032E41B91DF9200B077B3 /* VENodesOperator.m */; };
 		B65032E91B91DFF400B077B3 /* VESiteOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032E81B91DFF400B077B3 /* VESiteOperator.m */; };
 		B65032ED1B91EFB300B077B3 /* VEReplieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032EB1B91EFB300B077B3 /* VEReplieTableViewCell.m */; };
@@ -59,10 +58,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		210FA3B41B7A152A0037BA3B /* VELatestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELatestController.h; sourceTree = "<group>"; };
-		210FA3B51B7A152A0037BA3B /* VELatestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELatestController.m; sourceTree = "<group>"; };
 		212FCDC61B9568BB00DDF36D /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		212FCDC71B9568BB00DDF36D /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		212FCDC91B95933D00DDF36D /* VETopicListControllerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicListControllerUtil.h; sourceTree = "<group>"; };
+		212FCDCA1B95933D00DDF36D /* VETopicListControllerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicListControllerUtil.m; sourceTree = "<group>"; };
+		212FCDCD1B95942A00DDF36D /* VETopicListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicListController.h; sourceTree = "<group>"; };
+		212FCDCE1B95942A00DDF36D /* VETopicListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicListController.m; sourceTree = "<group>"; };
+		212FCDD11B95977C00DDF36D /* VETopicListOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicListOperator.h; sourceTree = "<group>"; };
+		212FCDD21B95977C00DDF36D /* VETopicListOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicListOperator.m; sourceTree = "<group>"; };
 		217FC2BC1B834C8500238388 /* ICPinyinGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICPinyinGroup.h; sourceTree = "<group>"; };
 		217FC2BD1B834C8500238388 /* ICPinyinGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICPinyinGroup.m; sourceTree = "<group>"; };
 		21BB44331B7DB7960032DCA8 /* VENodesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENodesController.h; sourceTree = "<group>"; };
@@ -88,8 +91,6 @@
 		B60EADBF1B626D280062A097 /* VENavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENavigationController.m; sourceTree = "<group>"; };
 		B60EADC11B626DCA0062A097 /* VETabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VETabBarController.h; sourceTree = "<group>"; };
 		B60EADC21B626DCF0062A097 /* VETabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETabBarController.m; sourceTree = "<group>"; };
-		B60EADC51B626E410062A097 /* VEHotController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHotController.h; sourceTree = "<group>"; };
-		B60EADC61B626E410062A097 /* VEHotController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHotController.m; sourceTree = "<group>"; };
 		B64574DA1B6248AB00886225 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B64574DE1B6248AB00886225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64574DF1B6248AB00886225 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,12 +112,8 @@
 		B65032CF1B91D77F00B077B3 /* VENodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENodeModel.m; sourceTree = "<group>"; };
 		B65032D11B91DA3700B077B3 /* VEReplieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEReplieModel.h; sourceTree = "<group>"; };
 		B65032D21B91DA3700B077B3 /* VEReplieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEReplieModel.m; sourceTree = "<group>"; };
-		B65032D51B91DD6C00B077B3 /* VEHotOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHotOperator.h; sourceTree = "<group>"; };
-		B65032D61B91DD6C00B077B3 /* VEHotOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHotOperator.m; sourceTree = "<group>"; };
 		B65032DB1B91DE2C00B077B3 /* NSDate+Formatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatter.h"; sourceTree = "<group>"; };
 		B65032DC1B91DE2C00B077B3 /* NSDate+Formatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatter.m"; sourceTree = "<group>"; };
-		B65032DF1B91DF1A00B077B3 /* VELatestOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELatestOperator.h; sourceTree = "<group>"; };
-		B65032E01B91DF1A00B077B3 /* VELatestOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELatestOperator.m; sourceTree = "<group>"; };
 		B65032E31B91DF9200B077B3 /* VENodesOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENodesOperator.h; sourceTree = "<group>"; };
 		B65032E41B91DF9200B077B3 /* VENodesOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENodesOperator.m; sourceTree = "<group>"; };
 		B65032E71B91DFF400B077B3 /* VESiteOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VESiteOperator.h; sourceTree = "<group>"; };
@@ -164,14 +161,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		210FA3AE1B7A11020037BA3B /* Lastest */ = {
+		212FCDCC1B9593B900DDF36D /* Topics */ = {
 			isa = PBXGroup;
 			children = (
-				B65032DE1B91DF0800B077B3 /* Operator */,
-				210FA3B41B7A152A0037BA3B /* VELatestController.h */,
-				210FA3B51B7A152A0037BA3B /* VELatestController.m */,
+				212FCDD01B95960B00DDF36D /* Operator */,
+				212FCDCD1B95942A00DDF36D /* VETopicListController.h */,
+				212FCDCE1B95942A00DDF36D /* VETopicListController.m */,
 			);
-			name = Lastest;
+			name = Topics;
+			sourceTree = "<group>";
+		};
+		212FCDD01B95960B00DDF36D /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				212FCDD11B95977C00DDF36D /* VETopicListOperator.h */,
+				212FCDD21B95977C00DDF36D /* VETopicListOperator.m */,
+			);
+			name = Operator;
 			sourceTree = "<group>";
 		};
 		21BB44311B7DB6CB0032DCA8 /* Nodes */ = {
@@ -263,8 +269,7 @@
 				B6078FF81B66679D003EBBCD /* CommonModule */,
 				B60EADBD1B626CF60062A097 /* Base */,
 				B64575071B625E9300886225 /* Util */,
-				B64575061B625D2400886225 /* Hot */,
-				210FA3AE1B7A11020037BA3B /* Lastest */,
+				212FCDCC1B9593B900DDF36D /* Topics */,
 				21BB44311B7DB6CB0032DCA8 /* Nodes */,
 				21BB443D1B81F96E0032DCA8 /* About */,
 				B64574DD1B6248AB00886225 /* Supporting Files */,
@@ -304,16 +309,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B64575061B625D2400886225 /* Hot */ = {
-			isa = PBXGroup;
-			children = (
-				B65032D41B91DD5900B077B3 /* Operator */,
-				B60EADC51B626E410062A097 /* VEHotController.h */,
-				B60EADC61B626E410062A097 /* VEHotController.m */,
-			);
-			name = Hot;
-			sourceTree = "<group>";
-		};
 		B64575071B625E9300886225 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +322,8 @@
 				B65032DC1B91DE2C00B077B3 /* NSDate+Formatter.m */,
 				B65032F41B91F40200B077B3 /* UIWebView+Single.h */,
 				B65032F51B91F40200B077B3 /* UIWebView+Single.m */,
+				212FCDC91B95933D00DDF36D /* VETopicListControllerUtil.h */,
+				212FCDCA1B95933D00DDF36D /* VETopicListControllerUtil.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -412,24 +409,6 @@
 				21E9800F1B8A07C8009E03AB /* VESiteModel.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		B65032D41B91DD5900B077B3 /* Operator */ = {
-			isa = PBXGroup;
-			children = (
-				B65032D51B91DD6C00B077B3 /* VEHotOperator.h */,
-				B65032D61B91DD6C00B077B3 /* VEHotOperator.m */,
-			);
-			name = Operator;
-			sourceTree = "<group>";
-		};
-		B65032DE1B91DF0800B077B3 /* Operator */ = {
-			isa = PBXGroup;
-			children = (
-				B65032DF1B91DF1A00B077B3 /* VELatestOperator.h */,
-				B65032E01B91DF1A00B077B3 /* VELatestOperator.m */,
-			);
-			name = Operator;
 			sourceTree = "<group>";
 		};
 		B65032E21B91DF8500B077B3 /* Operator */ = {
@@ -602,8 +581,6 @@
 			files = (
 				B65032C91B91D55F00B077B3 /* VETopicModel.m in Sources */,
 				B65032ED1B91EFB300B077B3 /* VEReplieTableViewCell.m in Sources */,
-				B60EADC71B626E410062A097 /* VEHotController.m in Sources */,
-				210FA3B61B7A152A0037BA3B /* VELatestController.m in Sources */,
 				B6EEDC671B8C3CF2003A5F39 /* VETopicTableViewCell.m in Sources */,
 				21BB44471B81FBAE0032DCA8 /* VEAboutController.m in Sources */,
 				21BB44351B7DB7960032DCA8 /* VENodesController.m in Sources */,
@@ -612,21 +589,22 @@
 				B64574E01B6248AB00886225 /* main.m in Sources */,
 				212FCDC81B9568BB00DDF36D /* UIViewController+BackButtonHandler.m in Sources */,
 				B60EADC31B626DCF0062A097 /* VETabBarController.m in Sources */,
+				212FCDCF1B95942A00DDF36D /* VETopicListController.m in Sources */,
 				B65032CD1B91D62800B077B3 /* VEMemberModel.m in Sources */,
 				21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */,
 				B69FE84F1B9344FA00F527CD /* VEReplieOperator.m in Sources */,
 				B65032BF1B91D3EE00B077B3 /* VETopicTableViewController.m in Sources */,
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
 				B65032F21B91F2CF00B077B3 /* VETopicContentTableViewCell.m in Sources */,
+				212FCDCB1B95933D00DDF36D /* VETopicListControllerUtil.m in Sources */,
 				21E9801C1B939D8A009E03AB /* VEOpenComponentLicenseController.m in Sources */,
 				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,
 				21E980171B938968009E03AB /* VEOpenComponentsController.m in Sources */,
+				212FCDD31B95977C00DDF36D /* VETopicListOperator.m in Sources */,
 				B65032DD1B91DE2C00B077B3 /* NSDate+Formatter.m in Sources */,
-				B65032D71B91DD6C00B077B3 /* VEHotOperator.m in Sources */,
 				B65032F61B91F40200B077B3 /* UIWebView+Single.m in Sources */,
 				B60EADB91B6262200062A097 /* VEAPIClient.m in Sources */,
 				B65032D01B91D77F00B077B3 /* VENodeModel.m in Sources */,
-				B65032E11B91DF1A00B077B3 /* VELatestOperator.m in Sources */,
 				B65032E51B91DF9200B077B3 /* VENodesOperator.m in Sources */,
 				B65032E91B91DFF400B077B3 /* VESiteOperator.m in Sources */,
 				B65032D31B91DA3700B077B3 /* VEReplieModel.m in Sources */,

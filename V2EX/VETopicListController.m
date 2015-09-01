@@ -1,33 +1,30 @@
 //
-//  VEHotController.m
-//  
+//  VETopicListController.m
+//  V2EX
 //
-//  Created by baiyang on 15/7/24.
-//
+//  Created by 翁佳 on 15-9-1.
+//  Copyright (c) 2015年 owl. All rights reserved.
 //
 
-#import "VEHotController.h"
-#import "UIRefreshControl+AFNetworking.h"
-#import "UIAlertView+AFNetworking.h"
-#import "UITableView+FDTemplateLayoutCell.h"
-#import "VEWebViewController.h"
-#import "VETopicModel.h"
-#import "VEHotOperator.h"
+#import "VETopicListController.h"
 #import "VETopicTableViewCell.h"
+#import "VETopicListOperator.h"
+#import "UIAlertView+AFNetworking.h"
+#import "UIRefreshControl+AFNetworking.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 #import "VETopicTableViewController.h"
 
-@interface VEHotController ()
+@interface VETopicListController ()
 
-@property (nonatomic, strong) NSArray * hots;
-
+@property(nonatomic, strong) NSArray * topicList;
 @end
 
-@implementation VEHotController
+@implementation VETopicListController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"最热";
+    self.title = [VETopicListControllerUtil titleWithTopicListType:self.topicListType];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"VETopicTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VETopicTableViewCellIdentifier];
     
@@ -42,15 +39,6 @@
     self.tableView.tableFooterView = [UIView new];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -61,9 +49,9 @@
 - (void)reload:(__unused id)sender {
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    NSURLSessionTask *task = [VEHotOperator hotsWithBlock:^(NSArray *hots, NSError *error) {
+    NSURLSessionTask *task = [VETopicListOperator topicListWithType:self.topicListType Block:^(NSArray *topicList, NSError *error) {
         if (!error) {
-            self.hots = hots;
+            self.topicList = topicList;
             [self.tableView reloadData];
         }
     }];
@@ -79,13 +67,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.hots.count;
+    return self.topicList.count;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VETopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VETopicTableViewCellIdentifier forIndexPath:indexPath];
     
-    [cell setupWithTopicModel:self.hots[indexPath.row] isSimple:YES];
+    [cell setupWithTopicModel:self.topicList[indexPath.row] isSimple:YES];
     
     return cell;
 }
@@ -93,7 +82,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = [tableView fd_heightForCellWithIdentifier:VETopicTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VETopicTableViewCell * cell) {
         
-        [cell setupWithTopicModel:self.hots[indexPath.row] isSimple:YES];
+        [cell setupWithTopicModel:self.topicList[indexPath.row] isSimple:YES];
     }];
     
     return height;
@@ -102,16 +91,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     VETopicTableViewController * topicController = [[VETopicTableViewController alloc]initWithStyle:UITableViewStyleGrouped];
-    topicController.topic = self.hots[[self.tableView indexPathForSelectedRow].row];
+    topicController.topic = self.topicList[[self.tableView indexPathForSelectedRow].row];
     
     [self.navigationController pushViewController:topicController animated:YES];
-    
-//    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
-//    VETopicModel * selectedStatusModel = self.hots[[self.tableView indexPathForSelectedRow].row];
-//    webView.url = selectedStatusModel.url;
-//    webView.controllerTitle = selectedStatusModel.title;
-//    
-//    [self.navigationController pushViewController:webView animated:YES];
 }
-
 @end
