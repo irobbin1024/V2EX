@@ -19,6 +19,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"License";
     self.lisenceTextView.text = self.lisenceContext;
+    self.lisenceTextView.editable = NO;
 }
 
 - (void)didReceiveMemoryWarning {
