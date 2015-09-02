@@ -11,9 +11,10 @@
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "VEWebViewController.h"
 #import "ICPinyinGroup.h"
 #import "VENodesOperator.h"
+#import "VETopicListController.h"
+#import "VETopicListControllerUtil.h"
 
 @interface VENodesController () {
     NSMutableArray *filteredNodes;
@@ -136,20 +137,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    VEWebViewController * webView = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+    VETopicListController * topicListController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VETopicListController"];
     
     if (self.searchController.active && filteredNodes.count != 0) {
         VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
-        webView.url = selectedNodeModel.url;
-        webView.controllerTitle = selectedNodeModel.title;
+        [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
     }else {
         if ([self.sortedArrForArrays count] > indexPath.section) {
             NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
             
             if ([arr count] > indexPath.row) {
                 VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
-                webView.url = selectedNodeModel.url;
-                webView.controllerTitle = selectedNodeModel.title;
+                [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
             }
         }
         
@@ -159,7 +158,7 @@
         [self.searchController.searchBar removeFromSuperview];
     }
     
-    [self.navigationController pushViewController:webView animated:YES];
+    [self.navigationController pushViewController:topicListController animated:YES];
 }
 
 #pragma mark - SearchBar Search Results

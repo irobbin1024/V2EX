@@ -11,10 +11,14 @@
 typedef enum {
     VETopicListTypeHot,
     VETopicListTypeLastest,
+    VETopicListTypeNodes,
 }VETopicListType;
 
 @interface VETopicListControllerUtil : NSObject
 
++ (void) setInstanceNodeName:(NSString *)nodeName;
+
 + (NSString *)titleWithTopicListType:(VETopicListType)topicListType;
 + (NSString *)urlWithTopicListType:(VETopicListType)topicListType;
++ (NSDictionary *)paramsWithTopicListType:(VETopicListType)topicListType;
 @end

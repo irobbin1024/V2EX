@@ -14,8 +14,9 @@
 @implementation VETopicListOperator
 
 + (NSURLSessionDataTask *)topicListWithType:(VETopicListType)type Block:(void (^)(NSArray *hots, NSError *error))block {
+    NSDictionary *params = [NSDictionary dictionaryWithDictionary:[VETopicListControllerUtil paramsWithTopicListType:type]];
     NSString *urlString = [VETopicListControllerUtil urlWithTopicListType:type];
-    return [[VEAPIClient sharedClient] GET:urlString parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
+    return [[VEAPIClient sharedClient] GET:urlString parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
         NSError *error;
         NSArray *topicList = [MTLJSONAdapter modelsOfClass:[VETopicModel class] fromJSONArray:JSON error:&error];
         
