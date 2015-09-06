@@ -18,9 +18,13 @@
 @property (nonatomic, copy) NSURL * avatarNormal;
 @property (nonatomic, copy) NSURL * avatarLarge;
 @property (nonatomic, copy) NSString * status;
-@property (nonatomic, strong) NSURL * website;
-@property (nonatomic, strong) NSURL * twitter;
+@property (nonatomic, copy) NSString * url;
+@property (nonatomic, copy) NSString * website;
+@property (nonatomic, copy) NSString * twitter;
+@property (nonatomic, copy) NSString * psn;
+@property (nonatomic, copy) NSString * github;
+@property (nonatomic, copy) NSString * btc;
 @property (nonatomic, copy) NSString * location;
 @property (nonatomic, copy) NSString * bio;
-
+@property (nonatomic, copy) NSDate * created;
 @end

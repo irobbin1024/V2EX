@@ -17,10 +17,15 @@
              @"avatarMini" : @"avatar_mini",
              @"avatarNormal" : @"avatar_normal",
              @"avatarLarge" : @"avatar_large",
+             @"url" : @"url",
              @"website" : @"website",
              @"twitter" : @"twitter",
+             @"psn" : @"psn",
+             @"github" : @"github",
+             @"btc" : @"btc",
              @"location" : @"location",
-             @"bio" : @"bio"};
+             @"bio" : @"bio",
+             @"created" : @"created"};
 }
 
 + (NSValueTransformer *)avatarMiniJSONTransformer {
@@ -35,12 +40,12 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-+ (NSValueTransformer *)websiteJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
-
-+ (NSValueTransformer *)twitterJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
++ (NSValueTransformer *)createdJSONTransformer {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *dateInterval, BOOL *success, NSError *__autoreleasing *error) {
+        return [NSDate dateWithTimeIntervalSince1970:[dateInterval doubleValue]];
+    } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
+        return [NSNumber numberWithDouble:[date timeIntervalSince1970]];
+    }];
 }
 
 @end
