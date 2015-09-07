@@ -8,6 +8,7 @@
 
 #import "VEMemberTableViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "Masonry.h"
 
 @interface VEMemberTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -21,6 +22,7 @@
 - (void)awakeFromNib {
     self.avatarImageView.layer.cornerRadius = 3;
     self.avatarImageView.layer.masksToBounds = YES;
+    self.contextLabel.textColor = [UIColor grayColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -30,6 +32,7 @@
 }
 
 - (void)setupWithTitle:(NSString *) title Context:(id) context IsShowImage:(BOOL) isShowImage {
+        self.titleLabel.text = title;
     if (isShowImage) {
         self.contextLabel.hidden = YES;
         self.avatarImageView.hidden = NO;
@@ -37,11 +40,15 @@
         [self.avatarImageView sd_setImageWithURL:[[NSURL alloc] initWithScheme:@"http" host:avatarLarge.host path:avatarLarge.path]];
     }else {
         self.contextLabel.hidden = NO;
-        self.avatarImageView.hidden = YES;
+        [self.avatarImageView removeFromSuperview];
         NSString *value = context;
+        if (value == nil) {
+            value = @" ";
+        }else if(value.length <=0){
+            value = @" ";
+        }
         self.contextLabel.text = value;
     }
-    self.titleLabel.text = title;
 }
 
 @end
