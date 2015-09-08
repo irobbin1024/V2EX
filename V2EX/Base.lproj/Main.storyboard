@@ -127,8 +127,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqA-Cr-mHR">
-                                <rect key="frame" x="16" y="20" width="568" height="580"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knd-ne-Ha1">
+                                <rect key="frame" x="6" y="20" width="588" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -137,14 +137,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="QqA-Cr-mHR" secondAttribute="trailing" id="270-82-vf6"/>
-                            <constraint firstItem="QqA-Cr-mHR" firstAttribute="leading" secondItem="Yav-rW-GFM" secondAttribute="leadingMargin" id="SGO-6Z-4ey"/>
-                            <constraint firstItem="hjn-3s-2D2" firstAttribute="top" secondItem="QqA-Cr-mHR" secondAttribute="bottom" id="YSD-mz-5Ww"/>
-                            <constraint firstItem="QqA-Cr-mHR" firstAttribute="top" secondItem="NNc-tY-5b3" secondAttribute="bottom" id="seq-4h-QPQ"/>
+                            <constraint firstItem="knd-ne-Ha1" firstAttribute="leading" secondItem="Yav-rW-GFM" secondAttribute="leadingMargin" constant="-10" id="IDo-6h-Rin"/>
+                            <constraint firstItem="hjn-3s-2D2" firstAttribute="top" secondItem="knd-ne-Ha1" secondAttribute="bottom" id="X0Q-Wm-joT"/>
+                            <constraint firstItem="knd-ne-Ha1" firstAttribute="top" secondItem="NNc-tY-5b3" secondAttribute="bottom" id="k8X-wq-p0H"/>
+                            <constraint firstItem="knd-ne-Ha1" firstAttribute="trailing" secondItem="Yav-rW-GFM" secondAttribute="trailingMargin" constant="10" id="zIU-Yo-Ykz"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lisenceTextView" destination="QqA-Cr-mHR" id="a2t-fl-EWN"/>
+                        <outlet property="lisenceTextView" destination="knd-ne-Ha1" id="yh2-FQ-kPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zp-oB-Z5d" userLabel="First Responder" sceneMemberID="firstResponder"/>

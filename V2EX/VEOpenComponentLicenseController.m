@@ -20,6 +20,8 @@
     self.navigationItem.title = @"License";
     self.lisenceTextView.text = self.lisenceContext;
     self.lisenceTextView.editable = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.lisenceTextView scrollRangeToVisible:NSMakeRange(0, 1)];
 }
 
 - (void)didReceiveMemoryWarning {

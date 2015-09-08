@@ -79,7 +79,6 @@
             [cell setupWithTitle:memberTitleArray[indexPath.row] Context:[memberDictionaryValue objectForKey:memberValueArray[indexPath.row]] IsShowImage:NO];
         }
     }];
-    NSLog(@"%f", height);
     return height;
 }
 
