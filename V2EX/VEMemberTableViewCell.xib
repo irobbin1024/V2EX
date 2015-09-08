@@ -16,7 +16,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" verticalHuggingPriority="251" misplaced="YES" text="wengjia" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-V9-1YE">
                         <rect key="frame" x="64" y="12" width="466" height="57"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -28,19 +28,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idw-ka-Yla">
-                        <rect key="frame" x="8" y="28" width="34" height="21"/>
+                        <rect key="frame" x="15" y="28" width="34" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Idw-ka-Yla" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="72V-n9-5Tx"/>
+                    <constraint firstItem="Idw-ka-Yla" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="72V-n9-5Tx"/>
                     <constraint firstItem="KfC-vZ-NH8" firstAttribute="trailing" secondItem="uW4-V9-1YE" secondAttribute="trailing" id="7Vm-W0-KbH"/>
                     <constraint firstItem="uW4-V9-1YE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-4" id="8Pv-2O-9dW"/>
                     <constraint firstItem="uW4-V9-1YE" firstAttribute="centerY" secondItem="Idw-ka-Yla" secondAttribute="centerY" constant="0.5" id="Oqy-b3-Vmu"/>
                     <constraint firstAttribute="bottomMargin" secondItem="uW4-V9-1YE" secondAttribute="bottom" constant="2" id="ezi-52-ejg"/>
-                    <constraint firstItem="uW4-V9-1YE" firstAttribute="leading" secondItem="Idw-ka-Yla" secondAttribute="trailing" constant="22" id="gpn-Vm-g7s"/>
+                    <constraint firstItem="uW4-V9-1YE" firstAttribute="leading" secondItem="Idw-ka-Yla" secondAttribute="trailing" constant="17" id="gpn-Vm-g7s"/>
                     <constraint firstItem="uW4-V9-1YE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="qYJ-y9-ufl"/>
                     <constraint firstItem="KfC-vZ-NH8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="uJo-rW-HaG"/>
                     <constraint firstItem="KfC-vZ-NH8" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="xDJ-3u-Meg"/>
