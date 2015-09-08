@@ -26,6 +26,8 @@
     
     self.title = [VETopicListControllerUtil titleWithTopicListType:self.topicListType];
     
+    if (self.topicListType == VETopicListTypeNodes) [self configBarButton];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"VETopicTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VETopicTableViewCellIdentifier];
     
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
@@ -95,4 +97,25 @@
     
     [self.navigationController pushViewController:topicController animated:YES];
 }
+
+#pragma mark - navigation bar item 
+
+- (void)configBarButton {
+    UIBarButtonItem *collectButtonItem = [[UIBarButtonItem alloc]
+                              initWithTitle:@"收藏"
+                              style:UIBarButtonItemStylePlain
+                              target:self
+                              action:@selector(collectionAction:)];
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    self.navigationItem.leftBarButtonItem = collectButtonItem;
+}
+
+#pragma mark - navigation bar ButtonItem  action
+- (void)collectionAction:(id)sender {
+    if (self.description && [self.delegate respondsToSelector:@selector(didClickCollectButtonWithName:)]) {
+        [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
+    }
+}
+
 @end
+

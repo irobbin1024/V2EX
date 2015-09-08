@@ -8,6 +8,7 @@
 
 #import "VETopicListControllerUtil.h"
 static NSString *node_Name;
+static NSString *node_Title;
 
 @implementation VETopicListControllerUtil
 
@@ -21,7 +22,7 @@ static NSString *node_Name;
             titleString = @"最新";
             break;
         case VETopicListTypeNodes:
-            titleString = @"话题";
+            titleString = node_Title;
         default:
             break;
     }
@@ -43,6 +44,7 @@ static NSString *node_Name;
         default:
             break;
     }
+    NSLog(@"urlString %@", urlString);
     return urlString;
 }
 
@@ -52,6 +54,7 @@ static NSString *node_Name;
         case VETopicListTypeNodes:{
             if (node_Name){
                 parameters = @{@"node_name": node_Name};};
+                NSLog(@"node_name=%@", node_Name);
             break;
         }
         default:
@@ -62,5 +65,17 @@ static NSString *node_Name;
 
 + (void) setInstanceNodeName:(NSString *)nodeName {
     node_Name = nodeName;
+}
+
++ (NSString *) getInstanceNodeName {
+    return node_Name;
+}
+
++ (void) setInstanceNodeTitle:(NSString *)nodeTitle {
+    node_Title = nodeTitle;
+}
+
++ (NSString *) getInstanceNodeTitle {
+    return node_Title;
 }
 @end

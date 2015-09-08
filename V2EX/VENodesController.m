@@ -16,12 +16,13 @@
 #import "VETopicListController.h"
 #import "VETopicListControllerUtil.h"
 
-@interface VENodesController () {
+@interface VENodesController () <VETopicListDelegate>{
     NSMutableArray *filteredNodes;
 }
 
 @property (nonatomic, strong) NSArray *nodes;
 @property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSArray *myNodes;
 @end
 
 @implementation VENodesController
@@ -62,7 +63,11 @@
     if (self.searchController.active) {
         return [filteredNodes count];
     }else {
-        return  [[self.sortedArrForArrays objectAtIndex:section] count];
+//        if (section == 0) {
+//            return self.myNodes.count;
+//        }else {
+            return  [[self.sortedArrForArrays objectAtIndex:section] count];
+//        }
     }
 }
 
@@ -79,7 +84,11 @@
     if (self.searchController.active) {
         return nil;
     }else {
-        return [self.sectionHeadsKeys objectAtIndex:section];
+//        if (section == 0) {
+//            return @"我的节点";
+//        }else {
+            return [self.sectionHeadsKeys objectAtIndex:section];
+//        }
     }
 }
 
@@ -142,6 +151,7 @@
     if (self.searchController.active && filteredNodes.count != 0) {
         VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
         [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
+        [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
     }else {
         if ([self.sortedArrForArrays count] > indexPath.section) {
             NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
@@ -149,6 +159,7 @@
             if ([arr count] > indexPath.row) {
                 VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
                 [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
+                [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
             }
         }
         
@@ -157,7 +168,7 @@
         [self searchBarCancelButtonClicked:nil];
         [self.searchController.searchBar removeFromSuperview];
     }
-    
+    topicListController.delegate = self;
     [self.navigationController pushViewController:topicListController animated:YES];
 }
 
@@ -188,4 +199,8 @@
     }
 }
 
+- (BOOL)didClickCollectButtonWithName:(NSString *)name {
+    
+    return true;
+}
 @end

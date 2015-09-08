@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "VETopicListControllerUtil.h"
 
+@protocol VETopicListDelegate <NSObject>
+
+- (BOOL)didClickCollectButtonWithName:(NSString *)name;
+@end
+
 @interface VETopicListController : UITableViewController
 
+@property (weak, nonatomic) id<VETopicListDelegate> delegate;
 @property (nonatomic, assign) VETopicListType topicListType;
 @end
