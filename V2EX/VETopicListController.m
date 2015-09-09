@@ -114,24 +114,41 @@
 #pragma mark - navigation bar ButtonItem  action
 - (void)collectionAction:(id)sender {
     if (self.description && [self.delegate respondsToSelector:@selector(didClickCollectButtonWithName:)]) {
-        BOOL result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
-        if (result) {
-            MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-            [self.navigationController.view addSubview:HUD];
-            HUD.mode = MBProgressHUDModeCustomView;
-            HUD.delegate = self;
-            HUD.labelText = @"Success";
-            [HUD show:YES];
-            [HUD hide:YES afterDelay:3];
+        VETopicListTipType result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
+        switch (result) {
+            case VETopicListTip_Success: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Success";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:3];
+                }
+                break;
+            case VETopicListTip_Failure: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Failure";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:3];
+                }
+                break;
+            case VETopicListTip_Exists: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Already exists";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:3];
+                }
+                break;
+            default:
+                break;
         }
-    }else {
-        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:HUD];
-        HUD.mode = MBProgressHUDModeCustomView;
-        HUD.delegate = self;
-        HUD.labelText = @"Failure";
-        [HUD show:YES];
-        [HUD hide:YES afterDelay:3];
     }
 }
 

@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "VETopicListControllerUtil.h"
 
+typedef enum {
+    VETopicListTip_Success,
+    VETopicListTip_Failure,
+    VETopicListTip_Exists,
+}VETopicListTipType;
+
 @protocol VETopicListDelegate <NSObject>
 
-- (BOOL)didClickCollectButtonWithName:(NSString *)name;
+- (VETopicListTipType)didClickCollectButtonWithName:(NSString *)name;
 @end
 
 @interface VETopicListController : UITableViewController

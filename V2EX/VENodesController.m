@@ -233,7 +233,12 @@
 
 #pragma mark - VETopicListDelegate
 
-- (BOOL)didClickCollectButtonWithName:(NSString *)name {
+- (VETopicListTipType)didClickCollectButtonWithName:(NSString *)name {
+    for (VENodeModel *obj in self.myNodes) {
+        if (obj.name == name) {
+            return VETopicListTip_Exists;
+        }
+    }
     for (VENodeModel *obj in self.nodes) {
         if ([obj.name isEqual:name]) {
             NSString *filePath = [self dataFilePath];
@@ -242,11 +247,11 @@
             if (result) {
                 [self.myNodes addObject:obj];
                 [self.tableView reloadData];
-                return true;
+                return VETopicListTip_Success;
             }
         }
     }
-    return false;
+    return VETopicListTip_Failure;
 }
 
 #pragma mark - Data persistence
