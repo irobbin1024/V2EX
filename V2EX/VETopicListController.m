@@ -13,8 +13,9 @@
 #import "UIRefreshControl+AFNetworking.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "VETopicTableViewController.h"
+#import "MBProgressHUD.h"
 
-@interface VETopicListController ()
+@interface VETopicListController ()<MBProgressHUDDelegate>
 
 @property(nonatomic, strong) NSArray * topicList;
 @end
@@ -113,7 +114,24 @@
 #pragma mark - navigation bar ButtonItem  action
 - (void)collectionAction:(id)sender {
     if (self.description && [self.delegate respondsToSelector:@selector(didClickCollectButtonWithName:)]) {
-        [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
+        BOOL result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
+        if (result) {
+            MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+            [self.navigationController.view addSubview:HUD];
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.delegate = self;
+            HUD.labelText = @"Success";
+            [HUD show:YES];
+            [HUD hide:YES afterDelay:3];
+        }
+    }else {
+        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        HUD.mode = MBProgressHUDModeCustomView;
+        HUD.delegate = self;
+        HUD.labelText = @"Failure";
+        [HUD show:YES];
+        [HUD hide:YES afterDelay:3];
     }
 }
 

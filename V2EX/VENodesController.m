@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) NSArray *nodes;
 @property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) NSArray *myNodes;
+@property (nonatomic, strong) NSMutableArray *myNodes;
 @end
 
 @implementation VENodesController
@@ -63,11 +63,7 @@
     if (self.searchController.active) {
         return [filteredNodes count];
     }else {
-//        if (section == 0) {
-//            return self.myNodes.count;
-//        }else {
-            return  [[self.sortedArrForArrays objectAtIndex:section] count];
-//        }
+        return  [[self.sortedArrForArrays objectAtIndex:section] count];
     }
 }
 
@@ -84,11 +80,7 @@
     if (self.searchController.active) {
         return nil;
     }else {
-//        if (section == 0) {
-//            return @"我的节点";
-//        }else {
-            return [self.sectionHeadsKeys objectAtIndex:section];
-//        }
+        return [self.sectionHeadsKeys objectAtIndex:section];
     }
 }
 
@@ -102,10 +94,15 @@
         cell.textLabel.text = node.title;
     }else {
         if ([self.sortedArrForArrays count] > indexPath.section) {
-            NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
-            if ([arr count] > indexPath.row) {
-                VENodeModel *node = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+            if (indexPath.section == 0) {
+                VENodeModel *node = (VENodeModel *) [self.myNodes objectAtIndex:indexPath.row];
                 cell.textLabel.text = node.title;
+            }else {
+                NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
+                if ([arr count] > indexPath.row) {
+                    VENodeModel *node = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+                    cell.textLabel.text = node.title;
+                }
             }
         }
     }
@@ -113,11 +110,29 @@
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    if (self.searchController.active) {
-        return nil;
-    }else {
-        return self.sectionHeadsKeys;
+    if (!self.searchController.active) {
+        if (self.sectionHeadsKeys.count > 0) {
+            NSMutableArray *index = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
+            NSArray *initials = self.sectionHeadsKeys;
+            initials = [initials subarrayWithRange:NSMakeRange(1, initials.count-1)];
+            [index addObjectsFromArray:initials];
+            return index;
+        }
     }
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    if (!self.searchController.active) {
+        if (index > 0) {
+            return [self.sectionHeadsKeys indexOfObject:title];
+        }else {
+            CGRect searchBarFrame = self.searchController.searchBar.frame;
+            [self.tableView scrollRectToVisible:searchBarFrame animated:NO];
+            return NSNotFound;
+        }
+    }
+    return 0;
 }
 
 - (void)reload:(__unused id)sender {
@@ -126,6 +141,22 @@
         NSDictionary *dict = [ICPinyinGroup group:self.nodes key:@"title"];
         self.sortedArrForArrays = [dict objectForKey:LEOPinyinGroupResultKey];
         self.sectionHeadsKeys = [dict objectForKey:LEOPinyinGroupCharKey];
+        
+        //Data Persistence
+        if (self.nodes > 0) {
+            NSArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
+            for (NSString *name in nodeName) {
+                [self.nodes enumerateObjectsUsingBlock:^(VENodeModel *obj, NSUInteger idx, BOOL *stop) {
+                    if ([obj.name isEqual:name]) {
+                        [self.myNodes addObject:obj];
+                    }
+
+                }];
+            }
+            if (self.myNodes == nil) self.myNodes = [[NSMutableArray alloc] init];
+            [self.sectionHeadsKeys insertObject:@"我的节点" atIndex:0];
+            [self.sortedArrForArrays insertObject:self.myNodes atIndex:0];
+        }
         
         //search bar
         if (self.nodes.count > 0) {
@@ -183,7 +214,8 @@
              NSRange range = [node.title rangeOfString:searchString options:NSCaseInsensitiveSearch];
              return range.location != NSNotFound;
          }];
-        for (NSString *key in self.sectionHeadsKeys) {
+        
+        for (NSString *key in [self.sectionHeadsKeys subarrayWithRange:NSMakeRange(1, self.sectionHeadsKeys.count-1)]) {
             NSInteger keyIndex = [self.sectionHeadsKeys indexOfObject:key];
             NSArray *matches = [[self.sortedArrForArrays objectAtIndex:keyIndex] filteredArrayUsingPredicate: predicate];
             [filteredNodes addObjectsFromArray:matches];
@@ -199,8 +231,41 @@
     }
 }
 
+#pragma mark - VETopicListDelegate
+
 - (BOOL)didClickCollectButtonWithName:(NSString *)name {
-    
-    return true;
+    for (VENodeModel *obj in self.nodes) {
+        if ([obj.name isEqual:name]) {
+            NSString *filePath = [self dataFilePath];
+            NSError *error;
+            BOOL result = [obj.name writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            if (result) {
+                [self.myNodes addObject:obj];
+                [self.tableView reloadData];
+                return true;
+            }
+        }
+    }
+    return false;
 }
+
+#pragma mark - Data persistence
+
+- (NSString *)dataFilePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+}
+
+- (NSArray *)readDataWithFilePath:(NSString *)filePath {
+    NSArray *array;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        array = [[NSArray alloc] initWithContentsOfFile:filePath];
+    }
+    if (array == nil) {
+        array = [NSArray array];
+    }
+    return array;
+}
+
 @end
