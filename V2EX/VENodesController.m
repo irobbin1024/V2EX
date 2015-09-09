@@ -178,6 +178,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     VETopicListController * topicListController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VETopicListController"];
+    topicListController.topicListType = VETopicListTypeNodes;
     
     if (self.searchController.active && filteredNodes.count != 0) {
         VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
