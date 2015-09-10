@@ -50,7 +50,6 @@
 #pragma mark - Data
 
 - (void)reload:(__unused id)sender {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     NSURLSessionTask *task = [VETopicListOperator topicListWithType:self.topicListType Block:^(NSArray *topicList, NSError *error) {
         if (!error) {
@@ -108,7 +107,7 @@
                               target:self
                               action:@selector(collectionAction:)];
     self.navigationItem.leftItemsSupplementBackButton = YES;
-    self.navigationItem.leftBarButtonItem = collectButtonItem;
+    self.navigationItem.rightBarButtonItem = collectButtonItem;
 }
 
 #pragma mark - navigation bar ButtonItem  action
@@ -123,7 +122,7 @@
                 HUD.delegate = self;
                 HUD.labelText = @"Success";
                 [HUD show:YES];
-                [HUD hide:YES afterDelay:3];
+                [HUD hide:YES afterDelay:1];
                 }
                 break;
             case VETopicListTip_Failure: {
@@ -133,7 +132,7 @@
                 HUD.delegate = self;
                 HUD.labelText = @"Failure";
                 [HUD show:YES];
-                [HUD hide:YES afterDelay:3];
+                [HUD hide:YES afterDelay:1];
                 }
                 break;
             case VETopicListTip_Exists: {
@@ -143,7 +142,7 @@
                 HUD.delegate = self;
                 HUD.labelText = @"Already exists";
                 [HUD show:YES];
-                [HUD hide:YES afterDelay:3];
+                [HUD hide:YES afterDelay:1];
                 }
                 break;
             default:
