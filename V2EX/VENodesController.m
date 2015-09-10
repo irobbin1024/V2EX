@@ -144,6 +144,11 @@
         
         //Data Persistence
         if (self.nodes > 0) {
+            if (self.myNodes == nil) {
+             self.myNodes = [[NSMutableArray alloc] init];
+            }else {
+                [self.myNodes removeAllObjects];
+            }
             NSArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
             for (NSString *name in nodeName) {
                 [self.nodes enumerateObjectsUsingBlock:^(VENodeModel *obj, NSUInteger idx, BOOL *stop) {
@@ -153,7 +158,6 @@
 
                 }];
             }
-            if (self.myNodes == nil) self.myNodes = [[NSMutableArray alloc] init];
             [self.sectionHeadsKeys insertObject:@"我的节点" atIndex:0];
             [self.sortedArrForArrays insertObject:self.myNodes atIndex:0];
         }
@@ -239,16 +243,20 @@
             return VETopicListTip_Exists;
         }
     }
+    
+    NSMutableArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
     for (VENodeModel *obj in self.nodes) {
         if ([obj.name isEqual:name]) {
-            NSString *filePath = [self dataFilePath];
-            NSError *error;
-            BOOL result = [obj.name writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+            [nodeName addObject:obj.name];
+            BOOL result = [nodeName writeToFile:[self dataFilePath] atomically:YES];
+            NSLog(@"write Documents Path:%@", [self dataFilePath]);
+
             if (result) {
                 [self.myNodes addObject:obj];
                 [self.tableView reloadData];
                 return VETopicListTip_Success;
             }
+            break;
         }
     }
     return VETopicListTip_Failure;
@@ -259,16 +267,19 @@
 - (NSString *)dataFilePath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"Documents Path:%@", documentsDirectory);
     return [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
 }
 
-- (NSArray *)readDataWithFilePath:(NSString *)filePath {
-    NSArray *array;
+- (NSMutableArray *)readDataWithFilePath:(NSString *)filePath {
+    NSLog(@"read Documents Path:%@", filePath);
+
+    NSMutableArray *array;
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        array = [[NSArray alloc] initWithContentsOfFile:filePath];
+        array = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
     }
     if (array == nil) {
-        array = [NSArray array];
+        array = [NSMutableArray array];
     }
     return array;
 }
