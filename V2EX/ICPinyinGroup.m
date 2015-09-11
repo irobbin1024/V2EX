@@ -25,7 +25,7 @@ static char LEOPinyinGroupSectionNumberKey;
     NSMutableArray *newSectionArray;
     UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
     NSInteger sectionTitlesCount = [[collation sectionTitles] count];
-    newSectionArray = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
+    newSectionArray = [[NSMutableArray alloc] init];
 
     for (NSInteger index = 0; index < sectionTitlesCount; index ++) {
         NSMutableArray *array = [[NSMutableArray alloc] init];
@@ -66,7 +66,7 @@ static char LEOPinyinGroupSectionNumberKey;
             [lastArray addObject:[NSMutableArray arrayWithArray:sortedRoster]];
         }        
     }
-    NSArray *resultArray = [NSArray arrayWithArray:lastArray];
+    NSMutableArray *resultArray = [NSMutableArray arrayWithArray:lastArray];
     
     return @{LEOPinyinGroupCharKey:charSortArray,
              LEOPinyinGroupResultKey:resultArray};

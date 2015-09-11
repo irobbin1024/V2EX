@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0R-iq-65E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2342" y="1835"/>
+            <point key="canvasLocation" x="2404" y="1773"/>
         </scene>
         <!--Open Components Controller-->
         <scene sceneID="RGf-0h-CJB">
@@ -113,7 +113,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpj-4p-T8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3280" y="192"/>
+            <point key="canvasLocation" x="2398" y="338"/>
         </scene>
         <!--Open Component License Controller-->
         <scene sceneID="KLL-pM-aUx">
@@ -127,8 +127,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqA-Cr-mHR">
-                                <rect key="frame" x="16" y="20" width="568" height="580"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knd-ne-Ha1">
+                                <rect key="frame" x="6" y="20" width="588" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -137,19 +137,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="QqA-Cr-mHR" secondAttribute="trailing" id="270-82-vf6"/>
-                            <constraint firstItem="QqA-Cr-mHR" firstAttribute="leading" secondItem="Yav-rW-GFM" secondAttribute="leadingMargin" id="SGO-6Z-4ey"/>
-                            <constraint firstItem="hjn-3s-2D2" firstAttribute="top" secondItem="QqA-Cr-mHR" secondAttribute="bottom" id="YSD-mz-5Ww"/>
-                            <constraint firstItem="QqA-Cr-mHR" firstAttribute="top" secondItem="NNc-tY-5b3" secondAttribute="bottom" id="seq-4h-QPQ"/>
+                            <constraint firstItem="knd-ne-Ha1" firstAttribute="leading" secondItem="Yav-rW-GFM" secondAttribute="leadingMargin" constant="-10" id="IDo-6h-Rin"/>
+                            <constraint firstItem="hjn-3s-2D2" firstAttribute="top" secondItem="knd-ne-Ha1" secondAttribute="bottom" id="X0Q-Wm-joT"/>
+                            <constraint firstItem="knd-ne-Ha1" firstAttribute="top" secondItem="NNc-tY-5b3" secondAttribute="bottom" id="k8X-wq-p0H"/>
+                            <constraint firstItem="knd-ne-Ha1" firstAttribute="trailing" secondItem="Yav-rW-GFM" secondAttribute="trailingMargin" constant="10" id="zIU-Yo-Ykz"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lisenceTextView" destination="QqA-Cr-mHR" id="a2t-fl-EWN"/>
+                        <outlet property="lisenceTextView" destination="knd-ne-Ha1" id="yh2-FQ-kPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zp-oB-Z5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3922" y="188"/>
+            <point key="canvasLocation" x="3044" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TUD-pN-3vR">
@@ -202,11 +202,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="topicListType">
-                                <integer key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="1ej-HF-Kkn" id="UIE-ot-qHz"/>
                             <outlet property="delegate" destination="1ej-HF-Kkn" id="PoM-XA-fNB"/>
@@ -221,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xip-EB-wyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2280" y="1086"/>
+            <point key="canvasLocation" x="2398" y="1094"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A03-e4-f6a">
@@ -304,7 +299,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V2EX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8J-dw-CkW">
                                 <rect key="frame" x="245" y="130" width="111" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创意工作者们的社区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3o4-Yk-czt">
@@ -316,37 +311,37 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网址：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxt-U2-j2b">
                                 <rect key="frame" x="217" y="268" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.v2ex.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRR-R9-W2e">
                                 <rect key="frame" x="268" y="268" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最多话题数：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1d-jw-rFU">
                                 <rect key="frame" x="217" y="297" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-M9-6wC">
                                 <rect key="frame" x="319" y="297" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最多活跃人数：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STH-gi-Fbq">
                                 <rect key="frame" x="217" y="326" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIh-aH-mJq">
                                 <rect key="frame" x="336" y="326" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

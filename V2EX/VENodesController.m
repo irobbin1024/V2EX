@@ -16,12 +16,13 @@
 #import "VETopicListController.h"
 #import "VETopicListControllerUtil.h"
 
-@interface VENodesController () {
+@interface VENodesController () <VETopicListDelegate>{
     NSMutableArray *filteredNodes;
 }
 
 @property (nonatomic, strong) NSArray *nodes;
 @property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *myNodes;
 @end
 
 @implementation VENodesController
@@ -54,6 +55,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+}
+
+- (void)dealloc {
+    [self.refreshControl setRefreshingWithStateOfTask:nil];
 }
 
 #pragma mark - Table view data source
@@ -93,10 +98,15 @@
         cell.textLabel.text = node.title;
     }else {
         if ([self.sortedArrForArrays count] > indexPath.section) {
-            NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
-            if ([arr count] > indexPath.row) {
-                VENodeModel *node = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+            if (indexPath.section == 0) {
+                VENodeModel *node = (VENodeModel *) [self.myNodes objectAtIndex:indexPath.row];
                 cell.textLabel.text = node.title;
+            }else {
+                NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
+                if ([arr count] > indexPath.row) {
+                    VENodeModel *node = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+                    cell.textLabel.text = node.title;
+                }
             }
         }
     }
@@ -104,11 +114,29 @@
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    if (self.searchController.active) {
-        return nil;
-    }else {
-        return self.sectionHeadsKeys;
+    if (!self.searchController.active) {
+        if (self.sectionHeadsKeys.count > 0) {
+            NSMutableArray *index = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
+            NSArray *initials = self.sectionHeadsKeys;
+            initials = [initials subarrayWithRange:NSMakeRange(1, initials.count-1)];
+            [index addObjectsFromArray:initials];
+            return index;
+        }
     }
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    if (!self.searchController.active) {
+        if (index > 0) {
+            return [self.sectionHeadsKeys indexOfObject:title];
+        }else {
+            CGRect searchBarFrame = self.searchController.searchBar.frame;
+            [self.tableView scrollRectToVisible:searchBarFrame animated:NO];
+            return NSNotFound;
+        }
+    }
+    return 0;
 }
 
 - (void)reload:(__unused id)sender {
@@ -117,6 +145,26 @@
         NSDictionary *dict = [ICPinyinGroup group:self.nodes key:@"title"];
         self.sortedArrForArrays = [dict objectForKey:LEOPinyinGroupResultKey];
         self.sectionHeadsKeys = [dict objectForKey:LEOPinyinGroupCharKey];
+        
+        //Data Persistence
+        if (self.nodes > 0) {
+            if (self.myNodes == nil) {
+             self.myNodes = [[NSMutableArray alloc] init];
+            }else {
+                [self.myNodes removeAllObjects];
+            }
+            NSArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
+            for (NSString *name in nodeName) {
+                [self.nodes enumerateObjectsUsingBlock:^(VENodeModel *obj, NSUInteger idx, BOOL *stop) {
+                    if ([obj.name isEqual:name]) {
+                        [self.myNodes addObject:obj];
+                    }
+
+                }];
+            }
+            [self.sectionHeadsKeys insertObject:@"我的节点" atIndex:0];
+            [self.sortedArrForArrays insertObject:self.myNodes atIndex:0];
+        }
         
         //search bar
         if (self.nodes.count > 0) {
@@ -138,10 +186,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     VETopicListController * topicListController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VETopicListController"];
+    topicListController.topicListType = VETopicListTypeNodes;
     
     if (self.searchController.active && filteredNodes.count != 0) {
         VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
         [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
+        [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
     }else {
         if ([self.sortedArrForArrays count] > indexPath.section) {
             NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
@@ -149,6 +199,7 @@
             if ([arr count] > indexPath.row) {
                 VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
                 [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
+                [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
             }
         }
         
@@ -157,7 +208,7 @@
         [self searchBarCancelButtonClicked:nil];
         [self.searchController.searchBar removeFromSuperview];
     }
-    
+    topicListController.delegate = self;
     [self.navigationController pushViewController:topicListController animated:YES];
 }
 
@@ -172,7 +223,8 @@
              NSRange range = [node.title rangeOfString:searchString options:NSCaseInsensitiveSearch];
              return range.location != NSNotFound;
          }];
-        for (NSString *key in self.sectionHeadsKeys) {
+        
+        for (NSString *key in [self.sectionHeadsKeys subarrayWithRange:NSMakeRange(1, self.sectionHeadsKeys.count-1)]) {
             NSInteger keyIndex = [self.sectionHeadsKeys indexOfObject:key];
             NSArray *matches = [[self.sortedArrForArrays objectAtIndex:keyIndex] filteredArrayUsingPredicate: predicate];
             [filteredNodes addObjectsFromArray:matches];
@@ -186,6 +238,55 @@
         self.searchController.active = NO;
         [self.tableView reloadData];
     }
+}
+
+#pragma mark - VETopicListDelegate
+
+- (VETopicListTipType)didClickCollectButtonWithName:(NSString *)name {
+    for (VENodeModel *obj in self.myNodes) {
+        if (obj.name == name) {
+            return VETopicListTip_Exists;
+        }
+    }
+    
+    NSMutableArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
+    for (VENodeModel *obj in self.nodes) {
+        if ([obj.name isEqual:name]) {
+            [nodeName addObject:obj.name];
+            BOOL result = [nodeName writeToFile:[self dataFilePath] atomically:YES];
+            NSLog(@"write Documents Path:%@", [self dataFilePath]);
+
+            if (result) {
+                [self.myNodes addObject:obj];
+                [self.tableView reloadData];
+                return VETopicListTip_Success;
+            }
+            break;
+        }
+    }
+    return VETopicListTip_Failure;
+}
+
+#pragma mark - Data persistence
+
+- (NSString *)dataFilePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSLog(@"Documents Path:%@", documentsDirectory);
+    return [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+}
+
+- (NSMutableArray *)readDataWithFilePath:(NSString *)filePath {
+    NSLog(@"read Documents Path:%@", filePath);
+
+    NSMutableArray *array;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        array = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+    }
+    if (array == nil) {
+        array = [NSMutableArray array];
+    }
+    return array;
 }
 
 @end

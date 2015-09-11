@@ -17,6 +17,7 @@
 #import "VEReplieOperator.h"
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
+#import "VEMemberTableViewController.h"
 
 @interface VETopicTableViewController ()
 
@@ -160,6 +161,17 @@
         return @"评论";
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        if (indexPath.row ==0) {
+            VEMemberTableViewController * memberController = [[VEMemberTableViewController alloc]initWithStyle:UITableViewStylePlain];
+            memberController.member = self.topic.member;
+            
+            [self.navigationController pushViewController:memberController animated:YES];
+        }
+    }
 }
 
 

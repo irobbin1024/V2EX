@@ -17,6 +17,9 @@ typedef enum {
 @interface VETopicListControllerUtil : NSObject
 
 + (void) setInstanceNodeName:(NSString *)nodeName;
++ (NSString *) getInstanceNodeName;
++ (void) setInstanceNodeTitle:(NSString *)nodeTitle;
++ (NSString *) getInstanceNodeTitle;
 
 + (NSString *)titleWithTopicListType:(VETopicListType)topicListType;
 + (NSString *)urlWithTopicListType:(VETopicListType)topicListType;

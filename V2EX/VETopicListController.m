@@ -13,8 +13,9 @@
 #import "UIRefreshControl+AFNetworking.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "VETopicTableViewController.h"
+#import "MBProgressHUD.h"
 
-@interface VETopicListController ()
+@interface VETopicListController ()<MBProgressHUDDelegate>
 
 @property(nonatomic, strong) NSArray * topicList;
 @end
@@ -25,6 +26,8 @@
     [super viewDidLoad];
     
     self.title = [VETopicListControllerUtil titleWithTopicListType:self.topicListType];
+    
+    if (self.topicListType == VETopicListTypeNodes) [self configBarButton];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"VETopicTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VETopicTableViewCellIdentifier];
     
@@ -44,10 +47,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [self.refreshControl setRefreshingWithStateOfTask:nil];
+}
+
 #pragma mark - Data
 
 - (void)reload:(__unused id)sender {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     NSURLSessionTask *task = [VETopicListOperator topicListWithType:self.topicListType Block:^(NSArray *topicList, NSError *error) {
         if (!error) {
@@ -95,4 +101,59 @@
     
     [self.navigationController pushViewController:topicController animated:YES];
 }
+
+#pragma mark - navigation bar item 
+
+- (void)configBarButton {
+    UIBarButtonItem *collectButtonItem = [[UIBarButtonItem alloc]
+                              initWithTitle:@"收藏"
+                              style:UIBarButtonItemStylePlain
+                              target:self
+                              action:@selector(collectionAction:)];
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    self.navigationItem.rightBarButtonItem = collectButtonItem;
+}
+
+#pragma mark - navigation bar ButtonItem  action
+- (void)collectionAction:(id)sender {
+    if (self.description && [self.delegate respondsToSelector:@selector(didClickCollectButtonWithName:)]) {
+        VETopicListTipType result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
+        switch (result) {
+            case VETopicListTip_Success: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Success";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:1];
+                }
+                break;
+            case VETopicListTip_Failure: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Failure";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:1];
+                }
+                break;
+            case VETopicListTip_Exists: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Already exists";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:1];
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 @end
+
