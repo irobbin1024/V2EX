@@ -47,6 +47,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [self.refreshControl setRefreshingWithStateOfTask:nil];
+}
+
 #pragma mark - Data
 
 - (void)reload:(__unused id)sender {

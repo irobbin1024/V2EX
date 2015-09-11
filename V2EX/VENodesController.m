@@ -57,6 +57,10 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)dealloc {
+    [self.refreshControl setRefreshingWithStateOfTask:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
