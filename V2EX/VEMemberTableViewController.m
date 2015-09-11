@@ -82,6 +82,10 @@
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"selected row %lu", indexPath.row);
+}
+
 #pragma mark - Data 
 
 - (void)reload:(__unused id)sender {
