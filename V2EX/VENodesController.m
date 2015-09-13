@@ -31,6 +31,9 @@
     [super viewDidLoad];
     self.title = @"节点";
     
+//    self.tableView.sectionIndexColor = [UIColor darkGrayColor];
+    self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
@@ -221,6 +224,19 @@
     [self.navigationController pushViewController:topicListController animated:YES];
 }
 
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view;
+    if (section == 0) {
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 24)];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Heart-Shadow-icon"]];
+        imageView.frame = CGRectMake(11, 1, 20, 20);
+        [view addSubview:imageView];
+        [view setBackgroundColor:[UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f]];
+    }
+    return view;
+}
+
 #pragma mark - SearchBar Search Results
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
@@ -304,6 +320,17 @@
         array = [NSMutableArray array];
     }
     return array;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
 }
 
 @end
