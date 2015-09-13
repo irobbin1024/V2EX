@@ -18,6 +18,9 @@
 @interface VETopicListController ()<MBProgressHUDDelegate>
 
 @property(nonatomic, strong) NSArray * topicList;
+@property(nonatomic, strong) UIBarButtonItem *collectButtonItem;
+@property(nonatomic, strong) UIBarButtonItem *cancerCollectButtonItem;
+
 @end
 
 @implementation VETopicListController
@@ -26,8 +29,6 @@
     [super viewDidLoad];
     
     self.title = [VETopicListControllerUtil titleWithTopicListType:self.topicListType];
-    
-    if (self.topicListType == VETopicListTypeNodes) [self configBarButton];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"VETopicTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:VETopicTableViewCellIdentifier];
     
@@ -104,14 +105,28 @@
 
 #pragma mark - navigation bar item 
 
-- (void)configBarButton {
-    UIBarButtonItem *collectButtonItem = [[UIBarButtonItem alloc]
-                              initWithTitle:@"收藏"
-                              style:UIBarButtonItemStylePlain
-                              target:self
-                              action:@selector(collectionAction:)];
+- (void)rightButtonItemStatusWithIsShowCollect:(BOOL)isShowCollect {
+    if (self.collectButtonItem == nil) {
+        self.collectButtonItem = [[UIBarButtonItem alloc]
+                                  initWithTitle:@"收藏"
+                                  style:UIBarButtonItemStylePlain
+                                  target:self
+                                  action:@selector(collectionAction:)];
+    }
+    if (self.cancerCollectButtonItem == nil) {
+        self.cancerCollectButtonItem = [[UIBarButtonItem alloc]
+                                        initWithTitle:@"取消收藏"
+                                        style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(cancerCollectionAction:)];
+    }
+    
+    if (isShowCollect) {
+        self.navigationItem.rightBarButtonItem = self.collectButtonItem;
+    }else {
+        self.navigationItem.rightBarButtonItem = self.cancerCollectButtonItem;
+    }
     self.navigationItem.leftItemsSupplementBackButton = YES;
-    self.navigationItem.rightBarButtonItem = collectButtonItem;
 }
 
 #pragma mark - navigation bar ButtonItem  action
@@ -120,6 +135,7 @@
         VETopicListTipType result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
         switch (result) {
             case VETopicListTip_Success: {
+                self.navigationItem.rightBarButtonItem = self.cancerCollectButtonItem;
                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                 [self.navigationController.view addSubview:HUD];
                 HUD.mode = MBProgressHUDModeCustomView;
@@ -139,21 +155,41 @@
                 [HUD hide:YES afterDelay:1];
                 }
                 break;
-            case VETopicListTip_Exists: {
-                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-                [self.navigationController.view addSubview:HUD];
-                HUD.mode = MBProgressHUDModeCustomView;
-                HUD.delegate = self;
-                HUD.labelText = @"Already exists";
-                [HUD show:YES];
-                [HUD hide:YES afterDelay:1];
-                }
-                break;
             default:
                 break;
         }
     }
 }
 
+- (void)cancerCollectionAction:(id)sender {
+    if (self.description && [self.delegate respondsToSelector:@selector(didClickCancerCollectButtonWithName:)]) {
+        VETopicListTipType result = [self.delegate didClickCancerCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
+        switch (result) {
+            case VETopicListTip_Success: {
+                self.navigationItem.rightBarButtonItem = self.collectButtonItem;
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Success";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:1];
+            }
+                break;
+            case VETopicListTip_Failure: {
+                MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+                [self.navigationController.view addSubview:HUD];
+                HUD.mode = MBProgressHUDModeCustomView;
+                HUD.delegate = self;
+                HUD.labelText = @"Failure";
+                [HUD show:YES];
+                [HUD hide:YES afterDelay:1];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+}
 @end
 

@@ -188,8 +188,9 @@
     VETopicListController * topicListController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VETopicListController"];
     topicListController.topicListType = VETopicListTypeNodes;
     
+    VENodeModel *selectedNodeModel;
     if (self.searchController.active && filteredNodes.count != 0) {
-        VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
+        selectedNodeModel = filteredNodes[indexPath.row];
         [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
         [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
     }else {
@@ -197,13 +198,21 @@
             NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
             
             if ([arr count] > indexPath.row) {
-                VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+                selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
                 [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
                 [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
             }
         }
-        
     }
+    BOOL isShowCollect = YES;
+    for (VENodeModel *obj in self.myNodes) {
+        if ([obj.name isEqual:selectedNodeModel.name]) {
+            isShowCollect = NO;
+            break;
+        }
+    }
+    [topicListController rightButtonItemStatusWithIsShowCollect:isShowCollect];
+    
     if (self.searchController.active) {
         [self searchBarCancelButtonClicked:nil];
         [self.searchController.searchBar removeFromSuperview];
@@ -243,25 +252,33 @@
 #pragma mark - VETopicListDelegate
 
 - (VETopicListTipType)didClickCollectButtonWithName:(NSString *)name {
-    for (VENodeModel *obj in self.myNodes) {
-        if (obj.name == name) {
-            return VETopicListTip_Exists;
-        }
-    }
-    
     NSMutableArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
     for (VENodeModel *obj in self.nodes) {
         if ([obj.name isEqual:name]) {
             [nodeName addObject:obj.name];
             BOOL result = [nodeName writeToFile:[self dataFilePath] atomically:YES];
-            NSLog(@"write Documents Path:%@", [self dataFilePath]);
-
             if (result) {
                 [self.myNodes addObject:obj];
                 [self.tableView reloadData];
                 return VETopicListTip_Success;
             }
             break;
+        }
+    }
+    return VETopicListTip_Failure;
+}
+
+- (VETopicListTipType)didClickCancerCollectButtonWithName:(NSString *)name {
+    NSMutableArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
+    for (VENodeModel *obj in self.myNodes) {
+        if (obj.name == name) {
+            [nodeName removeObject:obj.name];
+            BOOL result = [nodeName writeToFile:[self dataFilePath] atomically:YES];
+            if (result) {
+                [self.myNodes removeObject:obj];
+                [self.tableView reloadData];
+                return VETopicListTip_Success;
+            }
         }
     }
     return VETopicListTip_Failure;
