@@ -19,6 +19,9 @@
              };
 }
 
++ (NSValueTransformer *)domainJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
 
 @end
 

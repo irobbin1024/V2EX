@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * slogan;
 @property (nonatomic, copy) NSString * describe;
-@property (nonatomic, copy) NSString * domain;
+@property (nonatomic, strong) NSURL * domain;
 
 @end
 
