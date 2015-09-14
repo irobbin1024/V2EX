@@ -121,7 +121,6 @@
         if (self.sectionHeadsKeys.count > 0) {
             NSMutableArray *index = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
             NSArray *initials = self.sectionHeadsKeys;
-            initials = [initials subarrayWithRange:NSMakeRange(1, initials.count-1)];
             [index addObjectsFromArray:initials];
             return index;
         }
@@ -132,7 +131,7 @@
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     if (!self.searchController.active) {
         if (index > 0) {
-            return [self.sectionHeadsKeys indexOfObject:title];
+            return [self.sectionHeadsKeys indexOfObject:title]-1;
         }else {
             CGRect searchBarFrame = self.searchController.searchBar.frame;
             [self.tableView scrollRectToVisible:searchBarFrame animated:NO];
@@ -165,7 +164,7 @@
 
                 }];
             }
-            [self.sectionHeadsKeys insertObject:@"我的节点" atIndex:0];
+            [self.sectionHeadsKeys insertObject:@"♥️" atIndex:0];
             [self.sortedArrForArrays insertObject:self.myNodes atIndex:0];
         }
         
@@ -224,14 +223,13 @@
     [self.navigationController pushViewController:topicListController animated:YES];
 }
 
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view;
     if (section == 0) {
         view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 24)];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Heart-Shadow-icon"]];
-        imageView.frame = CGRectMake(11, 1, 20, 20);
-        [view addSubview:imageView];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(11, 3, 50, 15)];
+        label.text = @"♥️";
+        [view addSubview:label];
         [view setBackgroundColor:[UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f]];
     }
     return view;
