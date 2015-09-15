@@ -131,7 +131,7 @@
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     if (!self.searchController.active) {
         if (index > 0) {
-            return [self.sectionHeadsKeys indexOfObject:title]-1;
+            return [self.sectionHeadsKeys indexOfObject:title];
         }else {
             CGRect searchBarFrame = self.searchController.searchBar.frame;
             [self.tableView scrollRectToVisible:searchBarFrame animated:NO];
