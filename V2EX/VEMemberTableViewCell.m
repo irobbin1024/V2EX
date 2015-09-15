@@ -23,7 +23,6 @@
     self.avatarImageView.layer.cornerRadius = 3;
     self.avatarImageView.layer.masksToBounds = YES;
     self.contextLabel.textColor = [UIColor grayColor];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

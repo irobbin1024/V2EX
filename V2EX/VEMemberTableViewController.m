@@ -12,6 +12,7 @@
 #import "UIRefreshControl+AFNetworking.h"
 #import "VEMemberTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "VEWebViewController.h"
 
 @interface VEMemberTableViewController () {
     NSDictionary *memberDictionaryValue;
@@ -69,6 +70,7 @@
     } else {
         [cell setupWithTitle:memberTitleArrayByUI[indexPath.row] Context:memberValueArrayByUI[indexPath.row] IsShowImage:NO];
     }
+    if (![memberTitleArrayByUI[indexPath.row] isEqualToString:@"v2ex主页"]) cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -80,12 +82,19 @@
         } else {
             [cell setupWithTitle:memberTitleArrayByUI[indexPath.row] Context:memberValueArrayByUI[indexPath.row] IsShowImage:NO];
         }
+        if (![memberTitleArrayByUI[indexPath.row] isEqualToString:@"v2ex主页"]) cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }];
     return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected row %lu", indexPath.row);
+    if ([memberTitleArrayByUI[indexPath.row] isEqualToString:@"v2ex主页"]) {
+        NSURL *openUrl = [NSURL URLWithString:memberValueArrayByUI[indexPath.row]];
+        VEWebViewController *webViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VEWebViewController"];
+        webViewController.controllerTitle = memberTitleArrayByUI[indexPath.row];
+        webViewController.url = openUrl;
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
 }
 
 #pragma mark - Data 
