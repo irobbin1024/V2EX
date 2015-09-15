@@ -17,6 +17,8 @@
     NSDictionary *memberDictionaryValue;
     NSArray *memberTitleArray;
     NSArray *memberValueArray;
+    NSMutableArray *memberTitleArrayByUI;
+    NSMutableArray *memberValueArrayByUI;
 }
 
 @end
@@ -55,17 +57,18 @@
     if (memberDictionaryValue.count == 0) {
         return 0;
     } else {
-        return memberTitleArray.count;
+        return memberTitleArrayByUI.count;
     }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VEMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kVEMemberTableViewCellIdentifier forIndexPath:indexPath];
-    if (indexPath.row == 0) {
-        [cell setupWithTitle:memberTitleArray[indexPath.row] Context:[memberDictionaryValue objectForKey:memberValueArray[indexPath.row]] IsShowImage:YES];
+    
+    if (indexPath.row == 0 && [memberValueArrayByUI[indexPath.row] isKindOfClass:[NSURL class]]) {
+        [cell setupWithTitle:memberTitleArrayByUI[indexPath.row] Context:memberValueArrayByUI[indexPath.row] IsShowImage:YES];
     } else {
-        [cell setupWithTitle:memberTitleArray[indexPath.row] Context:[memberDictionaryValue objectForKey:memberValueArray[indexPath.row]] IsShowImage:NO];
+        [cell setupWithTitle:memberTitleArrayByUI[indexPath.row] Context:memberValueArrayByUI[indexPath.row] IsShowImage:NO];
     }
     return cell;
 }
@@ -73,10 +76,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = [tableView fd_heightForCellWithIdentifier:kVEMemberTableViewCellIdentifier cacheByIndexPath:indexPath configuration:^(VEMemberTableViewCell * cell) {
         
-        if (indexPath.row == 0) {
-            [cell setupWithTitle:memberTitleArray[indexPath.row] Context:[memberDictionaryValue objectForKey:memberValueArray[indexPath.row]] IsShowImage:YES];
+        if (indexPath.row == 0 && [memberValueArrayByUI[indexPath.row] isKindOfClass:[NSURL class]]) {
+            [cell setupWithTitle:memberTitleArrayByUI[indexPath.row] Context:memberValueArrayByUI[indexPath.row] IsShowImage:YES];
         } else {
-            [cell setupWithTitle:memberTitleArray[indexPath.row] Context:[memberDictionaryValue objectForKey:memberValueArray[indexPath.row]] IsShowImage:NO];
+            [cell setupWithTitle:memberTitleArrayByUI[indexPath.row] Context:memberValueArrayByUI[indexPath.row] IsShowImage:NO];
         }
     }];
     return height;
@@ -89,10 +92,34 @@
 #pragma mark - Data 
 
 - (void)reload:(__unused id)sender {
+    if (memberTitleArrayByUI == nil) memberTitleArrayByUI = [[NSMutableArray alloc] init]; else [memberTitleArrayByUI removeAllObjects];
+    if (memberValueArrayByUI == nil) memberValueArrayByUI = [[NSMutableArray alloc] init]; else [memberValueArrayByUI removeAllObjects];
+    
     NSURLSessionTask *task = [VEMemberOperator memberDetailWithMember:self.member Block:^(VEMemberModel *member, NSError *error) {
         if (!error) {
             memberDictionaryValue = member.dictionaryValue;
-            [self.tableView reloadData];
+            if (memberDictionaryValue.count > 0) {
+                //过滤空选项
+                [memberValueArray enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([[memberDictionaryValue objectForKey:obj] isKindOfClass:[NSURL class]]) {
+                        NSURL *urlObject = [memberDictionaryValue objectForKey:obj];
+                        if (urlObject != nil) {
+                            [memberTitleArrayByUI addObject:memberTitleArray[idx]];
+                            [memberValueArrayByUI addObject:urlObject];
+                        }
+                    }
+                    
+                    if ([[memberDictionaryValue objectForKey:obj] isKindOfClass:[NSString class]]) {
+                        NSString *strObject = [memberDictionaryValue objectForKey:obj];
+                        if (strObject != nil && strObject.length > 0) {
+                            [memberTitleArrayByUI addObject:memberTitleArray[idx]];
+                            [memberValueArrayByUI addObject:strObject];
+                        }
+                    }
+                }];
+                [self.tableView reloadData];
+            }
         }
     }];
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
