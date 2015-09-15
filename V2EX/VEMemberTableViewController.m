@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"个人信息";
+    self.navigationItem.title = self.member.userName;
     
     memberTitleArray = @[@"头像", @"名字", @"v2ex主页", @"个人网站", @"Twitter", @"PSD ID",
                          @"GitHub", @"BTC Address", @"所在地", @"签名", @"个人简介"];
@@ -60,7 +60,6 @@
         return memberTitleArrayByUI.count;
     }
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VEMemberTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kVEMemberTableViewCellIdentifier forIndexPath:indexPath];
@@ -124,7 +123,6 @@
     }];
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
     [self.refreshControl setRefreshingWithStateOfTask:task];
-    
 }
 
 @end
