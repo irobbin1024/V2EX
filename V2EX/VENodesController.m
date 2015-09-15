@@ -31,7 +31,6 @@
     [super viewDidLoad];
     self.title = @"节点";
     
-//    self.tableView.sectionIndexColor = [UIColor darkGrayColor];
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
@@ -225,14 +224,35 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view;
-    if (section == 0) {
+    if (section == 0 && !self.searchController.active) {
         view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 24)];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(11, 3, 50, 15)];
         label.text = @"♥️";
         [view addSubview:label];
         [view setBackgroundColor:[UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f]];
+        return view;
     }
-    return view;
+    return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footerView = [[UIView alloc]init];
+    if (section == 0 && self.myNodes.count == 0) {
+        footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 30);
+        footerView.backgroundColor = [UIColor whiteColor];
+        return footerView;
+    }else {
+        footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 0);
+        return footerView;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 0 && self.myNodes.count == 0) {
+        return 30;
+    }
+    return 0;
 }
 
 #pragma mark - SearchBar Search Results
