@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "NSDate+Formatter.h"
 #import "Masonry.h"
+#import "VETopicListController.h"
 
 @interface VETopicTableViewCell ()
 
@@ -30,7 +31,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
@@ -79,6 +79,14 @@
 }
 
 - (IBAction)nodeAction:(id)sender {
+    if (self.viewController && self.viewController.navigationController) {
+        VETopicListController * topicListController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VETopicListController"];
+        topicListController.topicListType = VETopicListTypeNodes;
+        [VETopicListControllerUtil setInstanceNodeName:self.topicModel.node.name];
+        [VETopicListControllerUtil setInstanceNodeTitle:self.topicModel.node.title];
+        
+        [self.viewController.navigationController pushViewController:topicListController animated:YES];
+    }
 }
 
 @end

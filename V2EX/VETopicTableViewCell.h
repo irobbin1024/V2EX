@@ -15,6 +15,7 @@ static NSString * const VETopicTableViewCellIdentifier = @"VETopicTableViewCellI
 
 @property (nonatomic, strong) VETopicModel * topicModel;
 @property (nonatomic, assign) BOOL isSimple;
+@property (nonatomic, weak) UIViewController * viewController;
 
 - (void)setupWithTopicModel:(VETopicModel *)topicModel isSimple:(BOOL)isSimple;
 

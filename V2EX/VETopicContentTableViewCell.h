@@ -15,6 +15,7 @@ static NSString * const kVETopicContentTableViewCellIdentifier = @"kVETopicConte
 @interface VETopicContentTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) VETopicModel * topic;
+@property (nonatomic, weak) UIViewController * viewController;
 
 - (void)setupWithTopic:(VETopicModel *)topic;
 

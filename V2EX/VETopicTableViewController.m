@@ -113,10 +113,12 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             VETopicTableViewCell * topicCell = [tableView dequeueReusableCellWithIdentifier:VETopicTableViewCellIdentifier forIndexPath:indexPath];
+            topicCell.viewController = self;
             [topicCell setupWithTopicModel:self.topic isSimple:NO];
             cell = topicCell;
         } else if (indexPath.row == 1) {
             VETopicContentTableViewCell * topicContentCell = [tableView dequeueReusableCellWithIdentifier:kVETopicContentTableViewCellIdentifier forIndexPath:indexPath];
+            topicContentCell.viewController = self;
             [topicContentCell setupWithTopic:self.topic];
             cell = topicContentCell;
         }
@@ -172,6 +174,8 @@
             [self.navigationController pushViewController:memberController animated:YES];
         }
     }
+    
+    [[tableView cellForRowAtIndexPath:indexPath]setSelected:NO animated:YES];
 }
 
 
