@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.webView.delegate = self;
-    self.title = @"话题";
+    self.title = self.controllerTitle;
     
     NSURLRequest * request = [NSURLRequest requestWithURL:self.url];
     [self.webView loadRequest:request];

@@ -11,6 +11,7 @@
 #import "UIAlertView+AFNetworking.h"
 #import "VESiteOperator.h"
 #import "VEOpenComponentsController.h"
+#import "VEWebViewController.h"
 
 @interface VEAboutController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -26,6 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
+    self.domainLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebURL:)];
+    [self.domainLabel addGestureRecognizer:tapGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +49,7 @@
     VESiteInfoModel *siteInfoMdoel = siteInfo;
         self.titleLabel.text = siteInfoMdoel.title == nil ? self.titleLabel.text : siteInfoMdoel.title;
         self.decriptionLabel.text = siteInfoMdoel.describe == nil ? self.decriptionLabel.text : siteInfoMdoel.describe;
-        self.domainLabel.text = siteInfoMdoel.domain == nil ? self.domainLabel.text : siteInfoMdoel.domain;
+        self.domainLabel.text = siteInfoMdoel.domain == nil ? self.domainLabel.text : siteInfoMdoel.domain.absoluteString;
     }];
     
     task = [VESiteOperator siteStatsWithBlock:^(id siteStats, NSError *error) {
@@ -60,5 +65,16 @@
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"OpenComponentsInfo" ofType:@"plist"];
     components.openComponentsInfo = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     [self.navigationController pushViewController:components animated:YES];
+}
+
+#pragma mark - Event
+
+-(void)openWebURL:(id)sender
+{
+    NSURL *openUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", self.domainLabel.text]];
+    VEWebViewController *webViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"VEWebViewController"];;
+    webViewController.controllerTitle = self.domainLabel.text;
+    webViewController.url = openUrl;
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 @end

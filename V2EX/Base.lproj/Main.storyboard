@@ -509,7 +509,7 @@
                                 <rect key="frame" x="268" y="268" width="118" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.40608871899999999" green="0.64476507059999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="最多话题数：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1d-jw-rFU">
@@ -564,7 +564,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9aE-KY-U6N">
-                        <barButtonItem key="rightBarButtonItem" title="感谢分享" id="Zs5-dO-vgc">
+                        <barButtonItem key="rightBarButtonItem" title="致谢" id="Zs5-dO-vgc">
                             <connections>
                                 <action selector="thanksAction:" destination="FDi-uh-UvD" id="uNg-FD-KhV"/>
                             </connections>

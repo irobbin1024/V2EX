@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray *nodes;
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSMutableArray *myNodes;
+@property (nonatomic, strong) UIRefreshControl *nodeRefreshControl;
 @end
 
 @implementation VENodesController
@@ -30,10 +31,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"节点";
-    
-    self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
+
+    self.nodeRefreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
+    self.refreshControl = self.nodeRefreshControl;
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
+    [self.tableView.tableHeaderView addSubview:self.refreshControl];
+    
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.searchBar.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 44.0);
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
     
     [self reload:nil];
     
@@ -51,10 +61,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
 }
 
 - (void)dealloc {
@@ -118,7 +124,6 @@
         if (self.sectionHeadsKeys.count > 0) {
             NSMutableArray *index = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
             NSArray *initials = self.sectionHeadsKeys;
-            initials = [initials subarrayWithRange:NSMakeRange(1, initials.count-1)];
             [index addObjectsFromArray:initials];
             return index;
         }
@@ -139,57 +144,13 @@
     return 0;
 }
 
-- (void)reload:(__unused id)sender {
-    NSURLSessionDataTask * task = [VENodesOperator nodeWithBlock:^(NSArray *nodes, NSError *error) {
-        self.nodes = nodes;
-        NSDictionary *dict = [ICPinyinGroup group:self.nodes key:@"title"];
-        self.sortedArrForArrays = [dict objectForKey:LEOPinyinGroupResultKey];
-        self.sectionHeadsKeys = [dict objectForKey:LEOPinyinGroupCharKey];
-        
-        //Data Persistence
-        if (self.nodes > 0) {
-            if (self.myNodes == nil) {
-             self.myNodes = [[NSMutableArray alloc] init];
-            }else {
-                [self.myNodes removeAllObjects];
-            }
-            NSArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
-            for (NSString *name in nodeName) {
-                [self.nodes enumerateObjectsUsingBlock:^(VENodeModel *obj, NSUInteger idx, BOOL *stop) {
-                    if ([obj.name isEqual:name]) {
-                        [self.myNodes addObject:obj];
-                    }
-
-                }];
-            }
-            [self.sectionHeadsKeys insertObject:@"我的节点" atIndex:0];
-            [self.sortedArrForArrays insertObject:self.myNodes atIndex:0];
-        }
-        
-        //search bar
-        if (self.nodes.count > 0) {
-            filteredNodes = [NSMutableArray array];
-            self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-            self.searchController.searchResultsUpdater = self;
-            self.searchController.dimsBackgroundDuringPresentation = NO;
-            self.searchController.hidesNavigationBarDuringPresentation = NO;
-            self.searchController.searchBar.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 44.0);
-            self.searchController.searchBar.delegate = self;
-            self.tableView.tableHeaderView = self.searchController.searchBar;
-        }
-        [self.tableView reloadData];
-    }];
-    
-    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
-    [self.refreshControl setRefreshingWithStateOfTask:task];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     VETopicListController * topicListController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"VETopicListController"];
     topicListController.topicListType = VETopicListTypeNodes;
     
+    VENodeModel *selectedNodeModel;
     if (self.searchController.active && filteredNodes.count != 0) {
-        VENodeModel *selectedNodeModel = filteredNodes[indexPath.row];
+        selectedNodeModel = filteredNodes[indexPath.row];
         [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
         [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
     }else {
@@ -197,22 +158,65 @@
             NSArray *arr = [self.sortedArrForArrays objectAtIndex:indexPath.section];
             
             if ([arr count] > indexPath.row) {
-                VENodeModel *selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
+                selectedNodeModel = (VENodeModel *) [arr objectAtIndex:indexPath.row];
                 [VETopicListControllerUtil setInstanceNodeName:selectedNodeModel.name];
                 [VETopicListControllerUtil setInstanceNodeTitle:selectedNodeModel.title];
             }
         }
-        
     }
-    if (self.searchController.active) {
-        [self searchBarCancelButtonClicked:nil];
-        [self.searchController.searchBar removeFromSuperview];
+    BOOL isShowCollect = YES;
+    for (VENodeModel *obj in self.myNodes) {
+        if ([obj.name isEqual:selectedNodeModel.name]) {
+            isShowCollect = NO;
+            break;
+        }
     }
+    [topicListController rightButtonItemStatusWithIsShowCollect:isShowCollect];
     topicListController.delegate = self;
     [self.navigationController pushViewController:topicListController animated:YES];
 }
 
-#pragma mark - SearchBar Search Results
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view;
+    if (section == 0 && !self.searchController.active) {
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 24)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(11, 3, 50, 15)];
+        label.text = @"♥️";
+        [view addSubview:label];
+        [view setBackgroundColor:[UIColor colorWithRed:247/255.0f green:247/255.0f blue:247/255.0f alpha:1.0f]];
+        return view;
+    }
+    return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footerView = [[UIView alloc]init];
+    if (section == 0 && self.myNodes.count == 0) {
+        footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 30);
+        footerView.backgroundColor = [UIColor whiteColor];
+        return footerView;
+    }else {
+        footerView.frame = CGRectMake(0, 0, tableView.frame.size.width, 0);
+        return footerView;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 0 && self.myNodes.count == 0 && !self.searchController.active) {
+        return 30;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (self.searchController.active) {
+        return 0;
+    }
+    return 24;
+}
+
+#pragma mark - SearchBar Search Delegate
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchString = [self.searchController.searchBar text];
@@ -236,32 +240,49 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     if (self.searchController.active) {
         self.searchController.active = NO;
+        //Restore refresh control
+        self.refreshControl = self.nodeRefreshControl;
         [self.tableView reloadData];
     }
+    
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    // Disable refresh control
+    self.refreshControl = nil;
+    return YES;
 }
 
 #pragma mark - VETopicListDelegate
 
 - (VETopicListTipType)didClickCollectButtonWithName:(NSString *)name {
-    for (VENodeModel *obj in self.myNodes) {
-        if (obj.name == name) {
-            return VETopicListTip_Exists;
-        }
-    }
-    
     NSMutableArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
     for (VENodeModel *obj in self.nodes) {
         if ([obj.name isEqual:name]) {
             [nodeName addObject:obj.name];
             BOOL result = [nodeName writeToFile:[self dataFilePath] atomically:YES];
-            NSLog(@"write Documents Path:%@", [self dataFilePath]);
-
             if (result) {
                 [self.myNodes addObject:obj];
                 [self.tableView reloadData];
                 return VETopicListTip_Success;
             }
             break;
+        }
+    }
+    return VETopicListTip_Failure;
+}
+
+- (VETopicListTipType)didClickCancerCollectButtonWithName:(NSString *)name {
+    NSMutableArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
+    for (VENodeModel *obj in self.myNodes) {
+        if (obj.name == name) {
+            [nodeName removeObject:obj.name];
+            BOOL result = [nodeName writeToFile:[self dataFilePath] atomically:YES];
+            if (result) {
+                [self.myNodes removeObject:obj];
+                [self.tableView reloadData];
+                return VETopicListTip_Success;
+            }
         }
     }
     return VETopicListTip_Failure;
@@ -289,4 +310,50 @@
     return array;
 }
 
+#pragma mark - Data Source
+
+- (void)reload:(__unused id)sender {
+    NSURLSessionDataTask * task = [VENodesOperator nodeWithBlock:^(NSArray *nodes, NSError *error) {
+        if (!error) {
+            if (self.sortedArrForArrays != nil) [self.sortedArrForArrays removeAllObjects];
+            if (self.sectionHeadsKeys != nil) [self.sectionHeadsKeys removeAllObjects];
+            self.nodes = nodes;
+            if (self.nodes.count > 0) {
+                NSDictionary *dict = [ICPinyinGroup group:self.nodes key:@"title"];
+                self.sortedArrForArrays = [dict objectForKey:LEOPinyinGroupResultKey];
+                self.sectionHeadsKeys = [dict objectForKey:LEOPinyinGroupCharKey];
+            }
+            
+            //Data Persistence
+            if (self.nodes.count > 0) {
+                if (self.myNodes == nil) {
+                    self.myNodes = [[NSMutableArray alloc] init];
+                }else {
+                    [self.myNodes removeAllObjects];
+                }
+                NSArray *nodeName = [self readDataWithFilePath:[self dataFilePath]];
+                for (NSString *name in nodeName) {
+                    [self.nodes enumerateObjectsUsingBlock:^(VENodeModel *obj, NSUInteger idx, BOOL *stop) {
+                        if ([obj.name isEqual:name]) {
+                            [self.myNodes addObject:obj];
+                        }
+                    }];
+                }
+                [self.sectionHeadsKeys insertObject:@"藏" atIndex:0];
+                [self.sortedArrForArrays insertObject:self.myNodes atIndex:0];
+            }
+            
+            //search bar
+            if (self.nodes.count > 0) {
+                filteredNodes = [NSMutableArray array];
+                self.tableView.tableHeaderView = self.searchController.searchBar;
+                
+            }
+            [self.tableView reloadData];
+        }
+    }];
+    
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    [self.refreshControl setRefreshingWithStateOfTask:task];
+}
 @end

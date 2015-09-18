@@ -18,10 +18,13 @@ typedef enum {
 @protocol VETopicListDelegate <NSObject>
 
 - (VETopicListTipType)didClickCollectButtonWithName:(NSString *)name;
+- (VETopicListTipType)didClickCancerCollectButtonWithName:(NSString *)name;
 @end
 
 @interface VETopicListController : UITableViewController
 
 @property (weak, nonatomic) id<VETopicListDelegate> delegate;
 @property (nonatomic, assign) VETopicListType topicListType;
+
+- (void)rightButtonItemStatusWithIsShowCollect:(BOOL)isShowCollect;
 @end
