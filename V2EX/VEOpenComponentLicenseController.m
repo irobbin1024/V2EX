@@ -7,6 +7,7 @@
 //
 
 #import "VEOpenComponentLicenseController.h"
+#import "MobClick.h"
 
 @interface VEOpenComponentLicenseController ()
 @property (weak, nonatomic) IBOutlet UITextView *lisenceTextView;
@@ -17,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [MobClick event:@"checkout_License"];
     self.navigationItem.title = @"License";
     self.lisenceTextView.text = self.lisenceContext;
     self.lisenceTextView.editable = NO;

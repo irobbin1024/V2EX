@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSMutableArray * repliesList;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, weak) UIActivityIndicatorView * indicatorView;
 
 @end
 
@@ -55,8 +56,14 @@
     [self.tableView triggerInfiniteScrolling];
     self.tableView.fd_debugLogEnabled = YES;
     
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    UIActivityIndicatorView * indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    indicatorView.hidesWhenStopped = YES;
+//    
+//    [indicatorView startAnimating];
+//    
+//    UIBarButtonItem * indictorButtonItem = [[UIBarButtonItem alloc]initWithCustomView:indicatorView];
+//    self.navigationItem.rightBarButtonItem = indictorButtonItem;
+//    self.indicatorView = indicatorView;
 }
 
 #pragma mark - Data
@@ -67,7 +74,7 @@
         [self.tableView.infiniteScrollingView stopAnimating];
         if (!error) {
             if ([UIWebView heightFromCacheWithTopicID:self.topic.topicID width:[UIScreen mainScreen].bounds.size.width] > 0) {
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [self.indicatorView stopAnimating];
             }
             self.tableView.infiniteScrollingView.enabled = NO;
             if (replies.count > 0) {
@@ -78,7 +85,7 @@
                 self.tableView.infiniteScrollingView.enabled = NO;
             }
         } else {
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self.indicatorView stopAnimating];
         }
     }];
     

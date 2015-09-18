@@ -12,6 +12,7 @@
 #import "VESiteOperator.h"
 #import "VEOpenComponentsController.h"
 #import "VEWebViewController.h"
+#import "MobClick.h"
 
 @interface VEAboutController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -71,6 +72,7 @@
 
 -(void)openWebURL:(id)sender
 {
+    [MobClick event:@"About_To_V2EX"];
     NSURL *openUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", self.domainLabel.text]];
     VEWebViewController *webViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"VEWebViewController"];;
     webViewController.controllerTitle = self.domainLabel.text;
