@@ -37,9 +37,9 @@ PODS:
     - BlocksKit/DynamicDelegate
   - FIR.im (1.2.0)
   - KVOController (1.0.3)
-  - Mantle (2.0.4):
-    - Mantle/extobjc (= 2.0.4)
-  - Mantle/extobjc (2.0.4)
+  - Mantle (2.0.5):
+    - Mantle/extobjc (= 2.0.5)
+  - Mantle/extobjc (2.0.5)
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
   - ODRefreshControl (1.2)
@@ -75,7 +75,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   FIR.im: e5c7367a35adcd796f30f176f059356c330c0c2e
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
-  Mantle: 6bee68168423948be0c0c5924832bf3af188e099
+  Mantle: 1912395033f601de5adc8ee91e48f46e4c7051ad
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   ODRefreshControl: 907e6149d72dde488d5917ccfabee5bd8d711a20
@@ -87,4 +87,4 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UITableView+FDTemplateLayoutCell: d5be6056b5060313f5955a2590ecd33142ad713d
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2

@@ -21,7 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
-//    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor orangeColor]}];
     
     [self startNetWorkMonitor];
     
