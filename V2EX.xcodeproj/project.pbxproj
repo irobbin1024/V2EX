@@ -163,6 +163,7 @@
 		CE88D9381BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEFeedbackContactTableViewCell.xib; sourceTree = "<group>"; };
 		CE88D93A1BAC664E00CA2756 /* VEFeedBackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFeedBackModel.h; sourceTree = "<group>"; };
 		CE88D93B1BAC664E00CA2756 /* VEFeedBackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFeedBackModel.m; sourceTree = "<group>"; };
+		CEBABB561BBB904E0055BD8D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = V2EX/UMAnalytics_Sdk_3.6.5/libMobClickLibrary.a; sourceTree = "<group>"; };
 		E3C29D8310270B75DA2F7CA9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +189,7 @@
 		12F932D7A9CDFA2C17E421F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEBABB561BBB904E0055BD8D /* libMobClickLibrary.a */,
 				4394C6E375D63529F591FDDD /* libPods.a */,
 			);
 			name = Frameworks;
@@ -590,7 +592,7 @@
 				TargetAttributes = {
 					B64574D91B6248AB00886225 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = ZE2KM4Q755;
+						DevelopmentTeam = G4P2PN77YA;
 					};
 					B64574F51B6248AB00886225 = {
 						CreatedOnToolsVersion = 6.4;
@@ -799,7 +801,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -836,7 +838,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -848,12 +850,41 @@
 			baseConfigurationReference = E3C29D8310270B75DA2F7CA9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im/FIR\"",
+					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Mantle\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/ODRefreshControl\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK/Reveal\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVPullToRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					V2EX/UMAnalytics_Sdk_3.6.5,
+				);
 				INFOPLIST_FILE = V2EX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/V2EX/UMAnalytics_Sdk_3.6.5",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = v2ex.robbin.top;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -865,12 +896,41 @@
 			baseConfigurationReference = 39B7B0D23C0D99D7D7258303 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im/FIR\"",
+					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Mantle\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/ODRefreshControl\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK/Reveal\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVPullToRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					V2EX/UMAnalytics_Sdk_3.6.5,
+				);
 				INFOPLIST_FILE = V2EX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/V2EX/UMAnalytics_Sdk_3.6.5",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = v2ex.robbin.top;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

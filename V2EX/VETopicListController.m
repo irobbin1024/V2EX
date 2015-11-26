@@ -14,7 +14,6 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "VETopicTableViewController.h"
 #import "MBProgressHUD.h"
-#import "MobClick.h"
 
 @interface VETopicListController ()<MBProgressHUDDelegate>
 
@@ -136,7 +135,7 @@
         VETopicListTipType result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
         switch (result) {
             case VETopicListTip_Success: {
-                [MobClick event:@"Collect"];
+//                [MobClick event:@"Collect"];
                 self.navigationItem.rightBarButtonItem = self.cancerCollectButtonItem;
                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                 [self.navigationController.view addSubview:HUD];
@@ -168,7 +167,7 @@
         VETopicListTipType result = [self.delegate didClickCancerCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
         switch (result) {
             case VETopicListTip_Success: {
-                [MobClick event:@"unCollect"];
+//                [MobClick event:@"unCollect"];
                 self.navigationItem.rightBarButtonItem = self.collectButtonItem;
                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                 [self.navigationController.view addSubview:HUD];
