@@ -49,14 +49,14 @@
 		B69FE84F1B9344FA00F527CD /* VEReplieOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B69FE84E1B9344FA00F527CD /* VEReplieOperator.m */; };
 		B6EEDC671B8C3CF2003A5F39 /* VETopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EEDC651B8C3CF2003A5F39 /* VETopicTableViewCell.m */; };
 		B6EEDC681B8C3CF2003A5F39 /* VETopicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EEDC661B8C3CF2003A5F39 /* VETopicTableViewCell.xib */; };
-		CE88D9291BAC5FB300CA2756 /* VEFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9281BAC5FB300CA2756 /* VEFeedbackTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		CE88D92D1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D92C1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		CE88D9301BAC609400CA2756 /* VEFeedbackContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D92F1BAC609400CA2756 /* VEFeedbackContentTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		CE88D9331BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9321BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		CE88D9351BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9341BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CE88D9371BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9361BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CE88D9391BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9381BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		CE88D93C1BAC664E00CA2756 /* VEFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D93B1BAC664E00CA2756 /* VEFeedBackModel.m */; settings = {ASSET_TAGS = (); }; };
+		CE88D9291BAC5FB300CA2756 /* VEFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9281BAC5FB300CA2756 /* VEFeedbackTableViewController.m */; };
+		CE88D92D1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D92C1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m */; };
+		CE88D9301BAC609400CA2756 /* VEFeedbackContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D92F1BAC609400CA2756 /* VEFeedbackContentTableViewCell.m */; };
+		CE88D9331BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9321BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m */; };
+		CE88D9351BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9341BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib */; };
+		CE88D9371BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9361BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib */; };
+		CE88D9391BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9381BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib */; };
+		CE88D93C1BAC664E00CA2756 /* VEFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D93B1BAC664E00CA2756 /* VEFeedBackModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
