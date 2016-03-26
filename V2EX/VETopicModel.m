@@ -67,7 +67,7 @@
     } else if (self.replies > 1000) {
         return [NSString stringWithFormat:@"%ldk", self.replies / 1000];
     } else {
-        return [NSString stringWithFormat:@"%ld", self.replies];
+        return [NSString stringWithFormat:@"%ld", (long)self.replies];
     }
 }
 

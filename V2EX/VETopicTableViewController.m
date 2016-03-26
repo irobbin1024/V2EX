@@ -18,13 +18,16 @@
 #import "UIAlertView+AFNetworking.h"
 #import "UIRefreshControl+AFNetworking.h"
 #import "VEMemberTableViewController.h"
+#import "VEMoreView.h"
+#import "Masonry.h"
 
-@interface VETopicTableViewController ()<UIAlertViewDelegate>
+@interface VETopicTableViewController ()<UIAlertViewDelegate, VEMoreViewActionDelegate>
 
 @property (nonatomic, strong) NSMutableArray * repliesList;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger pageSize;
 @property (nonatomic, weak) UIActivityIndicatorView * indicatorView;
+@property (nonatomic, weak) VEMoreView * moreView;
 
 @end
 
@@ -56,16 +59,13 @@
     [self.tableView triggerInfiniteScrolling];
     self.tableView.fd_debugLogEnabled = YES;
     
-    UIBarButtonItem * moreButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(moreButtonAction:)];
+    UIImage * moreIcon = [UIImage imageNamed:@"Align-Justify-48"];
+    UIButton * moreIconButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 19, 20)];
+    [moreIconButton setImage:moreIcon forState:UIControlStateNormal];
+    [moreIconButton addTarget:self action:@selector(moreButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem * moreButton = [[UIBarButtonItem alloc]initWithCustomView:moreIconButton];
     self.navigationItem.rightBarButtonItem = moreButton;
-//    UIActivityIndicatorView * indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    indicatorView.hidesWhenStopped = YES;
-//    
-//    [indicatorView startAnimating];
-//    
-//    UIBarButtonItem * indictorButtonItem = [[UIBarButtonItem alloc]initWithCustomView:indicatorView];
-//    self.navigationItem.rightBarButtonItem = indictorButtonItem;
-//    self.indicatorView = indicatorView;
 }
 
 #pragma mark - AlertView Delegate
@@ -89,7 +89,18 @@
 #pragma mark - Action 
 - (void)moreButtonAction:(id)sender {
     
-    [[[UIAlertView alloc]initWithTitle:nil message:@"确定要举报这条信息吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"举报", nil]show];
+    if (self.moreView) {
+        [self.moreView dismiss];
+        return ;
+    }
+    
+    VEMoreView * moreView  = [[VEMoreView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    moreView.actionDelegate = self;
+    
+    [self.view addSubview:moreView];
+    self.moreView = moreView;
+    
+    [moreView show];
 }
 
 #pragma mark - Data
@@ -219,6 +230,20 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }
     [self.tableView reloadData];
+}
+
+#pragma mark - VEMoreViewActionDelegate
+
+- (void)shareAction {
+    
+}
+
+- (void)collectAction {
+    
+}
+
+- (void)reportAction {
+    [[[UIAlertView alloc]initWithTitle:nil message:@"确定要举报这条信息吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"举报", nil]show];
 }
 
 @end

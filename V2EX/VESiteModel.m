@@ -37,7 +37,7 @@
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
         return  [[NSNumberFormatter alloc] stringFromNumber:value];
     } reverseBlock:^id(NSString *value, BOOL *success, NSError *__autoreleasing *error) {
-        return [NSNumber numberWithLong:[value longLongValue]];
+        return [NSNumber numberWithLongLong:[value longLongValue]];
     }];
 }
 
@@ -45,7 +45,7 @@
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *value, BOOL *success, NSError *__autoreleasing *error) {
         return  [[NSNumberFormatter alloc] stringFromNumber:value];
     } reverseBlock:^id(NSString *value, BOOL *success, NSError *__autoreleasing *error) {
-        return [NSNumber numberWithLong:[value longLongValue]];
+        return [NSNumber numberWithLongLong:[value longLongValue]];
     }];
 }
 

@@ -47,6 +47,7 @@
 		B65032F31B91F2CF00B077B3 /* VETopicContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65032F11B91F2CF00B077B3 /* VETopicContentTableViewCell.xib */; };
 		B65032F61B91F40200B077B3 /* UIWebView+Single.m in Sources */ = {isa = PBXBuildFile; fileRef = B65032F51B91F40200B077B3 /* UIWebView+Single.m */; };
 		B69FE84F1B9344FA00F527CD /* VEReplieOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B69FE84E1B9344FA00F527CD /* VEReplieOperator.m */; };
+		B6DBFF901CA66B45008AD694 /* VEMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DBFF8F1CA66B45008AD694 /* VEMoreView.m */; };
 		B6EEDC671B8C3CF2003A5F39 /* VETopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EEDC651B8C3CF2003A5F39 /* VETopicTableViewCell.m */; };
 		B6EEDC681B8C3CF2003A5F39 /* VETopicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EEDC661B8C3CF2003A5F39 /* VETopicTableViewCell.xib */; };
 		CE88D9291BAC5FB300CA2756 /* VEFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9281BAC5FB300CA2756 /* VEFeedbackTableViewController.m */; };
@@ -147,6 +148,8 @@
 		B65032F51B91F40200B077B3 /* UIWebView+Single.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Single.m"; sourceTree = "<group>"; };
 		B69FE84D1B9344FA00F527CD /* VEReplieOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEReplieOperator.h; sourceTree = "<group>"; };
 		B69FE84E1B9344FA00F527CD /* VEReplieOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEReplieOperator.m; sourceTree = "<group>"; };
+		B6DBFF8E1CA66B45008AD694 /* VEMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEMoreView.h; sourceTree = "<group>"; };
+		B6DBFF8F1CA66B45008AD694 /* VEMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEMoreView.m; sourceTree = "<group>"; };
 		B6EEDC641B8C3CF2003A5F39 /* VETopicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicTableViewCell.h; sourceTree = "<group>"; };
 		B6EEDC651B8C3CF2003A5F39 /* VETopicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicTableViewCell.m; sourceTree = "<group>"; };
 		B6EEDC661B8C3CF2003A5F39 /* VETopicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VETopicTableViewCell.xib; sourceTree = "<group>"; };
@@ -476,6 +479,8 @@
 				B65032EF1B91F2CF00B077B3 /* VETopicContentTableViewCell.h */,
 				B65032F01B91F2CF00B077B3 /* VETopicContentTableViewCell.m */,
 				B65032F11B91F2CF00B077B3 /* VETopicContentTableViewCell.xib */,
+				B6DBFF8E1CA66B45008AD694 /* VEMoreView.h */,
+				B6DBFF8F1CA66B45008AD694 /* VEMoreView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
 				B65032F21B91F2CF00B077B3 /* VETopicContentTableViewCell.m in Sources */,
 				212FCDCB1B95933D00DDF36D /* VETopicListControllerUtil.m in Sources */,
+				B6DBFF901CA66B45008AD694 /* VEMoreView.m in Sources */,
 				CE88D92D1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m in Sources */,
 				21E9801C1B939D8A009E03AB /* VEOpenComponentLicenseController.m in Sources */,
 				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,
