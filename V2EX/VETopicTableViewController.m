@@ -19,7 +19,7 @@
 #import "UIRefreshControl+AFNetworking.h"
 #import "VEMemberTableViewController.h"
 
-@interface VETopicTableViewController ()
+@interface VETopicTableViewController ()<UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray * repliesList;
 @property (nonatomic, assign) NSInteger page;
@@ -56,6 +56,8 @@
     [self.tableView triggerInfiniteScrolling];
     self.tableView.fd_debugLogEnabled = YES;
     
+    UIBarButtonItem * moreButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(moreButtonAction:)];
+    self.navigationItem.rightBarButtonItem = moreButton;
 //    UIActivityIndicatorView * indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 //    indicatorView.hidesWhenStopped = YES;
 //    
@@ -64,6 +66,30 @@
 //    UIBarButtonItem * indictorButtonItem = [[UIBarButtonItem alloc]initWithCustomView:indicatorView];
 //    self.navigationItem.rightBarButtonItem = indictorButtonItem;
 //    self.indicatorView = indicatorView;
+}
+
+#pragma mark - AlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            sleep(3.0);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MBProgressHUD * hud = [[MBProgressHUD alloc]initWithView:self.view];
+                hud.labelText = @"举报成功";
+                [hud show:YES];
+            });
+            
+        });
+    }
+    
+}
+
+#pragma mark - Action 
+- (void)moreButtonAction:(id)sender {
+    
+    [[[UIAlertView alloc]initWithTitle:nil message:@"确定要举报这条信息吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"举报", nil]show];
 }
 
 #pragma mark - Data

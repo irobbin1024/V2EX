@@ -11,7 +11,7 @@
 #import "VEFeedbackContactTableViewCell.h"
 #import "VEFeedbackCommitTableViewCell.h"
 #import "VEFeedBackModel.h"
-#import "UMFeedback.h"
+//#import "UMFeedback.h"
 #import "MBProgressHUD.h"
 
 @interface VEFeedbackTableViewController ()
@@ -65,22 +65,22 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[UMFeedback sharedInstance]updateUserInfo:@{@"contact" : @{@"contact" : self.feedbackModel.contact}}];
+//    [[UMFeedback sharedInstance]updateUserInfo:@{@"contact" : @{@"contact" : self.feedbackModel.contact}}];
     
-    [[UMFeedback sharedInstance]post:@{@"content" : self.feedbackModel.content, @"contact" : self.feedbackModel.contact} completion:^(NSError *error) {
-        
-        if (error) {
-            NSString * errorMessage = [NSString stringWithFormat:@"发生错误：%@", error.localizedDescription];
-            [[[UIAlertView alloc]initWithTitle:@"警告" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil]show];
-        } else {
+//    [[UMFeedback sharedInstance]post:@{@"content" : self.feedbackModel.content, @"contact" : self.feedbackModel.contact} completion:^(NSError *error) {
+    
+//        if (error) {
+//            NSString * errorMessage = [NSString stringWithFormat:@"发生错误：%@", error.localizedDescription];
+//            [[[UIAlertView alloc]initWithTitle:@"警告" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil]show];
+//        } else {
             hud.mode = MBProgressHUDModeText;
             hud.labelText = @"发送成功";
             
             [hud hide:YES afterDelay:1.5];
             
             [self performSelector:@selector(pop) withObject:nil afterDelay:1.5];
-        }
-    }];
+//        }
+//    }];
 }
 
 - (void)pop {
