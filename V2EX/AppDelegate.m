@@ -10,6 +10,9 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "VEAPIClient.h"
 #import "UIWebView+Single.h"
+#import <FIR/FIR.h>
+#import "UMFeedback.h"
+
 
 @interface AppDelegate ()
 
@@ -21,6 +24,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [[UITabBar appearance] setTintColor:[UIColor orangeColor]];
+    
+    [FIR handleCrashWithKey:@"c123be1377290f57824ce440ced26564"];
+    
+//    [MobClick startWithAppkey:@"55fc229d67e58e4955000956" reportPolicy:BATCH   channelId:@"Web"];
+    
+    [UMFeedback setAppkey:@"55fc229d67e58e4955000956"];
     
     [self startNetWorkMonitor];
     

@@ -135,12 +135,13 @@
         VETopicListTipType result = [self.delegate didClickCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
         switch (result) {
             case VETopicListTip_Success: {
+//                [MobClick event:@"Collect"];
                 self.navigationItem.rightBarButtonItem = self.cancerCollectButtonItem;
                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                 [self.navigationController.view addSubview:HUD];
                 HUD.mode = MBProgressHUDModeCustomView;
                 HUD.delegate = self;
-                HUD.labelText = @"Success";
+                HUD.labelText = @"收藏成功";
                 [HUD show:YES];
                 [HUD hide:YES afterDelay:1];
                 }
@@ -150,7 +151,7 @@
                 [self.navigationController.view addSubview:HUD];
                 HUD.mode = MBProgressHUDModeCustomView;
                 HUD.delegate = self;
-                HUD.labelText = @"Failure";
+                HUD.labelText = @"收藏失败";
                 [HUD show:YES];
                 [HUD hide:YES afterDelay:1];
                 }
@@ -166,12 +167,13 @@
         VETopicListTipType result = [self.delegate didClickCancerCollectButtonWithName:[VETopicListControllerUtil getInstanceNodeName]];
         switch (result) {
             case VETopicListTip_Success: {
+//                [MobClick event:@"unCollect"];
                 self.navigationItem.rightBarButtonItem = self.collectButtonItem;
                 MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
                 [self.navigationController.view addSubview:HUD];
                 HUD.mode = MBProgressHUDModeCustomView;
                 HUD.delegate = self;
-                HUD.labelText = @"Success";
+                HUD.labelText = @"已取消收藏";
                 [HUD show:YES];
                 [HUD hide:YES afterDelay:1];
             }
@@ -181,7 +183,7 @@
                 [self.navigationController.view addSubview:HUD];
                 HUD.mode = MBProgressHUDModeCustomView;
                 HUD.delegate = self;
-                HUD.labelText = @"Failure";
+                HUD.labelText = @"取消收藏失败";
                 [HUD show:YES];
                 [HUD hide:YES afterDelay:1];
             }

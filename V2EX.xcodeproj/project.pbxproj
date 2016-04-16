@@ -49,6 +49,14 @@
 		B69FE84F1B9344FA00F527CD /* VEReplieOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = B69FE84E1B9344FA00F527CD /* VEReplieOperator.m */; };
 		B6EEDC671B8C3CF2003A5F39 /* VETopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6EEDC651B8C3CF2003A5F39 /* VETopicTableViewCell.m */; };
 		B6EEDC681B8C3CF2003A5F39 /* VETopicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6EEDC661B8C3CF2003A5F39 /* VETopicTableViewCell.xib */; };
+		CE88D9291BAC5FB300CA2756 /* VEFeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9281BAC5FB300CA2756 /* VEFeedbackTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		CE88D92D1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D92C1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		CE88D9301BAC609400CA2756 /* VEFeedbackContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D92F1BAC609400CA2756 /* VEFeedbackContentTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		CE88D9331BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D9321BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		CE88D9351BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9341BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CE88D9371BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9361BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CE88D9391BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE88D9381BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		CE88D93C1BAC664E00CA2756 /* VEFeedBackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE88D93B1BAC664E00CA2756 /* VEFeedBackModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +150,20 @@
 		B6EEDC641B8C3CF2003A5F39 /* VETopicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETopicTableViewCell.h; sourceTree = "<group>"; };
 		B6EEDC651B8C3CF2003A5F39 /* VETopicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETopicTableViewCell.m; sourceTree = "<group>"; };
 		B6EEDC661B8C3CF2003A5F39 /* VETopicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VETopicTableViewCell.xib; sourceTree = "<group>"; };
+		CE88D9271BAC5FB300CA2756 /* VEFeedbackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFeedbackTableViewController.h; sourceTree = "<group>"; };
+		CE88D9281BAC5FB300CA2756 /* VEFeedbackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFeedbackTableViewController.m; sourceTree = "<group>"; };
+		CE88D92B1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFeedbackCommitTableViewCell.h; sourceTree = "<group>"; };
+		CE88D92C1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFeedbackCommitTableViewCell.m; sourceTree = "<group>"; };
+		CE88D92E1BAC609400CA2756 /* VEFeedbackContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFeedbackContentTableViewCell.h; sourceTree = "<group>"; };
+		CE88D92F1BAC609400CA2756 /* VEFeedbackContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFeedbackContentTableViewCell.m; sourceTree = "<group>"; };
+		CE88D9311BAC60A200CA2756 /* VEFeedbackContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFeedbackContactTableViewCell.h; sourceTree = "<group>"; };
+		CE88D9321BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFeedbackContactTableViewCell.m; sourceTree = "<group>"; };
+		CE88D9341BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEFeedbackCommitTableViewCell.xib; sourceTree = "<group>"; };
+		CE88D9361BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEFeedbackContentTableViewCell.xib; sourceTree = "<group>"; };
+		CE88D9381BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEFeedbackContactTableViewCell.xib; sourceTree = "<group>"; };
+		CE88D93A1BAC664E00CA2756 /* VEFeedBackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFeedBackModel.h; sourceTree = "<group>"; };
+		CE88D93B1BAC664E00CA2756 /* VEFeedBackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFeedBackModel.m; sourceTree = "<group>"; };
+		CEBABB561BBB904E0055BD8D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = V2EX/UMAnalytics_Sdk_3.6.5/libMobClickLibrary.a; sourceTree = "<group>"; };
 		E3C29D8310270B75DA2F7CA9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +189,7 @@
 		12F932D7A9CDFA2C17E421F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEBABB561BBB904E0055BD8D /* libMobClickLibrary.a */,
 				4394C6E375D63529F591FDDD /* libPods.a */,
 			);
 			name = Frameworks;
@@ -204,9 +227,14 @@
 		21BB443D1B81F96E0032DCA8 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				CE88D92A1BAC605500CA2756 /* View */,
 				B65032E61B91DFE100B077B3 /* Operator */,
 				21BB44451B81FBAE0032DCA8 /* VEAboutController.h */,
 				21BB44461B81FBAE0032DCA8 /* VEAboutController.m */,
+				CE88D9271BAC5FB300CA2756 /* VEFeedbackTableViewController.h */,
+				CE88D9281BAC5FB300CA2756 /* VEFeedbackTableViewController.m */,
+				CE88D93A1BAC664E00CA2756 /* VEFeedBackModel.h */,
+				CE88D93B1BAC664E00CA2756 /* VEFeedBackModel.m */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -497,6 +525,22 @@
 			name = PublicView;
 			sourceTree = "<group>";
 		};
+		CE88D92A1BAC605500CA2756 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE88D92B1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.h */,
+				CE88D92C1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m */,
+				CE88D9341BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib */,
+				CE88D92E1BAC609400CA2756 /* VEFeedbackContentTableViewCell.h */,
+				CE88D92F1BAC609400CA2756 /* VEFeedbackContentTableViewCell.m */,
+				CE88D9361BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib */,
+				CE88D9311BAC60A200CA2756 /* VEFeedbackContactTableViewCell.h */,
+				CE88D9321BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m */,
+				CE88D9381BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -548,7 +592,7 @@
 				TargetAttributes = {
 					B64574D91B6248AB00886225 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 5M52ATQKEV;
+						DevelopmentTeam = G4P2PN77YA;
 					};
 					B64574F51B6248AB00886225 = {
 						CreatedOnToolsVersion = 6.4;
@@ -580,10 +624,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE88D9351BAC63CA00CA2756 /* VEFeedbackCommitTableViewCell.xib in Resources */,
 				21BDCF4B1B9AD1C20012EADE /* VEMemberTableViewCell.xib in Resources */,
 				B65032F31B91F2CF00B077B3 /* VETopicContentTableViewCell.xib in Resources */,
 				21E980191B938EFB009E03AB /* OpenComponentsInfo.plist in Resources */,
+				CE88D9391BAC63E200CA2756 /* VEFeedbackContactTableViewCell.xib in Resources */,
 				B6EEDC681B8C3CF2003A5F39 /* VETopicTableViewCell.xib in Resources */,
+				CE88D9371BAC63D600CA2756 /* VEFeedbackContentTableViewCell.xib in Resources */,
 				B64574EC1B6248AB00886225 /* Main.storyboard in Resources */,
 				B64574F11B6248AB00886225 /* LaunchScreen.xib in Resources */,
 				B65032EE1B91EFB300B077B3 /* VEReplieTableViewCell.xib in Resources */,
@@ -646,6 +693,7 @@
 				21BB44351B7DB7960032DCA8 /* VENodesController.m in Sources */,
 				217FC2BE1B834C8500238388 /* ICPinyinGroup.m in Sources */,
 				B64574E31B6248AB00886225 /* AppDelegate.m in Sources */,
+				CE88D9291BAC5FB300CA2756 /* VEFeedbackTableViewController.m in Sources */,
 				21BDCF4A1B9AD1C20012EADE /* VEMemberTableViewCell.m in Sources */,
 				21BDCF431B9A1B4C0012EADE /* VEMemberTableViewController.m in Sources */,
 				B64574E01B6248AB00886225 /* main.m in Sources */,
@@ -654,11 +702,14 @@
 				212FCDCF1B95942A00DDF36D /* VETopicListController.m in Sources */,
 				B65032CD1B91D62800B077B3 /* VEMemberModel.m in Sources */,
 				21E980101B8A07C8009E03AB /* VESiteModel.m in Sources */,
+				CE88D9301BAC609400CA2756 /* VEFeedbackContentTableViewCell.m in Sources */,
 				B69FE84F1B9344FA00F527CD /* VEReplieOperator.m in Sources */,
 				B65032BF1B91D3EE00B077B3 /* VETopicTableViewController.m in Sources */,
+				CE88D9331BAC60A200CA2756 /* VEFeedbackContactTableViewCell.m in Sources */,
 				B6078FFB1B6667C0003EBBCD /* VEWebViewController.m in Sources */,
 				B65032F21B91F2CF00B077B3 /* VETopicContentTableViewCell.m in Sources */,
 				212FCDCB1B95933D00DDF36D /* VETopicListControllerUtil.m in Sources */,
+				CE88D92D1BAC607900CA2756 /* VEFeedbackCommitTableViewCell.m in Sources */,
 				21E9801C1B939D8A009E03AB /* VEOpenComponentLicenseController.m in Sources */,
 				B60EADC01B626D280062A097 /* VENavigationController.m in Sources */,
 				21E980171B938968009E03AB /* VEOpenComponentsController.m in Sources */,
@@ -669,6 +720,7 @@
 				B65032D01B91D77F00B077B3 /* VENodeModel.m in Sources */,
 				B65032E51B91DF9200B077B3 /* VENodesOperator.m in Sources */,
 				B65032E91B91DFF400B077B3 /* VESiteOperator.m in Sources */,
+				CE88D93C1BAC664E00CA2756 /* VEFeedBackModel.m in Sources */,
 				B65032D31B91DA3700B077B3 /* VEReplieModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,7 +801,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -786,7 +838,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -798,13 +850,44 @@
 			baseConfigurationReference = E3C29D8310270B75DA2F7CA9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im/FIR\"",
+					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Mantle\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/ODRefreshControl\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK/Reveal\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVPullToRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					V2EX/UMAnalytics_Sdk_3.6.5,
+				);
 				INFOPLIST_FILE = V2EX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/V2EX/UMAnalytics_Sdk_3.6.5",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = v2ex.robbin.top;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -813,13 +896,44 @@
 			baseConfigurationReference = 39B7B0D23C0D99D7D7258303 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im\"",
+					"\"${PODS_ROOT}/Headers/Public/FIR.im/FIR\"",
+					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Mantle\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/ODRefreshControl\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK/Reveal\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVPullToRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/TTTAttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell\"",
+					"\"${PODS_ROOT}/Headers/Public/UMengFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/pop\"",
+					V2EX/UMAnalytics_Sdk_3.6.5,
+				);
 				INFOPLIST_FILE = V2EX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/V2EX/UMAnalytics_Sdk_3.6.5",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = v2ex.robbin.top;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
